@@ -1,0 +1,59 @@
+﻿@model Common.Data_Machine
+
+<div class="col-xl-12 col-sm-12">
+    <div class="card">
+        <div class="card-block table-border-style">
+            <div class="table-responsive">
+                <table id="gridListErrorMachine" class="table table-styling"
+                       data-pagination="true"
+                       data-page-list="[5, 10, 20, 50, 100, 200]"
+                       data-show-footer="false">
+                    <thead class="table-primary">
+                        <tr>
+                            <th data-field="errorDate" data-align="center" data-sortable="true" data-formatter="formatDateTime">Ngày</th>
+                            <th data-field="machineName" data-align="left" data-sortable="true">Tên máy</th>
+                            <th data-field="machineGroupName" data-align="left" data-sortable="true">Nhóm máy</th>
+                            <th data-field="machineLocation" data-align="left" data-sortable="true">Vị trí</th>
+                            <th data-field="errorCode" data-align="left" data-sortable="true">Mã lỗi</th>
+                            <th data-field="errorName" data-align="left" data-sortable="true">Tên lỗi</th>
+                            <th data-field="note" data-align="right" data-sortable="true">Ghi chú</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        var machineID = @Html.Raw(Json.Serialize(Model.MachineID));
+        getMachineErrorList(machineID);
+    });
+
+    function getMachineErrorList(machineID) {
+        $.ajax({
+            url: '@Url.Action("GetMachineErrorList", "MachineManagement")' + '?machineID=' + machineID,
+            method: "GET",
+            dataType: "json",
+            async: true,
+            beforeSend: function () { },
+            success: function (result) {
+                if (result) {
+                    $("#gridListErrorMachine").bootstrapTable({
+                        data: result,
+                        formatLoadingMessage: function () {
+                            return '<b>Loading ...</b>';
+                        }
+                    });
+
+                    $('#gridListErrorMachine').bootstrapTable('load', result);
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }
+</script>

@@ -1,0 +1,63 @@
+﻿@model Common.Data_Machine
+
+
+<div class="col-xl-12 col-sm-12">
+    <div class="card">
+        <div class="card-block table-border-style">
+            <div class="table-responsive">
+                <table id="gridMachineMaintenanceCheklist" class="table table-styling"
+                       data-pagination="true"
+                       data-page-list="[5, 10, 20, 50, 100, 200]"
+                       data-show-footer="false">
+                    <thead class="table-primary">
+                        <tr>
+                            <th data-field="content" data-align="left" data-sortable="true">Nội dung</th>
+                            <th data-field="timeFinish" data-align="center" data-sortable="true" data-formatter="formatTimeMaintenanceInterval">Thời gian thực hiện</th>
+                            <th data-field="intervalName" data-align="center" data-sortable="true">Tần suất thực hiện</th>
+                            <th data-field="userGuide" data-align="left" data-sortable="true">Hướng dẫn thực hiện</th>
+                            <th data-field="userGuideVideo" data-align="left" data-sortable="true">Video</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        var machineID = @Html.Raw(Json.Serialize(Model.MachineID));
+        getListMaintenanceChecklist(machineID);
+    });
+
+    function getListMaintenanceChecklist(machineID) {
+        $.ajax({
+            url: '@Url.Action("GetListMaintenanceChecklist", "MachineManagement")' + '?machineID=' + machineID,
+            method: "GET",
+            dataType: "json",
+            async: true,
+            beforeSend: function () { },
+            success: function (result) {
+                if (result) {
+                    $("#gridMachineMaintenanceCheklist").bootstrapTable({
+                        data: result,
+                        formatLoadingMessage: function () {
+                            return '<b>Loading ...</b>';
+                        }
+                    });
+
+                    $('#gridMachineMaintenanceCheklist').bootstrapTable('load', result);
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }
+
+    function formatTimeMaintenanceInterval(value, row, index) {
+        return (value + ' (phút)');
+    }
+</script>

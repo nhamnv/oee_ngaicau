@@ -1,0 +1,304 @@
+﻿@using WDI.OEE.Models;
+@model Common.ViewModels.MachineRuningStatusViewModel
+@{
+    string guid = Guid.NewGuid().ToString().ToLower();
+    string chartHtmlID = "chartPercent_MID_" + Model.MachineID + "_" + guid;
+}
+<div class="col-sm-12">
+    <!-- [card1] start-->
+    <div class="card">
+        <!-- [card-header] start -->
+        <div class="card-header">
+            <input type="hidden" name="hidden_MachineID" value="@Model.MachineID" />
+            <input type="hidden" name="hidden_MachineLocationID" value="@Model.MachineLocationID" />
+            <input type="hidden" name="hidden_LastStatusID" value="@Model._LastStatus.StatusID" />
+            <div class="row">
+                <div class="col-lg-12 col-sm-12" data-original-title="Tên máy" style="font-weight:bold;">
+                    @Model.MachineName
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                    <div class="text-muted m-b-0" data-original-title="Model máy">
+                        @Model.Model
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="line-height:45px;">
+                <div class="col-lg-5 col-sm-12">
+                    <div data-original-title="Vị trí">
+                        @Model.MachineLocationName
+                    </div>
+                </div>
+                <div class="col-lg-7 col-sm-12 text-right">
+                    @foreach (var status in Model.ListStatus)
+                    {
+                        string strBgColor = "";
+                        if (status.StatusID == Model._LastStatus.StatusID)
+                        {
+                            strBgColor = "background-color:" + status.ColorCode + "!important;";
+                        }
+                        <div class="block-status" style="@strBgColor">
+                            @status.StatusName
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <!-- [card-header] end -->
+        <!-- [card-body] start -->
+        <div class="card-boby" style="text-align:-webkit-center;">
+            <div class="row">
+                <div class="col-xl-6 col-sm-12">
+                    <div>
+                        <br />
+                        <div class="machine-avatar-container">
+                            <img class="clicktopreview" style="width:100%;object-fit: contain;" src="~/images/machines/@Model.ImageUrl" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-sm-12">
+                    <!-- [rangeBar time-line] start -->
+                    <div class="col-sm-12">
+                        <div id="@chartHtmlID"></div>
+                    </div>
+                    <!-- [rangeBar time-line] end -->
+                    <br />
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-xl-6 col-sm-12">
+                    <div class="col-7 text-center">
+                        <canvas id="piechart_timeline"></canvas>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-sm-12">
+                    <div class="col-7 text-center">
+                        <canvas id="doughnutchart_timeline"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [card-body] end -->
+        <!-- [card-footer] start -->
+        <div class="card-footer">
+            <div class="row text-left">
+                <span style="color:@Model._CurrentOnOffStatus.ColorCode">
+                    <i class="bi bi-square-fill" style="background-color:@Model._CurrentOnOffStatus.ColorCode
+                            ;width:20px
+                            ;height:20px
+                            ;display:block
+                            ;float: left
+                            ;margin-right: 10px
+                            ;margin-left: 20px
+                            ;margin-bottom: 10px;"></i>
+                    @Model._CurrentOnOffStatus.StatusName
+                </span>
+            </div>
+        </div>
+        <!-- [card-footer] end -->
+
+    </div>
+    <!-- [card1] end-->
+</div>
+
+<!-- [modal view image] start-->
+<div class="modal fade" id="modalpreviewimage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" data-dismiss="modal">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <img src="" class="popuppreviewimage" style="width: 100%;">
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [modal view image] end-->
+
+<script>
+    $(document).ready(function () {
+
+        create_rangebar_timeline();
+
+        var data = JSON.parse('@Html.Raw(Json.Serialize(Model.ListStatusPercent))');
+        create_piechart('pie', 'piechart_timeline', data);
+        //create_piechart('doughnut', 'doughnutchart_timeline', data);
+        create_polararea('doughnut', 'doughnutchart_timeline', data);
+
+        // View ảnh lớn
+        $('.clicktopreview').on('click', function () {
+            $('.popuppreviewimage').attr('src', $(this).attr('src'));
+            $('#modalpreviewimage').show();
+        });
+    });
+
+    function create_rangebar_timeline() {
+        var data = JSON.parse('@Html.Raw(Json.Serialize(Model.SeriesTimeLine))');
+
+        var series = [{ data: data }];
+
+        var options = {
+            series: series,
+            chart: {
+                height: 180,
+                type: 'rangeBar'
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: true
+                },
+                minPointLength: 3,
+            },
+            xaxis: {
+                type: 'datetime'
+            },
+            tooltip: {
+                custom: function (opts) {
+
+                    const fromYear = getDateTime_LocalDateTimeString(new Date(opts.y1));
+                    const toYear = getDateTime_LocalDateTimeString(new Date(opts.y2));
+
+
+                    const w = opts.ctx.w
+                    let ylabel = w.globals.labels[opts.dataPointIndex]
+                    let seriesName = w.config.series[opts.seriesIndex].name
+                        ? w.config.series[opts.seriesIndex].name
+                        : ''
+                    const color = w.globals.colors[opts.seriesIndex]
+                    return (
+                        '<div class="apexcharts-tooltip-rangebar">' +
+                        '<div> <span class="series-name" style="color: ' +
+                        color +
+                        '"> Thời gian ' +
+                        (seriesName ? seriesName : '') +
+                        '</span></div>' +
+                        '<div> <span class="category">' +
+                        // ylabel +
+                        ' </span> <span class="value start-value">' +
+                        fromYear +
+                        '</span> <span class="separator">-</span> <span class="value end-value">' +
+                        toYear +
+                        '</span></div>' +
+                        '</div>'
+                    )
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#@chartHtmlID"), options);
+        chart.render();
+    }
+
+    function create_piechart(charttype, chartid, chartmodel) {
+        var _chartlabels = ["Spring", "Summer", "Fall", "Winter"];
+        var _chartdatas = [1200, 1700, 800, 200];
+        var _chartbgcolor = ["rgba(255, 0, 0, 0.5)", "rgba(100, 255, 0, 0.5)", "rgba(200, 50, 255, 0.5)", "rgba(0, 100, 255, 0.5)"];
+        var _charttype = charttype;
+        if (_charttype === undefined || _charttype === null)
+            _charttype = 'pie';
+
+        // Nếu truyền model vào thì lấy giá trị của model
+        if (chartmodel !== undefined
+            && chartmodel !== null) {
+            _chartlabels = [];
+            _chartdatas = [];
+            _chartbgcolor = [];
+            chartmodel.forEach((value) => {
+                _chartlabels.push(value.statusName);
+                _chartdatas.push(value.dataPercent);
+                _chartbgcolor.push(value.colorCode);
+            });
+        }
+        // ----------------------
+        var ctx = document.getElementById(chartid).getContext("2d");
+        var myLineChart = new Chart(ctx, {
+            type: _charttype,
+            data: {
+                labels: _chartlabels,
+                datasets: [{
+                    data: _chartdatas,
+                    backgroundColor: _chartbgcolor
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: {
+                            generateLabels: (chart) => {
+                                // Hiển thị con số ở label legend
+                                const datasets = chart.data.datasets;
+                                return datasets[0].data.map((data, i) => ({
+                                    text: `${chart.data.labels[i]}: ${data}%`,
+                                    fillStyle: datasets[0].backgroundColor[i],
+                                }))
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function create_polararea(charttype, chartid, chartmodel) {
+        var _chartlabels = ["Spring", "Summer", "Fall", "Winter"];
+        var _chartdatas = [1200, 1700, 800, 200];
+        var _chartbgcolor = ["rgba(255, 0, 0, 0.5)", "rgba(100, 255, 0, 0.5)", "rgba(200, 50, 255, 0.5)", "rgba(0, 100, 255, 0.5)"];
+        var _charttype = charttype;
+        if (_charttype === undefined || _charttype === null)
+            _charttype = 'pie';
+
+        // Nếu truyền model vào thì lấy giá trị của model
+        if (chartmodel !== undefined
+            && chartmodel !== null) {
+            _chartlabels = [];
+            _chartdatas = [];
+            _chartbgcolor = [];
+            chartmodel.forEach((value) => {
+                _chartlabels.push(value.statusName);
+                _chartdatas.push(value.dataPercent);
+                _chartbgcolor.push(value.colorCode);
+            });
+        }
+
+
+        new Chart($("#" + chartid), {
+            type: 'polarArea',
+            data: {
+                labels: _chartlabels,
+                datasets: [{
+                    data: _chartdatas,
+                    backgroundColor: _chartbgcolor,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                title: {
+                    display: true,
+                    text: 'Programming Language Usage on GeeksforGeeks'
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: {
+                            generateLabels: (chart) => {
+                                // Hiển thị con số ở label legend
+                                const datasets = chart.data.datasets;
+                                return datasets[0].data.map((data, i) => ({
+                                    text: `${chart.data.labels[i]}: ${data}%`,
+                                    fillStyle: datasets[0].backgroundColor[i],
+                                }))
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+</script>

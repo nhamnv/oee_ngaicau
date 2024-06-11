@@ -1,0 +1,170 @@
+﻿@model Common.Data_Machine
+
+<div class="card">
+    <div class="card-body">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 col-sm-12">
+                <div id="rangebarchart"></div>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <canvas id="doughnutchart_timeline1" width="500" height="500"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    $(document).ready(function () {
+        var machineID = @Html.Raw(Json.Serialize(Model.MachineID));
+        
+        // Chart 1
+        $.ajax({
+            url: '@Url.Action("GetSeriesTimeLine", "MachineManagement")?machineID='+machineID,
+            method: "GET",
+            dataType: "json",
+            async: true,
+            beforeSend: function () { },
+            success: function (result) {
+                if (result) {
+                    create_rangebar_timeline('rangeBar', 'rangebarchart', result);
+                }
+            },
+            error: function (err) {
+                console.log('Lấy dữ liệu create_rangebar_timeline lỗi ::' + err);
+            }
+        });
+
+        // Chart 2
+        $.ajax({
+            url: '@Url.Action("GetListStatusPercent", "MachineManagement")?machineID=' + machineID,
+            method: "GET",
+            dataType: "json",
+            async: true,
+            beforeSend: function () { },
+            success: function (result) {
+                if (result) {
+                    create_polararea('doughnut', 'doughnutchart_timeline1', result);
+                }
+            },
+            error: function (err) {
+                console.log('Lấy dữ liệu doughnutchart_timeline lỗi ::' + err);
+            }
+        });
+    });
+
+    function create_rangebar_timeline(charttype, chartid, chartmodel) {
+
+        var series = [{ data: chartmodel }];
+        var options = {
+            series: series,
+            chart: {
+                height: 250,
+                type: 'rangeBar'
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: true
+                },
+                minPointLength: 3
+            },
+            xaxis: {
+                type: 'datetime'
+            },
+            tooltip: {
+                custom: function (opts) {
+
+                    const fromYear = getDateTime_LocalDateTimeString(new Date(opts.y1));
+                    const toYear = getDateTime_LocalDateTimeString(new Date(opts.y2));
+
+
+                    const w = opts.ctx.w
+                    let ylabel = w.globals.labels[opts.dataPointIndex]
+                    let seriesName = w.config.series[opts.seriesIndex].name
+                        ? w.config.series[opts.seriesIndex].name
+                        : ''
+                    const color = w.globals.colors[opts.seriesIndex]
+                    return (
+                        '<div class="apexcharts-tooltip-rangebar">' +
+                        '<div> <span class="series-name" style="color: ' +
+                        color +
+                        '"> Thời gian ' +
+                        (seriesName ? seriesName : '') +
+                        '</span></div>' +
+                        '<div> <span class="category">' +
+                        // ylabel +
+                        ' </span> <span class="value start-value">' +
+                        fromYear +
+                        '</span> <span class="separator">-</span> <span class="value end-value">' +
+                        toYear +
+                        '</span></div>' +
+                        '</div>'
+                    )
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector('#' + chartid), options);
+        chart.render();
+    }
+
+    function create_polararea(charttype, chartid, chartmodel) {
+        var _chartlabels = ["Spring", "Summer", "Fall", "Winter"];
+        var _chartdatas = [1200, 1700, 800, 200];
+        var _chartbgcolor = ["rgba(255, 0, 0, 0.5)", "rgba(100, 255, 0, 0.5)", "rgba(200, 50, 255, 0.5)", "rgba(0, 100, 255, 0.5)"];
+        var _charttype = charttype;
+        if (_charttype === undefined || _charttype === null)
+            _charttype = 'pie';
+
+        // Nếu truyền model vào thì lấy giá trị của model
+        if (chartmodel !== undefined
+            && chartmodel !== null) {
+            _chartlabels = [];
+            _chartdatas = [];
+            _chartbgcolor = [];
+            chartmodel.forEach((value) => {
+                _chartlabels.push(value.statusName);
+                _chartdatas.push(value.dataPercent);
+                _chartbgcolor.push(value.colorCode);
+            });
+        }
+
+
+        new Chart($("#" + chartid), {
+            type: 'polarArea',
+            data: {
+                labels: _chartlabels,
+                datasets: [{
+                    data: _chartdatas,
+                    backgroundColor: _chartbgcolor,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                title: {
+                    display: true,
+                    text: 'Programming Language Usage on GeeksforGeeks'
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: {
+                            generateLabels: (chart) => {
+                                // Hiển thị con số ở label legend
+                                const datasets = chart.data.datasets;
+                                return datasets[0].data.map((data, i) => ({
+                                    text: `${chart.data.labels[i]}: ${data}%`,
+                                    fillStyle: datasets[0].backgroundColor[i],
+                                }))
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+</script>

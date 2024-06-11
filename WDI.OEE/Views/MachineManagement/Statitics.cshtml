@@ -1,0 +1,483 @@
+﻿@model Common.ViewModels.MachineStatiticsViewModel
+
+
+<style>
+    a:focus, a:hover {
+        text-decoration: none;
+        color: #dcdcdc !important;
+    }
+</style>
+
+<!-- [Số nhà xưởng] start -->
+<div class="col-lg-3 col-sm-1">
+    <div class="card update-card box-machine-info-txtwhite bg-c-whiteblue">
+        <div class="card-body text-center">
+            <div class="wcom-card-title">@Model.BoxTotalWorkshop.Title</div>
+            <br />
+            <h1>@Model.BoxTotalWorkshop.Value</h1>
+            <div id="pieChartBoxTotalWorkshop"></div>
+        </div>
+        <div class="card-footer">
+            <!--a href="#">Chi tiết >></a-->
+            &nbsp;
+        </div>
+    </div>
+</div>
+<!-- [Số nhà xưởng] end -->
+<!-- [Tổng số máy] start -->
+<div class="col-lg-3 col-sm-1">
+    <div class="card update-card box-machine-info-txtwhite bg-c-yellow">
+        <div class="card-body text-center">
+            <div class="wcom-card-title">@Model.BoxTotalMachine.Title</div>
+            <br />
+            <h1>@Model.BoxTotalMachine.Value</h1>
+            <br />
+            <div class="row" style="justify-content:center;">
+                @foreach (var item in Model.BoxTotalMachine.Data)
+                {
+                    <div class="col-2 p-0">
+                        <a title="Chi tiết" target="_blank" class="d-block text-white" href="@Url.Action("List","MachineManagement")?workshopID=@item.DataID">
+                            @item.Name
+                        </a>
+                    </div>
+                }
+            </div>
+            <div class="line-white"> </div>
+            <div class="row" style="justify-content:center;">
+                @foreach (var item in Model.BoxTotalMachine.Data)
+                {
+                    <div class="col-2 p-0 l">
+                        <a title="Chi tiết" target="_blank" class="d-block text-white" href="@Url.Action("List","MachineManagement")?workshopId=@item.DataID">
+                            @item.Value
+                        </a>
+                    </div>
+                }
+            </div>
+            <div class="line-white"> </div>
+        </div>
+    </div>
+</div>
+<!-- [Tổng số máy] end -->
+<!-- [Số máy theo nhóm] start -->
+<div class="col-lg-6 col-sm-1">
+    <div class="card update-card box-machine-info-txtwhite bg-c-green">
+        <div class="card-body text-center">
+            <div class="wcom-card-title">@Model.BoxTotalMachineByGroup.Title</div>
+            <br />
+            <h1>@Model.BoxTotalMachineByGroup.Value</h1>
+            <br />
+            <div class="row" style="justify-content:center;">
+                @foreach (var item in Model.BoxTotalMachineByGroup.Data)
+                {
+                    <div class="col-2 p-0">
+                        <a title="Chi tiết" target="_blank" class="d-block text-white" href="@Url.Action("List","MachineManagement")?machineGroupID=@item.DataID">
+                            @item.Name
+                        </a>
+                    </div>
+                }
+            </div>
+            <div class="line-white"> </div>
+            <div class="row" style="justify-content:center;">
+                @foreach (var item in Model.BoxTotalMachineByGroup.Data)
+                {
+                    <div class="col-2 p-0">
+                        <a title="Chi tiết" target="_blank" class="d-block text-white" href="@Url.Action("List","MachineManagement")?machineGroupID=@item.DataID">
+                            @item.Value
+                        </a>
+                    </div>
+                }
+            </div>
+            <div class="line-white"> </div>
+        </div>
+    </div>
+</div>
+<!-- [Số máy theo nhóm] end -->
+<!---- line-white 2 ---------------------------------------------------------------->
+<!-- [RateOfTotalMachineByWorkshop] start -->
+<div class="col-lg-4 col-sm-1">
+    <div class="card box-machine-info-txtblack">
+        <div class="card-body text-center">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 databox-title">
+                    @Model.PieChartRateOfTotalMachineByWorkshop.Title
+                </div>
+            </div>
+            <div class="line-grey"></div>
+            <div>@Model.PieChartRateOfTotalMachineByWorkshop.Title</div>
+            <canvas id="piechart_PieChartRateOfTotalMachineByWorkshop" width="426" height="426" style="display: block; height: 341px; width: 341px;"></canvas>
+        </div>
+    </div>
+</div>
+<!-- [RateOfTotalMachineByWorkshop] end -->
+<!-- [RateOfTotalMachineByWorkshop] start -->
+<div class="col-lg-4 col-sm-1">
+    <div class="card box-machine-info-txtblack">
+        <div class="card-body text-center">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 databox-title">
+                    @Model.PieChartRateOfTotalMachineByGroup.Title
+                </div>
+            </div>
+            <div class="line-grey"></div>
+            <div>@Model.PieChartRateOfTotalMachineByGroup.Title</div>
+            <canvas id="piechart_PieChartRateOfTotalMachineByGroup" width="426" height="426" style="display: block; height: 341px; width: 341px;"></canvas>
+        </div>
+    </div>
+</div>
+<!-- [RateOfTotalMachineByWorkshop] end -->
+<!-- [RateOfTotalMachineByWorkshop] start -->
+<div class="col-lg-4 col-sm-1">
+    <div class="card box-machine-info-txtblack">
+        <div class="card-body text-center">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 databox-title">
+                    @Model.PieChartRateOfTotalMachineByAssetGroup.Title
+                </div>
+            </div>
+            <div class="line-grey"></div>
+            <div>@Model.PieChartRateOfTotalMachineByAssetGroup.Title</div>
+            <canvas id="piechart_PieChartRateOfTotalMachineByAssetGroup" width="426" height="426" style="display: block; height: 341px; width: 341px;"></canvas>
+        </div>
+    </div>
+</div>
+<!-- [RateOfTotalMachineByWorkshop] end -->
+
+
+
+<!---- line-white 3 ---------------------------------------------------------------->
+<!-- [TableListMachineByGroupAndWorkshop] start -->
+<div class="col-lg-6 col-sm-1">
+    <div class="card box-machine-info-txtblack">
+        <div class="card-body text-center">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 databox-title">
+                    Thống kê theo nhóm máy và xưởng sản xuất
+                </div>
+            </div>
+            <div class="line-grey"></div>
+            <div>@Model.BarChartListMachineByGroupAndWorkshop.Title</div>
+            <canvas id="chBarChartListMachineByGroupAndWorkshop" height="100"></canvas>
+        </div>
+    </div>
+</div>
+<!-- [TableListMachineByGroupAndWorkshop] end -->
+<!-- [BarChartListMachineByGroupAndWorkshop2] start -->
+<div class="col-lg-6 col-sm-1">
+    <div class="card box-machine-info-txtblack">
+        <div class="card-body text-center">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 databox-title">
+                    Thống kê theo nhóm máy và xưởng sản xuất
+                </div>
+            </div>
+            <div class="line-grey"></div>
+            <div>@Model.BarChartListMachineByGroupAndWorkshop2.Title</div>
+            <canvas id="chBarChartListMachineByGroupAndWorkshop2" height="100"></canvas>
+        </div>
+    </div>
+</div>
+<!-- [BarChartListMachineByGroupAndWorkshop2] end -->
+
+
+
+
+<script>
+    $(document).ready(function () {
+        var _modelpiechartByWorkshop = @Html.Raw(Json.Serialize(Model.PieChartRateOfTotalMachineByWorkshop));
+        create_piechart('pie','piechart_PieChartRateOfTotalMachineByWorkshop', _modelpiechartByWorkshop);
+
+        var _modelpiechartByGroup = @Html.Raw(Json.Serialize(Model.PieChartRateOfTotalMachineByGroup));
+        create_piechart('doughnut', 'piechart_PieChartRateOfTotalMachineByGroup', _modelpiechartByGroup);
+
+        var _modelpiechartByAssetGroup = @Html.Raw(Json.Serialize(Model.PieChartRateOfTotalMachineByAssetGroup));
+        create_piechart('pie', 'piechart_PieChartRateOfTotalMachineByAssetGroup', _modelpiechartByAssetGroup);
+    
+
+        // Barchart
+        var modelBarChart = @Html.Raw(Json.Serialize(Model.BarChartListMachineByGroupAndWorkshop));
+        create_barchart('bar', 'chBarChartListMachineByGroupAndWorkshop', modelBarChart);
+
+        var modelBarChart2 = @Html.Raw(Json.Serialize(Model.BarChartListMachineByGroupAndWorkshop2));
+        create_barchart('bar', 'chBarChartListMachineByGroupAndWorkshop2', modelBarChart2);
+    })
+
+    function create_piechart(charttype, chartid, piechartmodel) {
+        var _chartlabels = ["Spring", "Summer", "Fall", "Winter"];
+        var _chartdatas = [1200, 1700, 800, 200];
+        var _chartbgcolor = ["rgba(255, 0, 0, 0.5)", "rgba(100, 255, 0, 0.5)", "rgba(200, 50, 255, 0.5)", "rgba(0, 100, 255, 0.5)"];
+        var _charttype = charttype;
+        if (_charttype === undefined || _charttype === null)
+            _charttype = 'pie';
+
+        // Nếu truyền model vào thì lấy giá trị của model
+        if (piechartmodel !== undefined
+            && piechartmodel !== null
+            && piechartmodel.data !== undefined
+            && piechartmodel.data !== null) {
+            _chartlabels = [];
+            _chartdatas = [];
+            _chartbgcolor = [];
+            piechartmodel.data.forEach((value) => {
+                _chartlabels.push(value.name);
+                _chartdatas.push(value.value);
+                _chartbgcolor.push(value.colorCode);
+            });
+        }
+        // ----------------------
+        var ctx = document.getElementById(chartid).getContext("2d");
+        var myLineChart = new Chart(ctx, {
+            type: _charttype,
+            data: {
+                labels: _chartlabels,
+                datasets: [{
+                    data: _chartdatas,
+                    backgroundColor: _chartbgcolor
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: {
+                            generateLabels: (chart) => {
+                                // Hiển thị con số ở label legend
+                                const datasets = chart.data.datasets;
+                                return datasets[0].data.map((data, i) => ({
+                                    text: `${chart.data.labels[i]}: ${data}%`,
+                                    fillStyle: datasets[0].backgroundColor[i],
+                                }))
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function create_barchart(charttype, chartid, barchartmodel) {
+        /* Templale barchartmodel
+            {
+            "title": "Thống kê theo nhóm máy và xưởng sản xuất",
+            "data": [
+            {
+              "title": "AH1",
+              "data": [
+                {
+                  "name": "GCN",
+                  "value": 2,
+                  "colorCode": "#E17084"
+                },
+                {
+                  "name": "DCTH",
+                  "value": 9,
+                  "colorCode": "#6aa1e4"
+                },
+                {
+                  "name": "LASER",
+                  "value": 7,
+                  "colorCode": "#f1cf6d"
+                },
+                {
+                  "name": "PLASMA",
+                  "value": 11,
+                  "colorCode": "#73c84f"
+                },
+                {
+                  "name": "ROBOT",
+                  "value": 4,
+                  "colorCode": "#df4d26"
+                }
+              ]
+            },
+            {
+              "title": "AH2",
+              "data": [
+                {
+                  "name": "GCN",
+                  "value": 14,
+                  "colorCode": "#E17084"
+                },
+                {
+                  "name": "DCTH",
+                  "value": 3,
+                  "colorCode": "#6aa1e4"
+                },
+                {
+                  "name": "LASER",
+                  "value": 4,
+                  "colorCode": "#f1cf6d"
+                },
+                {
+                  "name": "PLASMA",
+                  "value": 9,
+                  "colorCode": "#73c84f"
+                },
+                {
+                  "name": "ROBOT",
+                  "value": 12,
+                  "colorCode": "#df4d26"
+                }
+              ]
+            },
+            {
+              "title": "AH3",
+              "data": [
+                {
+                  "name": "GCN",
+                  "value": 6,
+                  "colorCode": "#E17084"
+                },
+                {
+                  "name": "DCTH",
+                  "value": 1,
+                  "colorCode": "#6aa1e4"
+                },
+                {
+                  "name": "LASER",
+                  "value": 0,
+                  "colorCode": "#f1cf6d"
+                },
+                {
+                  "name": "PLASMA",
+                  "value": 2,
+                  "colorCode": "#73c84f"
+                },
+                {
+                  "name": "ROBOT",
+                  "value": 0,
+                  "colorCode": "#df4d26"
+                }
+              ]
+            }
+            ]
+            }
+        */
+        // check null: https://stackoverflow.com/questions/5515310/is-there-a-standard-function-to-check-for-null-undefined-or-blank-variables-in
+        
+        var colors = ['#007bff', '#28a745', '#444444', '#c3e6cb', '#dc3545', '#6c757d'];
+        var _colors = ['#007bff', '#28a745', '#444444', '#c3e6cb', '#dc3545', '#6c757d'];
+        var _labels = ["S", "M", "T", "W", "T", "F", "S"];
+        var _datasets = [];
+
+
+        if (barchartmodel) 
+        {
+            _labels = [];
+            _colors = [];
+
+            barchartmodel.data.forEach((value) => 
+            {
+                var _childdata = [];
+                _childdata.backgroundColor = value.colorCode;
+                _childdata.data = [];
+                _childdata.label = value.title;
+                //_childdata.backgroundColor = [];
+
+                if (value.data) 
+                {
+                    var _lastColor = '';
+                    value.data.forEach((val) => 
+                    {
+                        // Nếu chưa có màu thì đẩy màu vào
+                        if (val.colorCode) 
+                        {
+                            if (_colors.indexOf(val.colorCode) < 0)
+                            {
+                                _colors.push(val.colorCode);
+                            }
+                        }
+                        // Nếu chưa có label thì đẩy label vào
+                        if (val.name)
+                        {
+                            if (_labels.indexOf(val.name) < 0)
+                            {
+                                _labels.push(val.name);
+                            }
+                        }
+
+                        _childdata.data.push(val.value);
+                    });
+
+                    //_childdata.backgroundColor = _colors;
+                }
+
+                if (_childdata) {
+                    _datasets.push(_childdata);
+                }
+            });
+        }
+
+        var chBar = document.getElementById(chartid);
+        var chartData = {
+            labels: _labels,
+            datasets: _datasets
+            // labels: ["S", "M", "T", "W", "T", "F", "S"],
+            // datasets: [{
+            //     data: [589, 445, 483, 503, 689, 692, 634],
+            //     backgroundColor: colors[0]
+            // },
+            // {
+            //     data: [209, 245, 383, 403, 589, 692, 580],
+            //     backgroundColor: colors[1]
+            // },
+            // {
+            //     data: [489, 135, 483, 290, 189, 603, 600],
+            //     backgroundColor: colors[2]
+            // },
+            // {
+            //     data: [639, 465, 493, 478, 589, 632, 674],
+            //     backgroundColor: colors[4]
+            // }]
+        };
+
+        if (chBar) {
+            new Chart(chBar, {
+                type: 'bar',
+                data: chartData,
+                options: {
+                    // scales: {
+                    //     xAxes: [{
+                    //         barPercentage: 0.4,
+                    //         categoryPercentage: 0.5
+                    //     }],
+                    //     yAxes: [{
+                    //         ticks: {
+                    //             beginAtZero: false
+                    //         }
+                    //     }]
+                    // },
+                    title: { display: true, text: 'Fruit in stock' },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'bottom',
+                            onClick: function (t) { console.log(t); },
+                            labels: {
+                                generateLabels: (chart) => {
+                                    const datasets = chart.data.datasets;
+                                    
+                                    // var _return = datasets[0].data.map((data, i) => ({
+                                    //     text: `${chart.data.labels[i]} ${data}`,
+                                    //     fillStyle: datasets[0].backgroundColor[i],
+                                    //     index: i
+                                    // }))
+
+                                    var _return = datasets.map((data, i) => ({
+                                        text: `${datasets[i].label} ${data}`,
+                                        fillStyle: datasets[i].backgroundColor,
+                                        index: i
+                                    }))
+
+                                    // debugger;
+                                    return _return;
+                                }
+                            },
+                        }
+                    }
+
+                }
+            });
+        }
+    }
+</script>

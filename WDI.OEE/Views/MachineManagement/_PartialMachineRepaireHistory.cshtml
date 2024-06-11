@@ -1,0 +1,65 @@
+﻿@model Common.Data_Machine
+
+@if (Model != null)
+{
+    <div class="col-xl-12 col-sm-12">
+        <div class="card">
+            <div class="card-block table-border-style">
+                <div class="table-responsive">
+                    <table id="gridListMachineRepaireHistory" class="table table-styling"
+                           data-pagination="true"
+                           data-page-list="[5, 10, 20, 50, 100, 200]"
+                           data-show-footer="false">
+                        <thead class="table-primary">
+                            <tr>
+                                <th data-field="dateTaskAssigned" data-align="center" data-sortable="true" data-formatter="formatDateTime">Ngày</th>
+                                <th data-field="errorCode" data-align="left" data-sortable="true">Mã lỗi</th>
+                                <th data-field="executor" data-align="left" data-sortable="true">Nhân sự thực hiện</th>
+                                <th data-field="dateFinishTask" data-align="center" data-sortable="true" data-formatter="formatDateTime">Ngày hoàn thành</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div>
+        <span class="col-form-label">Máy chưa có lịch sử sửa chữa</span>
+    </div>
+}
+
+<script>
+    $(document).ready(function () {
+        var machineID = @Html.Raw(Json.Serialize(Model.MachineID));
+        getMachineRepaireHistory(machineID);
+    });
+
+    function getMachineRepaireHistory(machineID) {
+        //debugger;
+        $.ajax({
+            url: '@Url.Action("GetListRepaireHistory", "MachineManagement")' + '?machineID=' + machineID,
+            method: "GET",
+            dataType: "json",
+            async: true,
+            beforeSend: function () { },
+            success: function (result) {
+                if (result) {
+                    $("#gridListMachineRepaireHistory").bootstrapTable({
+                        data: result,
+                        formatLoadingMessage: function () {
+                            return '<b>Loading ...</b>';
+                        }
+                    });
+
+                    $('#gridListMachineRepaireHistory').bootstrapTable('load', result);
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }
+</script>

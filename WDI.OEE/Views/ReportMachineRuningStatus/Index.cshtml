@@ -1,0 +1,65 @@
+﻿@model List<Common.ViewModels.MachineRuningStatusViewModel>
+
+<div class="col-lg-12 col-sm-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label class="control-label text-muted">Nhóm máy</label>
+                        @Html.DropDownList("MachineGroupID", (List<SelectListItem>)ViewData["ListMachineGroup"], htmlAttributes: new { @class = "form-control", @onchange = "filterData()" })
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label class="control-label text-muted" for="MachineLocationID">Vị trí</label>
+                        @Html.DropDownList("MachineLocationID", (List<SelectListItem>)ViewData["ListMachineLocation"], htmlAttributes: new { @class = "form-control", @onchange = "filterData()" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12 col-sm-12">
+    <div id="divlistMachineRunningStatus" class="row">
+    @foreach (var machine in Model)
+    {
+        @await Html.PartialAsync("_Machine.cshtml", machine);
+    }
+    </div>
+</div>
+<script>
+    function filterData() {
+        var _MachineGroup = $("#MachineGroupID").val();
+        var _MachineLocation = $("#MachineLocationID").val();
+        //debugger;
+        $.ajax({
+            url: "/ReportMachineRuningStatus/FilterData",
+            method: "POST",
+            dataType: "json",
+            data: { MachineGroupID: _MachineGroup, MachineLocationID: _MachineLocation },
+            async: true,
+            beforeSend: function () { },
+            success: function (result) {
+                //debugger;
+                if (result && result.success ===true) {
+                    $("#divlistMachineRunningStatus").html(result.html);
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }
+
+
+    $(document).ready(function () {
+        $('#MachineGroupID').select2({
+            placeholder: 'Nhóm máy'
+        });
+        $('#MachineLocationID').select2({
+            placeholder: 'Vị trí'
+        });
+    });
+</script>

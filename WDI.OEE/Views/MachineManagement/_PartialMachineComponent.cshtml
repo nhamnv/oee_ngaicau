@@ -1,0 +1,93 @@
+﻿@model List<Common.Data_MachineComponent>
+
+@* @if (Model != null && Model.Count>0)
+{
+    foreach (var cpnt in Model)
+    {
+        <div class="col-xl-12 col-md-12">
+            <div class="card user-card-full">
+                <div class="j-content">
+                    <div class="card-block j-pro">
+                        <!-- [Dòng thông tin 1] start -->
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="col-form-label" for="ComponentName_@cpnt.ID">Tên vật tư</label>
+                                <input type="text" class="form-control" name="ComponentName_@cpnt.ID" id="ComponentName_@cpnt.ID" placeholder="Tên vật tư" value="@cpnt.ComponentName">
+                            </div>
+                            <div class="col-sm-2">
+                                <label class="col-form-label" for="MachineAssetCode_@cpnt.ID">Mã máy</label>
+                                <input type="text" class="form-control" name="MachineAssetCode_@cpnt.ID" id="MachineAssetCode_@cpnt.ID" placeholder="Mã máy" value="@cpnt.MachineAssetCode">
+                            </div>
+                            <div class="col-sm-2">
+                                <label class="col-form-label" for="Price_@cpnt.ID">Giá tiền</label>
+                                <input type="text" class="form-control autonumber" name="MachineAsPrice_@cpnt.ID" id="Price_@cpnt.ID" placeholder="Giá tiền" data-a-sep="." data-a-dec="," data-a-sign="vnđ" value="@cpnt.Price">
+                            </div>
+                            <div class="col-sm-2">
+                                <label class="col-form-label" for="TimeReplacement_@cpnt.ID">Thời gian thay thế</label>
+                                <input type="text" class="form-control autonumber" name="TimeReplacement_@cpnt.ID" id="TimeReplacement_@cpnt.ID" placeholder="Thời gian thay thế" value="@cpnt.TimeReplacement">
+                            </div>
+                        </div>
+                        <!-- [Dòng thông tin 1] end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div>
+        <span class="col-form-label">Máy chưa có linh kiện</span>
+    </div>
+} *@
+
+
+@if (Model != null)
+{
+    <div class="col-xl-12 col-sm-12">
+        <div class="card">
+            <div class="card-block table-border-style">
+                <div class="table-responsive">
+                    <table id="gridListMachineComponent" class="table table-styling"
+                           data-pagination="true"
+                           data-page-list="[5, 10, 20, 50, 100, 200]"
+                           data-show-footer="false">
+                        <thead class="table-primary">
+                            <tr>
+                                <th data-field="componentName" data-align="left" data-sortable="true">Tên vật tư</th>
+                                <th data-field="baseUnitName" data-align="left" data-sortable="true">Đơn vị tính</th>
+                                <th data-field="timeReplacementName" data-align="left" data-sortable="true">Thời gian thay thế</th>
+                                <th data-field="note" data-align="center" data-sortable="true">Ghi chú</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div>
+        <span class="col-form-label">Máy chưa có dữ liệu vật tư</span>
+    </div>
+}
+
+
+<script>
+    $(document).ready(function () {
+        var result = @Html.Raw(Json.Serialize(Model));
+        
+        if (result) {
+            $("#gridListMachineComponent").bootstrapTable({
+                data: result,
+                formatLoadingMessage: function () {
+                    return '<b>Loading ...</b>';
+                }
+            });
+
+            $('#gridListMachineComponent').bootstrapTable('load', result);
+        }
+
+    });
+</script>

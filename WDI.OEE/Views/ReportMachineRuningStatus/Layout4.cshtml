@@ -1,0 +1,204 @@
+﻿
+<div class="card">
+    <div class="row justify-content-center">
+        <div class="col-lg-12 col-sm-1">
+            <div id="canvasContainer" >
+                <canvas id="myCanvas"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/jquery.maphilight.min.js"></script>
+
+<script type="text/javascript">
+
+    function drawRect(canvasID, colorCode, top, leff, bottom, right) {
+        var canvas = document.getElementById(canvasID),
+            ctx = canvas.getContext('2d');
+        ctx.fillStyle = colorCode;
+        ctx.fillRect(top, leff, bottom, right);
+    }
+
+    function drawBg() {
+        var ctx = document.getElementById('myCanvas').getContext('2d');
+        var img = new Image();
+        img.onload = function () {
+            ctx.canvas.width = img.width;
+            ctx.canvas.height = img.height;
+            ctx.drawImage(img, 0, 0, img.width, img.height);
+        };
+        img.src = '/images/pages/layoutMay_lg.jpg';
+    }
+
+    function rec1(colorCode) {
+        // thanh 1
+        drawRect('myCanvas', colorCode, 570, 428, 280, 20);
+    }
+    function rec2(colorCode) {
+        // thanh 2
+        drawRect('myCanvas', colorCode, 570,629,280,20);
+    }
+    function rec3(colorCode) {
+        // thanh 3
+        drawRect('myCanvas', colorCode, 1105,812,280,20);
+    }
+    function rec4(colorCode) {
+        // thanh 4
+        drawRect('myCanvas', colorCode, 1105,932,280,20);
+    }
+    function rec5(colorCode) {
+        // thanh 5
+        drawRect('myCanvas', colorCode, 1105, 1112, 280, 20);
+    }
+    function rec6(colorCode) {
+        // thanh 6
+        drawRect('myCanvas', colorCode, 1780, 632, 230, 20);
+    }
+    function rec7(colorCode) {
+        // thanh 7
+        drawRect('myCanvas', colorCode, 1780, 819, 230, 20);
+    }
+    function rec8(colorCode) {
+        // thanh 8
+        drawRect('myCanvas', colorCode, 1780, 1022, 230, 20);
+    }
+    function rec9(colorCode) {
+        // thanh 9 
+        drawRect('myCanvas', colorCode, 1780, 1140, 230, 20);
+    }
+    function rec10(colorCode) {
+        // thanh 10
+        drawRect('myCanvas', colorCode, 2270, 1080, 100, 20);
+    }
+
+    $(document).ready(function () {
+      
+        // thanh 1
+        // drawRect('myCanvas', '#FB0101', 570, 428, 280, 20);
+
+        // thanh 2
+        // drawRect('myCanvas', '#FB0101', 570,629,280,20);
+
+        // thanh 3
+        // drawRect('myCanvas', '#FB0101', 1105,812,280,20);
+        // thanh 4
+        // drawRect('myCanvas', '#FB0101', 1105,932,280,20);
+        //--------------------------------
+        // thanh 5
+        // drawRect('myCanvas', '#FB0101', 1105,1112,280,20);
+        
+        // thanh 6
+        // drawRect('myCanvas', '#FB0101', 1810,632,230,20);
+
+        // thanh 7
+        // drawRect('myCanvas', '#FB0101', 1810,819,230,20);
+
+        // thanh 8
+        // drawRect('myCanvas', '#FB0101', 1810,1022,230,20);
+        /*
+        { StatusID = 1, StatusName = "Ready", ColorCode = "#0070c0", StatusDetail = "Sẵn sàng cho sản xuất" });
+        { StatusID = 2, StatusName = "Run", ColorCode = "#00b050", StatusDetail = "Đang sản xuất" });
+        { StatusID = 3, StatusName = "Not ready", ColorCode = "#ff0000", StatusDetail = "Đang bảo dưỡng, sửa chữa" });
+        { StatusID = 4, StatusName = "Alarm", ColorCode = "#ffc000", StatusDetail = "Đang cảnh báo lỗi" });
+        { StatusID = 5, StatusName = "Off", ColorCode = "#a6a6a6", StatusDetail = "Đang không vận hành" });
+        */
+        drawBg();
+        setTimeout(function () {
+            //drawAll();
+            loadMachineStatus();
+            $('#myCanvas').css('width', window.outerWidth);
+        }, 200);
+    });
+
+    function drawAll(){
+        rec1('#0070c0');
+        rec2('#00b050');
+        rec3('#ff0000');
+        rec4('#FB0101');
+        rec5('#ffc000');
+        rec6('#FB0101');
+        rec7('#a6a6a6');
+        rec8('#FB0101');
+    }
+
+    function loadMachineStatus(){
+        debugger;
+        $.ajax({
+            url: "/MachineManagement/GetListMachineStatus",
+            method: "GET",
+            dataType: "json",
+            //data: { TimeRangeID: _TimeRange, MachineGroupID: _MachineGroup, MachineLocationID: _MachineLocation },
+            async: true,
+            beforeSend: function () { },
+            success: function (result) {
+                if (result)
+                {
+                    var item = {};
+                    // TAPM1010-3
+                    // M1
+                    item = result.filter(t => t.model === 'TAPM1010-3');
+                    if (item[0]) {
+                        rec1(item[0].colorCode);
+                    }
+                    // M2
+                    item = result.filter(t => t.model === 'TAPM1010-3');
+                    if (item[1]) {
+                        rec2(item[1].colorCode);
+                    }
+                    // TAPM2020A
+                    // M3
+                    item = result.filter(t => t.model === 'TAPM2020A');
+                    if (item[0]) {
+                        rec3(item[0].colorCode);
+                    }
+                    // M4
+                    item = result.filter(t => t.model === 'TAPM2020A');
+                    if (item[1]) {
+                        rec4(item[1].colorCode);
+                    }
+                    // TBL3635
+                    // M5
+                    item = result.filter(t => t.model === 'TBL3635');
+                    if (item[0]) {
+                        rec5(item[0].colorCode);
+                    }
+                    // ACME6035
+                    // M6
+                    item = result.filter(t => t.model === 'ACME6035');
+                    if (item[0]) {
+                        rec6(item[0].colorCode);
+                    }
+                    // BLC3000
+                    // M7
+                    item = result.filter(t => t.model === 'BLC3000');
+                    if (item[0]) {
+                        rec7(item[0].colorCode);
+                    }
+                    //TPPR103
+                    // M8
+                    item = result.filter(t => t.model === 'TPPR103');
+                    if (item[0]) {
+                        rec8(item[0].colorCode);
+                    }
+                    // TPD3016
+                    // M9
+                    item = result.filter(t => t.model === 'TPD3016');
+                    if (item[0]) {
+                        rec9(item[0].colorCode);
+                    }
+                    // HLF2060
+                    // M10
+                    item = result.filter(t => t.model === 'HLF2060');
+                    if (item[0]) {
+                        rec10(item[0].colorCode);
+                    }
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }
+</script>
+
+

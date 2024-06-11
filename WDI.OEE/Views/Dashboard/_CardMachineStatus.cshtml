@@ -1,0 +1,39 @@
+﻿@model Common.ViewModels.DashboardStatusSummary
+
+<!-- [] start -->
+<div class="col-sm-4" name="box-machinestatus">
+    <div class="card support-bar overflow-hidden">
+        <div class="card-body pb-0 text-center">
+            <input type="hidden" name="hidden_MachineGroupID" value="@Model.StatusID" />
+            <div class="wcom-card-title">Tổng số máy đang @Model.StatusName </div>
+            <span class="text-c-blue" style="font-size:60px;color:@Model.ColorCode">@Model.MachineCount</span>
+        </div>
+        <div class="card-footer text-white" style="background-color:@Model.ColorCode">
+            <div class="row text-center">
+            @foreach (var gr in Model.MachineGroups)
+            {
+                    if (@gr.MachineCount > 0) // Nếu có machine thì để link xem detail
+                    {
+                        <div class="col">
+                            <input type="hidden" name="hidden_MachineGroupID" value="@gr.GroupID" />
+                            <a href="@Url.Action("MachineGroupDetail","Dashboard", new {MachineStatusID=Model.StatusID, MachineGroupID=@gr.GroupID})" title="Chi tiết" style="color: inherit!important;">
+                                <h4 class="m-0 text-white">@gr.MachineCount</h4>
+                                <span>@gr.GroupName</span>
+                            </a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col">
+                            <input type="hidden" name="hidden_MachineGroupID" value="@gr.GroupID" />
+                            <h4 class="m-0 text-white">@gr.MachineCount</h4>
+                            <span>@gr.GroupName</span>
+                        </div>
+                    }
+            }
+            </div>
+        </div>
+        <div class="resize-triggers"><div class="expand-trigger"><div style="width: 321px; height: 306px;"></div></div><div class="contract-trigger"></div></div>
+    </div>
+</div>
+<!-- [] end -->

@@ -1,0 +1,136 @@
+﻿@model Common.ViewModels.MachineByStatusGroupDetailViewModel
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!-- [] start -->
+<div class="col-sm-3 text-center">
+    <div class="card support-bar overflow-hidden">
+        <div class="card-footer">
+            <div class="row text-center">
+                <div class="col">
+                    <input type="hidden" name="hidden_MachineGroupID" value="@Model.MachineGroupID" />
+                    <span>Nhóm máy</span>
+                    <h5 class="m-0">@Model.MachineGroupName</h5>
+                </div>
+                <div class="col">
+                    <input type="hidden" name="hidden_MachineStatusID" value="@Model.MachineStatusID" />
+                    <span>Trạng thái</span>
+                    <h5 class="m-0">@Model.MachineStatusName</h5>
+                </div>
+            </div>
+        </div>
+        <div class="resize-triggers"><div class="expand-trigger"><div style="width: 321px; height: 306px;"></div></div><div class="contract-trigger"></div></div>
+    </div>
+</div>
+<!-- [] end -->
+
+
+
+ 
+<!-- [] start -->
+<div class="col-sm-6 text-center" name="box-machinestatus">
+    <div class="card support-bar overflow-hidden">
+        <div class="card-footer text-white" style="background-color:@Model.ColorCode">
+            <div class="row text-center">
+                @foreach (var gr in Model?.MachineGroups?.MachineGroups?? new List<Common.ViewModels.MachineGroup>())
+                {
+                    if (@gr.MachineCount > 0) // Nếu có machine thì để link xem detail
+                    {
+                        <div class="col">
+                            <input type="hidden" name="hidden_MachineGroupID" value="@gr.GroupID" />
+                            <a href="#" title="Chi tiết" style="color: inherit!important;" onclick="load_gridListMachineByGroupAndStatus(@Model?.MachineStatusID, @gr.GroupID)">
+                            @* <a href="@Url.Action("MachineGroupDetail","Dashboard", new {MachineStatusID=Model.MachineStatusID, MachineGroupID=@gr.GroupID})" title="Chi tiết" style="color: inherit!important;" onclick="load_gridListMachineByGroupAndStatus(@Model.MachineStatusID, @gr.GroupID)"> *@
+                                <h5 class="m-0 text-white">@gr.MachineCount</h5>
+                                <span>@gr.GroupName</span>
+                            </a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col">
+                            <input type="hidden" name="hidden_MachineGroupID" value="@gr.GroupID" />
+                            <h5 class="m-0 text-white">@gr.MachineCount</h5>
+                            <span>@gr.GroupName</span>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+        <div class="resize-triggers"><div class="expand-trigger"><div style="width: 321px; height: 306px;"></div></div><div class="contract-trigger"></div></div>
+    </div>
+</div>
+<!-- [] end -->
+
+
+<!-- [table] start -->
+<div class="col-sm-12">
+        <div class="card">
+            <div class="card-header wcom-card-title">Danh sách máy theo trạng thái và nhóm</div>
+            <div class="card-body">
+            <div class="table-hover table-border-style">
+                <table id="gridListMachineByGroupAndStatus" class="table table-styling"
+                           data-pagination="true"
+                           data-page-list="[5, 10, 20, 50, 100, 200]"
+                           data-show-footer="false">
+                        <thead class="table-primary">
+                            <tr>
+                                <th data-field="machineLocationName" data-align="left" data-sortable="true">Nhóm máy</th>
+                                <th data-field="machineName" data-align="left" data-sortable="true">Tên máy</th>
+                                <th data-field="Model" data-align="left" data-sortable="true">Model</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+</div>
+<!-- [table] end -->
+
+
+<script>
+    $(document).ready(function () { 
+    
+        var result = JSON.parse('@Html.Raw(Json.Serialize(Model?.ListMachine))');
+
+        $("#gridListMachineByGroupAndStatus").bootstrapTable({
+            data: result,
+            formatLoadingMessage: function () {
+                return '<b>Loading ...</b>';
+            }
+        });
+
+        $('#gridListMachineByGroupAndStatus').bootstrapTable('load', result);
+    });
+
+    function load_gridListMachineByGroupAndStatus(MachineStatusID, MachineGroupID) {   
+        //debugger;
+        $.ajax({
+            // url: "/Dashboard/MachineGroupDetail?MachineStatusID="+MachineStatusID+"&MachineGroupID="+MachineGroupID,
+            url: "/Dashboard/ChangeMachineGroupDetail",
+            method: "POST",
+            dataType: "json",
+            data: { MachineStatusID: MachineStatusID, MachineGroupID: MachineGroupID },
+            async: true,
+            beforeSend: function () { },
+            success: function (result) {
+                //debugger;
+                $("#gridListMachineByGroupAndStatus").bootstrapTable({
+                    data: result.listMachine,
+                    formatLoadingMessage: function () {
+                        return '<b>Loading ...</b>';
+                    }
+                });
+
+                $('#gridListMachineByGroupAndStatus').bootstrapTable('load', result.listMachine);
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }
+
+</script>

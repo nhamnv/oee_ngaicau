@@ -1,0 +1,192 @@
+﻿@model Common.ViewModels.MachineStatiticsViewModel
+
+
+<!-- [RateOfTotalMachineByWorkshop] start -->
+<div class="col-lg-6 col-sm-1">
+    <div class="card box-machine-info-txtblack">
+        <div class="card-body text-center">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 databox-title">
+                    @Model.PieChartRateOfTotalMachineByStatus.Title
+                </div>
+            </div>
+            <div class="line-grey"></div>
+            @* <div>Model.PieChartRateOfTotalMachineByStatus.Title</div> *@
+            <div style="margin:20px;">
+                <canvas id="piechart_PieChartRateOfTotalMachineByStatus" width="426" height="426" style="display: block; height: 341px; width: 341px;"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [RateOfTotalMachineByWorkshop] end -->
+
+
+<!-- [TableListMachineByGroupAndWorkshop] start -->
+<div class="col-lg-6 col-sm-1">
+    <div class="card box-machine-info-txtblack">
+        <div class="row justify-content-center">
+            <img src="~/images/logoes/ngaicau.jpg" style="width: 300px;margin-top: 70px;margin-bottom: 70px;" />
+        </div>
+        <div class="card-body text-center">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 databox-title">
+                    @Model.BarChartListMachineStatusByGroup.Title
+                </div>
+            </div>
+            <div class="line-grey"></div>
+            @* <div>Model.BarChartListMachineStatusByGroup.Title</div> *@
+            <div style="margin:20px;">
+                <canvas id="chBarChartListMachineStatusByGroup" height="100"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [TableListMachineByGroupAndWorkshop] end -->
+
+
+
+<script>
+    $(document).ready(function () {
+        var _modelpiechartByWorkshop = @Html.Raw(Json.Serialize(Model.PieChartRateOfTotalMachineByStatus));
+        create_piechart('pie', 'piechart_PieChartRateOfTotalMachineByStatus', _modelpiechartByWorkshop);
+
+        // Barchart
+        var modelBarChart = @Html.Raw(Json.Serialize(Model.BarChartListMachineStatusByGroup));
+        create_barchart('bar', 'chBarChartListMachineStatusByGroup', modelBarChart);
+    })
+
+    function create_piechart(charttype, chartid, piechartmodel) {
+        var _chartlabels = ["Spring", "Summer", "Fall", "Winter"];
+        var _chartdatas = [1200, 1700, 800, 200];
+        var _chartbgcolor = ["rgba(255, 0, 0, 0.5)", "rgba(100, 255, 0, 0.5)", "rgba(200, 50, 255, 0.5)", "rgba(0, 100, 255, 0.5)"];
+        var _charttype = charttype;
+        if (_charttype === undefined || _charttype === null)
+            _charttype = 'pie';
+
+        // Nếu truyền model vào thì lấy giá trị của model
+        if (piechartmodel !== undefined
+            && piechartmodel !== null
+            && piechartmodel.data !== undefined
+            && piechartmodel.data !== null) {
+            _chartlabels = [];
+            _chartdatas = [];
+            _chartbgcolor = [];
+            piechartmodel.data.forEach((value) => {
+                _chartlabels.push(value.name);
+                _chartdatas.push(value.value);
+                _chartbgcolor.push(value.colorCode);
+            });
+        }
+        // ----------------------
+        var ctx = document.getElementById(chartid).getContext("2d");
+        var myLineChart = new Chart(ctx, {
+            type: _charttype,
+            data: {
+                labels: _chartlabels,
+                datasets: [{
+                    data: _chartdatas,
+                    backgroundColor: _chartbgcolor
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: {
+                            generateLabels: (chart) => {
+                                // Hiển thị con số ở label legend
+                                const datasets = chart.data.datasets;
+                                return datasets[0].data.map((data, i) => ({
+                                    text: `${chart.data.labels[i]}: ${data}%`,
+                                    fillStyle: datasets[0].backgroundColor[i],
+                                }))
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function create_barchart(charttype, chartid, barchartmodel) {
+        var colors = ['#007bff', '#28a745', '#444444', '#c3e6cb', '#dc3545', '#6c757d'];
+        var _colors = ['#007bff', '#28a745', '#444444', '#c3e6cb', '#dc3545', '#6c757d'];
+        var _labels = ["S", "M", "T", "W", "T", "F", "S"];
+        var _datasets = [];
+
+
+        if (barchartmodel) {
+            _labels = [];
+            _colors = [];
+
+            barchartmodel.data.forEach((value) => {
+                var _childdata = [];
+                _childdata.backgroundColor = value.colorCode;
+                _childdata.data = [];
+                _childdata.label = value.title;
+                //_childdata.backgroundColor = [];
+
+                if (value.data) {
+                    var _lastColor = '';
+                    value.data.forEach((val) => {
+                        // Nếu chưa có màu thì đẩy màu vào
+                        if (val.colorCode) {
+                            if (_colors.indexOf(val.colorCode) < 0) {
+                                _colors.push(val.colorCode);
+                            }
+                        }
+                        // Nếu chưa có label thì đẩy label vào
+                        if (val.name) {
+                            if (_labels.indexOf(val.name) < 0) {
+                                _labels.push(val.name);
+                            }
+                        }
+
+                        _childdata.data.push(val.value);
+                    });
+                }
+
+                if (_childdata) {
+                    _datasets.push(_childdata);
+                }
+            });
+        }
+
+        var chBar = document.getElementById(chartid);
+        var chartData = {
+            labels: _labels,
+            datasets: _datasets
+        };
+
+        if (chBar) {
+            new Chart(chBar, {
+                type: 'bar',
+                data: chartData,
+                options: {
+                    title: { display: true, text: 'Fruit in stock' },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'bottom',
+                            onClick: function (t) { console.log(t); },
+                            labels: {
+                                generateLabels: (chart) => {
+                                    const datasets = chart.data.datasets;
+                                    var _return = datasets.map((data, i) => ({
+                                        text: `${datasets[i].label} ${data}`,
+                                        fillStyle: datasets[i].backgroundColor,
+                                        index: i
+                                    }))
+
+                                    return _return;
+                                }
+                            },
+                        }
+                    }
+
+                }
+            });
+        }
+    }
+</script>

@@ -1,0 +1,224 @@
+﻿html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    font-size: 13px !important;
+}
+
+
+/***********************************************/
+.oee-header {
+    background-color: cornflowerblue;
+}
+
+.weldcom-logo {
+    width: 45px;
+    height: 45px;
+}
+
+.pcoded-navbar {
+    /*width:auto!important;*/
+}
+
+.card-machineinfo {
+    height: 200px;
+}
+
+.wcom-card-title {
+    font-size: 16px;
+    text-align: center;
+    height: 60px;
+    /*    font-weight: bold;*/
+}
+
+.card-machineinfo .machineinfor-data {
+}
+
+.form-group .control-caption {
+    top: -20px;
+    font-size: 0.75rem;
+    color: #4680ff;
+}
+
+.block-status {
+    padding: 0px 8px 0px 8px;
+    /*width: 40px;*/
+    height: 32px;
+    line-height: 32px;
+    display: inline-block !important;
+    text-align: center;
+    border: 1px solid #e2e5e8;
+    border-radius: 3px;
+}
+
+.machine-avatar-container {
+    /*width: 600px;*/
+    max-height: 180px;
+    max-width: 600px;
+    display: flex;
+}
+/***** Customize theme *************************************/
+/**** thay đổi độ rộng thanh menu trái từ 230 sang 300 */
+/*.pcoded-navbar.menu-light {
+    width: 300px !important;*/ /* độ rộng menu trái = 300px (cũ là 230)*/
+/*}
+.pcoded-navbar.navbar-collapsed {
+    width: 70px !important; Fix độ rộng cố định menu khi thu vào
+}
+.pcoded-header .m-header {
+    width: 300px !important;*/ /* thanh icon searh trên đầu menu*/
+/*}
+.pcoded-header .m-header {
+    width: 300px !important;
+}
+.pcoded-navbar {
+    width: 300px !important;
+}
+    .pcoded-navbar .header-logo {
+        width: 300px !important;
+    }*/
+
+
+
+
+
+
+.tab6 .nav-item {
+    width: calc(100% / 7) !important;
+}
+
+.tab6 .slide {
+    width: calc(100% / 7) !important;
+}
+
+
+.tabname-icon {
+    padding-right: 10px;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: bold;
+}
+
+
+
+.select2-container--default .select2-selection--single {
+    border: none !important;
+    border: 1px solid #aaa;
+}
+
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        padding: 7px 30px 7px 20px;
+        border-radius: 2px !important;
+        font-size: 14px;
+    }
+
+/**** box ***************************/
+.box-machine-info-txtwhite {
+    color: #FFFFFF;
+    font-size: 14px;
+    height: 240px;
+    max-height: 280px;
+}
+
+.box-machine-info-txtblack {
+    color: #000000;
+    font-size: 14px;
+}
+
+.bg-c-whiteblue {
+    background: linear-gradient(to right, #01a9ac, #01dbdf);
+    /* style ="background-color:#74cbd4;" */
+}
+
+.bg-c-yellow {
+    background: linear-gradient(to right, #fe9365, #feb798);
+    /* style ="background-color:#dfa53a;" */
+}
+
+.bg-c-green {
+    background: linear-gradient(to right, #0ac282, #0df3a3);
+    /* style ="background-color:#5ba870;" */
+}
+
+.line-white {
+    width: 100%;
+    border-top: 1px solid #ffffff;
+    margin: 10px 0px 10px 0px;
+}
+
+.line-grey {
+    width: 100%;
+    border-top: 1px solid #f3f5f9;
+    margin: 10px 0px 10px 0px;
+}
+
+.databox-title {
+    text-align: left;
+    color: #1A7FFB;
+    font-weight: 600;
+}
+
+.table-hover .table-primary:hover {
+    background-color: #22A7A9;
+}
+
+.form-control:focus {
+    border: 1px solid #01A9AC;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    /*box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;*/
+    box-shadow: none;
+}
+
+/***** j-pro : hover màu đỏ weldcom ******/
+.j-pro input[type="text"]:hover, .j-pro input[type="password"]:hover, .j-pro input[type="email"]:hover, .j-pro input[type="search"]:hover, .j-pro input[type="url"]:hover, .j-pro textarea:hover, .j-pro select:hover, .j-pro input[type="text"]:focus, .j-pro input[type="password"]:focus, .j-pro input[type="email"]:focus, .j-pro input[type="search"]:focus, .j-pro input[type="url"]:focus, .j-pro textarea:focus, .j-pro select:focus, .j-pro .j-file-button:hover + input, .j-forms input[type="text"]:hover, .j-forms input[type="password"]:hover, .j-forms input[type="email"]:hover, .j-forms input[type="search"]:hover, .j-forms input[type="url"]:hover, .j-forms textarea:hover, .j-forms select:hover, .j-forms input[type="text"]:focus, .j-forms input[type="password"]:focus, .j-forms input[type="email"]:focus, .j-forms input[type="search"]:focus, .j-forms input[type="url"]:focus, .j-forms textarea:focus, .j-forms select:focus {
+    border: 1px solid #01A9AC;
+}
+/***** j-pro : focus => không boder ******/
+/*.j-pro input[type="text"]:focus, .j-pro input[type="password"]:focus, .j-pro input[type="email"]:focus, .j-pro input[type="search"]:focus, .j-pro input[type="url"]:focus, .j-pro textarea:focus, .j-pro select:focus, .j-pro input[type="text"]:focus, .j-pro input[type="password"]:focus, .j-pro input[type="email"]:focus, .j-pro input[type="search"]:focus, .j-pro input[type="url"]:focus, .j-pro textarea:focus, .j-pro select:focus, .j-pro .j-file-button:focus + input, .j-forms input[type="text"]:focus, .j-forms input[type="password"]:focus, .j-forms input[type="email"]:focus, .j-forms input[type="search"]:focus, .j-forms input[type="url"]:focus, .j-forms textarea:focus, .j-forms select:focus, .j-forms input[type="text"]:focus, .j-forms input[type="password"]:focus, .j-forms input[type="email"]:focus, .j-forms input[type="search"]:focus, .j-forms input[type="url"]:focus, .j-forms textarea:focus, .j-forms select:focus {
+    border: 0px solid #01A9AC;
+}*/
+/*.j-pro .form-control {
+    color: #495057;
+    height: 40px;
+}*/
+.j-pro label {
+    margin-top: 6px;
+}
+
+.j-pro input {
+    font-size: 14px;
+}
+
+    .j-pro input[type="text"], .j-pro input[type="password"], .j-pro input[type="email"], .j-pro input[type="search"], .j-pro input[type="url"], .j-pro textarea, .j-pro select, .j-forms input[type="text"], .j-forms input[type="password"], .j-forms input[type="email"], .j-forms input[type="search"], .j-forms input[type="url"], .j-forms textarea, .j-forms select {
+        font-size: 14px;
+        height: 38px;
+    }
+
+.bnt-100{
+    width:100px;
+}
+/** 1 block trắng trong bảng phân cấp **/
+.space-span {
+    margin: 0px 10px 0px 10px;
+}
+
+.fixed-table-pagination{
+    margin:10px 20px 0px 20px;
+}
+

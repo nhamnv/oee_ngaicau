@@ -1,0 +1,158 @@
+﻿@using WDI.OEE.Models;
+@model Common.ViewModels.MachineRuningStatusViewModel
+@{
+    string guid = Guid.NewGuid().ToString().ToLower();
+    string chartHtmlID = "chartPercent_MID_" + Model.MachineID + "_" + guid;
+}
+<div class="col-sm-6">
+    <!-- [card1] start-->
+    <div class="card">
+        <!-- [card-header] start -->
+        <div class="card-header">
+            <input type="hidden" name="hidden_MachineID" value="@Model.MachineID" />
+            <input type="hidden" name="hidden_MachineLocationID" value="@Model.MachineLocationID" />
+            <input type="hidden" name="hidden_LastStatusID" value="@Model._LastStatus.StatusID" />
+            <div class="row">
+                <div class="col-lg-12 col-sm-12" data-original-title="Tên máy" style="font-weight:bold;">
+                    @Model.MachineName
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                    <div class="text-muted m-b-0" data-original-title="Model máy">
+                        @Model.Model
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="line-height:45px;">
+                <div class="col-lg-5 col-sm-12">
+                    <div data-original-title="Vị trí">
+                        @Model.MachineLocationName
+                    </div>
+                </div>
+                <div class="col-lg-7 col-sm-12 text-right">
+                    @foreach (var status in Model.ListStatus)
+                    {
+                        string strBgColor = "";
+                        if (status.StatusID == Model._LastStatus.StatusID)
+                        {
+                            strBgColor = "background-color:" + status.ColorCode + "!important;";
+                        }
+                        <div class="block-status" style="@strBgColor">
+                            @status.StatusName
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <!-- [card-header] end -->
+
+
+        <!-- [card-body] start -->
+        <div class="card-boby" style="text-align: -webkit-center;">
+            <div>
+                <br/>
+                <div class="machine-avatar-container">
+                    <img style="width:100%;object-fit: contain;" src="~/images/machines/@Model.ImageUrl" />
+                </div>
+            </div>
+
+            <!-- [Thanh time-line] start -->
+            <div class="col-sm-12">
+                <div id="@chartHtmlID"></div>
+            </div>
+            <!-- [Thanh time-line] end -->
+
+            <div class="cold-sm-12">
+                @foreach (var status in Model.ListStatusPercent)
+                {
+                    <span class="block-status" style="background-color:@status.ColorCode;width:20px!important;height:20px!important;display: inline-block;margin-bottom: -5px;"></span>
+                    <span style="width:65px!important;">
+                        @status.StatusName<span> @status.DataPercent % &nbsp;</span>
+                    </span>
+                }
+            </div>
+
+            <br/>
+        </div>
+        <!-- [card-body] end -->
+
+
+        <!-- [card-footer] start -->
+        <div class="card-footer">
+            <div class="row text-left">
+                <span style="color:@Model._CurrentOnOffStatus.ColorCode">
+                    <i class="bi bi-square-fill" style="background-color:@Model._CurrentOnOffStatus.ColorCode
+                            ;width:20px
+                            ;height:20px
+                            ;display:block
+                            ;float: left
+                            ;margin-right: 10px
+                            ;margin-left: 20px
+                            ;margin-bottom: 10px;"></i>
+                    @Model._CurrentOnOffStatus.StatusName
+                </span>
+            </div>
+        </div>
+        <!-- [card-footer] end -->
+
+    </div>
+    <!-- [card1] end-->
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        var data = JSON.parse('@Html.Raw(Json.Serialize(Model.SeriesTimeLine))');
+        var series = [{ data: data }];
+
+        var options = {
+            series: series,
+            chart: {
+                height: 150,
+                type: 'rangeBar'
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: true
+                }
+            },
+            xaxis: {
+                type: 'datetime'
+            },
+            tooltip: {
+                custom: function (opts) {
+                    const fromYear = getDateTime_LocalDateTimeString(new Date(opts.y1));
+                    const toYear = getDateTime_LocalDateTimeString(new Date(opts.y2));
+
+
+                    const w = opts.ctx.w
+                    let ylabel = w.globals.labels[opts.dataPointIndex]
+                    let seriesName = w.config.series[opts.seriesIndex].name
+                        ? w.config.series[opts.seriesIndex].name
+                        : ''
+                    const color = w.globals.colors[opts.seriesIndex]
+                    return (
+                        '<div class="apexcharts-tooltip-rangebar">' +
+                        '<div> <span class="series-name" style="color: ' +
+                        color +
+                        '"> Thời gian ' +
+                        (seriesName ? seriesName : '') +
+                        '</span></div>' +
+                        '<div> <span class="category">' +
+                        ' </span> <span class="value start-value">' +
+                        fromYear +
+                        '</span> <span class="separator">-</span> <span class="value end-value">' +
+                        toYear +
+                        '</span></div>' +
+                        '</div>'
+                    )
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#@chartHtmlID"), options);
+        chart.render();
+
+    });
+</script>

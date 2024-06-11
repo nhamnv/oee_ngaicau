@@ -1,0 +1,122 @@
+﻿@model List<Repository.Entity.Data_Error>
+
+<div class="col-lg-12 col-xl-12 col-sm-12">
+    <div class="card card-main">
+        <div class="card-block">
+            <!-- [Row filter]  start -->
+            <div class="row ml-1">
+                <div class="ml-auto mr-3">
+                    <div class="form-group">
+                        <label for="txtKeyword" class="control-label text-muted">Từ khóa</label>
+                        <div class="input-group input-group-button input-group-primary">
+                            <input id="txtKeyword" type="text" class="form-control" placeholder="Từ khóa...">
+                            <button id="btnSearch" class="btn btn-primary input-group-addon" onclick="onSearch()">Tìm kiếm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [Row filter]  end -->
+            <br />
+            <!-- [Row datagrid]  start -->
+            <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                    <table id="gridListError" class="table table-styling"
+                           data-pagination="true"
+                           data-page-list="[5, 10, 20, 50, 100, 200]"
+                           data-page-size="10"
+                           data-show-footer="false">
+                        <thead class="table-primary">
+                            <tr>
+                                <th data-field="iD" data-align="left" data-sortable="true" data-visible="false">ID Lỗi</th>
+                                <th data-field="errorName" data-align="left" data-sortable="true" data-formatter="formatColumnByTreeLevel">Tên lỗi</th>
+                                <th data-field="errorCode" data-align="left" data-sortable="true">Mã lỗi</th>
+                                <th data-field="machineGroupID" data-align="left" data-sortable="true" data-visible="false">Nhóm máy</th>
+                                <th data-field="machineGroupName" data-align="left" data-sortable="true">Nhóm máy</th>
+                                <th data-field="parentID" data-align="left" data-sortable="true" data-visible="false">ParentID</th>
+                                <th data-field="note" data-align="left" data-sortable="true">Ghi chú</th>
+                                <th data-field="errorNameOrginal" data-align="left" data-sortable="true" data-formatter="formatColumnByTreeLevel">Tên lỗi (theo nhà sản xuất)</th>
+                                <th data-field="errorCodeOrginal" data-align="left" data-sortable="true">Mã lỗi (theo nhà sản xuất)</th>
+                                <th data-field="userGuide" data-align="left" data-sortable="true">Hướng dẫn xử lý</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <!-- [Row datagrid]  end -->
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        loadGridListError();
+        // Enter keyword
+        $("#txtKeyword").on("keydown", function search(e) {
+            if (e.keyCode == 13) {
+                onSearch();
+            }
+        });
+    });
+
+    function loadGridListError() {
+        $.ajax({
+            url: "/CategoryManagement/_GetListError",
+            method: "GET",
+            dataType: "json",
+            //data: { TimeRangeID: _TimeRange, MachineGroupID: _MachineGroup, MachineLocationID: _MachineLocation },
+            async: true,
+            beforeSend: function () { },
+            success: function (result) {
+                debugger;
+                // Search by keyword ---------------------------------
+                if (result && result.length > 0) {
+                    // cần làm thêm: search con ra cha + các anh chị em + con cháu
+                    var _keyword = $('#txtKeyword').val().toLocaleLowerCase().trim();
+                    if (_keyword) {
+                        var resultTemp = [];
+
+                        for (var i = 0; i <= result.length - 1; i++) {
+                            if (result[i].searchPattern.toString().toLocaleLowerCase().indexOf(_keyword) >= 0) {
+                                resultTemp.push(result[i]);
+                            }
+                        }
+
+                        result = resultTemp;
+                    }
+                }
+                // -------------------------------------------------
+
+
+                $("#gridListError").bootstrapTable({
+                    data: result,
+                    formatLoadingMessage: function () {
+                        return '<b>Loading ...</b>';
+                    },
+                    locale:'vi-VN'
+                });
+
+                $('#gridListError').bootstrapTable('load', result);
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }
+
+    function formatColumnByTreeLevel(value, row, index) {
+        var _val = value;
+        if (row.l != undefined && row.l > 1) {
+            for (let i = 0; i < row.l; i++) {
+                // _val = ('&emsp;&emsp;') + _val;
+                _val = ('<span class="space-span"></span>') + _val;
+            }
+        }
+
+        // Format hiển thị theo level
+        return _val;
+    }
+
+    function onSearch() {
+        loadGridListError();
+    }
+</script>

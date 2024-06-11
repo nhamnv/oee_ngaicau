@@ -1,0 +1,320 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Đăng nhập hệ thống</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="#">
+    <meta name="keywords" content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+    <meta name="author" content="#">
+    <!-- Favicon icon -->
+
+    @* <link rel="icon" href="~/lib/Themes/adminty-dashboard-master/libraries/assets/images/favicon.ico" type="image/x-icon"> *@
+    <link rel="icon" href="~/images/logoes/weldcom.png" type="image/x-icon">
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" type="text/css" href="~/lib/Themes/adminty-dashboard-master/libraries/bower_components/bootstrap/css/bootstrap.min.css">
+    <!-- themify-icons line icon -->
+    <link rel="stylesheet" type="text/css" href="~/lib/Themes/adminty-dashboard-master/libraries/assets/icon/themify-icons/themify-icons.css">
+    <!-- ico font -->
+    <link rel="stylesheet" type="text/css" href="~/lib/Themes/adminty-dashboard-master/libraries/assets/icon/icofont/css/icofont.css">
+    <!-- feather Awesome -->
+    <link rel="stylesheet" type="text/css" href="~/lib/Themes/adminty-dashboard-master/libraries/assets/icon/feather/css/feather.css">
+    <!-- jpro forms css -->
+    <link rel="stylesheet" type="text/css" href="~/lib/Themes/adminty-dashboard-master/libraries/assets/pages/j-pro/css/demo.css">
+    <link rel="stylesheet" type="text/css" href="~/lib/Themes/adminty-dashboard-master/libraries/assets/pages/j-pro/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/lib/Themes/adminty-dashboard-master/libraries/assets/pages/j-pro/css/j-pro-modern.css">
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="~/lib/Themes/adminty-dashboard-master/libraries/assets/css/style.css">
+    <!-- Google reCaptcha -->
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/lib/Themes/adminty-dashboard-master/libraries/assets/css/jquery.mCustomScrollbar.css">
+    <!--Site CSS-->
+    <link rel="stylesheet" href="~/WDI.OEE.styles.css" asp-append-version="true" />
+
+
+    <style>
+        .login-logo{
+            height: 60px;
+            margin-left: 15px;
+            margin-right: 25px;
+        }
+
+        .form-group {
+            line-height: 35px;
+        }
+
+        .label-icon{
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Pre-loader start -->
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div class='contain'>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pre-loader end -->
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    <div class="pcoded-content" style="margin: 0px!important;">
+                        <div class="pcoded-inner-content">
+                            <!-- Main-body start -->
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                    <!-- Page body start -->
+                                    <div class="page-body">
+                                        <div class="row">
+                                            <div class="col-lg-6 m-auto col-sm-12">
+                                                <!-- Login card start -->
+                                                <div class="card">
+                                                    <div class="card-block" style="padding-bottom: 0px;!important;">
+                                                        <div class="j-wrapper j-wrapper-1000" style="padding:0px!important;">
+                                                            <div class="">
+                                                                <div class="j-content">
+                                                                    <div class="j-unit">
+                                                                        <div class="j-input">
+                                                                            <div class="row ml-1">
+                                                                                <div>
+                                                                                    <img class="img-fluid login-logo" src="~/images/logoes/weldcom_02.png" alt="OEE-Logo">
+                                                                                </div>
+                                                                                <div class="ml-auto mr-1">
+                                                                                    <img class="img-fluid login-logo" src="~/images/logoes/ngaicau.jpg" alt="OEE-Logo">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="j-wrapper j-wrapper-600" style="padding: 33px 15px!important;">
+                                                            <form action="@Url.Action("Index","Dashboard")" method="post" class="j-pro" id="j-pro" novalidate="">
+                                                                <!-- end /.header -->
+                                                                <div class="j-content">
+                                                                    <!-- start login -->
+                                                                    <div class="j-unit">
+                                                                        <div class="form-group row">
+                                                                            <label class="col-sm-3 col-form-label">Tên đăng nhập</label>
+                                                                            <div class="col-sm-8">
+                                                                                <label class="j-icon-right label-icon" for="login">
+                                                                                    <i class="icofont icofont-ui-user"></i>
+                                                                                </label>
+                                                                                <input type="text" id="login" name="login" placeholder="Tài khoản..." value="Administrator">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- end login -->
+                                                                    <!-- start password -->
+                                                                    <div class="j-unit">
+                                                                        <div class="form-group row">
+                                                                            <label class="col-sm-3 col-form-label">Mật khẩu</label>
+                                                                            <div class="col-sm-8">
+                                                                                <label class="j-icon-right label-icon" for="password">
+                                                                                    <i class="icofont icofont-lock"></i>
+                                                                                </label>
+                                                                                <input type="password" id="password" name="password" autocomplete="off" placeholder="Mật khẩu..." value="12345678">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- end password -->
+                                                                   
+                                                                    @* <!-- start factory -->
+                                                                    <div class="j-unit">
+                                                                        <div class="form-group row">
+                                                                            <label class="col-sm-3 col-form-label">Nhà máy</label>
+                                                                            <div class="col-sm-8">
+                                                                                <label class="j-icon-right label-icon" for="factory">
+                                                                                    <i class="icofont icofont-caret-down"></i>
+                                                                                </label>
+                                                                                <select id="factory" class="js-example-basic-single col-sm-12 select2-hidden-accessible" tabindex="-1" aria-hidden="true" placeholder="Nhà máy">
+                                                                                    <option value="0">Tập đoàn Đại Dũng</option>
+                                                                                    <option value="1" selected>An Hạ - Bình Chánh</option>
+                                                                                    <option value="2">Long An</option>
+                                                                                    <option value="3">Miền Trung</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- end factory --> *@
+                                                                    @* <!-- start xưởng -->
+                                                                    <div class="j-unit">
+                                                                        <div class="form-group row">
+                                                                            <label class="col-sm-3 col-form-label">Xưởng sản xuất</label>
+                                                                            <div class="col-sm-8">
+                                                                                <label class="j-icon-right label-icon" for="factory">
+                                                                                    <i class="icofont icofont-caret-down"></i>
+                                                                                </label>
+                                                                                <select id="factory" class="js-example-basic-single col-sm-12 select2-hidden-accessible" tabindex="-1" aria-hidden="true" placeholder="Nhà máy">
+                                                                                    <option value="1">An Hạ 1</option>
+                                                                                    <option value="2">An Hạ 2</option>
+                                                                                    <option value="3">An Hạ 3</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- end xưởng --> *@
+
+                                                                    <!-- start response from server -->
+                                                                    <div class="j-response"></div>
+                                                                    <!-- end response from server -->
+                                                                </div>
+                                                                <!-- end /.content -->
+                                                                <div class="j-footer">
+                                                                    <div class="row ml-1" style="line-height:40px;">
+                                                                        <div>
+                                                                            <a href="#" class="j-link">Lấy lại mật khẩu?</a>
+                                                                        </div>
+                                                                        <div class="ml-auto mr-1">
+                                                                            <button type="submit" class="btn btn-primary" style="display:none;">Đăng nhập</button>
+                                                                            <!--a class="btn btn-primary" href="@Url.Action("Index","Dashboard")">Đăng nhập</a-->
+                                                                            <a class="btn btn-primary" href="@Url.Action("Statitics","MachineManagement")">Đăng nhập</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- end /.footer -->
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer" style="color:white;background-color:#D82F24;">
+                                                        <div class="col-lg-12 col-sm-12 text-center" style="margin-top: 10px;">
+                                                            <label class="j-icon-left">
+                                                                <i class="icofont icofont-copyright"></i>
+                                                            </label>
+                                                            <span>CÔNG TY CỔ PHẦN CÔNG NGHIỆP WELDCOM - v:24.05.088</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Login card end -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Page body end -->
+                                </div>
+                            </div>
+                            <!-- Main-body end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Warning Section Starts -->
+    <!-- Older IE warning message -->
+    <!--[if lt IE 10]>
+    <div class="ie-warning">
+        <h1>Warning!!</h1>
+        <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
+        <div class="iew-container">
+            <ul class="iew-download">
+                <li>
+                    <a href="http://www.google.com/chrome/">
+                        <img src="../files/assets/images/browser/chrome.png" alt="Chrome">
+                        <div>Chrome</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.mozilla.org/en-US/firefox/new/">
+                        <img src="../files/assets/images/browser/firefox.png" alt="Firefox">
+                        <div>Firefox</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.opera.com">
+                        <img src="../files/assets/images/browser/opera.png" alt="Opera">
+                        <div>Opera</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.apple.com/safari/">
+                        <img src="../files/assets/images/browser/safari.png" alt="Safari">
+                        <div>Safari</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                        <img src="../files/assets/images/browser/ie.png" alt="">
+                        <div>IE (9 & above)</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <p>Sorry for the inconvenience!</p>
+    </div>
+    <![endif]-->
+    <!-- Warning Section Ends -->
+    <!-- Required Jquery -->
+
+    <script type="text/javascript" src="~/lib/Themes/adminty-dashboard-master/libraries/bower_components/jquery/js/jquery.min.js"></script>
+    <script type="text/javascript" src="~/lib/Themes/adminty-dashboard-master/libraries/bower_components/jquery-ui/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/lib/Themes/adminty-dashboard-master/libraries/bower_components/popper.js/js/popper.min.js"></script>
+    <script type="text/javascript" src="~/lib/Themes/adminty-dashboard-master/libraries/bower_components/bootstrap/js/bootstrap.min.js"></script>
+    <!-- j-pro js -->
+    <script type="text/javascript" src="~/lib/Themes/adminty-dashboard-master/libraries/assets/pages/j-pro/js/jquery.ui.min.js"></script>
+    <script type="text/javascript" src="~/lib/Themes/adminty-dashboard-master/libraries/assets/pages/j-pro/js/jquery.maskedinput.min.js"></script>
+    <script type="text/javascript" src="~/lib/Themes/adminty-dashboard-master/libraries/assets/pages/j-pro/js/jquery.j-pro.js"></script>
+    <!-- jquery slimscroll js -->
+    <script type="text/javascript" src="~/lib/Themes/adminty-dashboard-master/libraries/bower_components/jquery-slimscroll/js/jquery.slimscroll.js"></script>
+    <!-- modernizr js -->
+    <script type="text/javascript" src="~/lib/Themes/adminty-dashboard-master/libraries/bower_components/modernizr/js/modernizr.js"></script>
+    <script type="text/javascript" src="~/lib/Themes/adminty-dashboard-master/libraries/bower_components/modernizr/js/css-scrollbars.js"></script>
+
+    <!-- i18next.min.js -->
+    <script type="text/javascript" src="~/lib/Themes/adminty-dashboard-master/libraries/bower_components/i18next/js/i18next.min.js"></script>
+    <script type="text/javascript" src="~/lib/Themes/adminty-dashboard-master/libraries/bower_components/i18next-xhr-backend/js/i18nextXHRBackend.min.js"></script>
+    <script type="text/javascript" src="~/lib/Themes/adminty-dashboard-master/libraries/bower_components/i18next-browser-languagedetector/js/i18nextBrowserLanguageDetector.min.js"></script>
+    <script type="text/javascript" src="~/lib/Themes/adminty-dashboard-master/libraries/bower_components/jquery-i18next/js/jquery-i18next.min.js"></script>
+    <!-- Custom js -->
+    <script type="text/javascript" src="~/lib/Themes/adminty-dashboard-master/libraries/assets/pages/j-pro/js/custom/login-form.js"></script>
+
+    <script src="~/lib/Themes/adminty-dashboard-master/libraries/assets/js/pcoded.min.js"></script>
+    <script src="~/lib/Themes/adminty-dashboard-master/libraries/assets/js/vartical-layout.min.js"></script>
+    <script src="~/lib/Themes/adminty-dashboard-master/libraries/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="~/lib/Themes/adminty-dashboard-master/libraries/assets/js/script.js"></script>
+</body>
+
+</html>

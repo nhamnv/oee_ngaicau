@@ -1,0 +1,86 @@
+﻿@using Repository.Entity
+@model List<Data_Menu>
+
+@* <ul class="pcoded-item pcoded-left-item" item-border="true" item-border-style="none" subitem-border="true">
+    <li class="pcoded-hasmenu pcoded-trigger" dropdown-icon="style1" subitem-icon="style1">
+        <a href="javascript:void(0)">
+            <span class="pcoded-micon"><i class="feather icon-list"></i></span>
+            <span class="pcoded-mtext">Menu Levels (component)</span>
+        </a>
+        <ul class="pcoded-submenu">
+            <li class="pcoded-hasmenu pcoded-trigger" dropdown-icon="style1" subitem-icon="style1">
+                <a href="javascript:void(0)">
+                    <span class="pcoded-mtext">Menu Level 2.2</span>
+                </a>
+                <ul class="pcoded-submenu">
+                    <li class="pcoded-trigger">
+                        <a href="javascript:void(0)">
+                            <span class="pcoded-mtext">Menu Level 3.1</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul> *@
+
+@foreach(var menu in Model)
+{
+    // class pcoded-trigger để xòe menu
+    <ul class="pcoded-item pcoded-left-item" item-border="true" item-border-style="none" subitem-border="true">
+        <li class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style1">
+            <a href="javascript:void(0)">
+                <span class="pcoded-micon"><i class="feather icon-list"></i></span>
+                <span class="pcoded-mtext">@menu.Name</span>
+            </a>
+            @if (menu.ChildMenus.Count > 0)
+            {
+                foreach (var menuL2 in menu.ChildMenus)
+                {
+                    string hrefL2 = "javascript:void(0)";
+                    string targetL2 = "";
+                    if(!string.IsNullOrEmpty(menuL2.Url))
+                    {
+                        hrefL2 = menuL2.Url;
+                        if(hrefL2.ToLower().Contains("http://dvkt".ToLower()))
+                        {
+                            // Các link local của máy Tiến thì mở tab mới
+                            targetL2 = "target=\"_blank\"";
+                        }
+                    }
+                    <ul class="pcoded-submenu">
+                        <li class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style1">
+                            <a href="@hrefL2" @targetL2>
+                                <span class="pcoded-mtext">@menuL2.Name</span>
+                            </a>
+                            @if (menuL2.ChildMenus.Count > 0)
+                            {
+                                foreach (var menuL3 in menuL2.ChildMenus)
+                                {
+                                    string hrefL3 = "javascript:void(0)";
+                                    string targetL3 = "";
+                                    if (!string.IsNullOrEmpty(menuL3.Url))
+                                    {
+                                        hrefL3 = menuL3.Url;
+                                        if (hrefL3.ToLower().Contains("http://dvkt".ToLower()))
+                                        {
+                                            // Các link local của máy Tiến thì mở tab mới 
+                                            targetL3 = "target=\"_blank\"";
+                                        }
+                                    }
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="@hrefL3" @targetL3>
+                                                <span class="pcoded-mtext">@menuL3.Name</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                }
+                            }
+                        </li>
+                    </ul>
+                }
+            }
+        </li>
+    </ul>
+}

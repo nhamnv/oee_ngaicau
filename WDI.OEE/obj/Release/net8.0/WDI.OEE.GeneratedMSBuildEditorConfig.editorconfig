@@ -1,0 +1,175 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = WDI.OEE
+build_property.RootNamespace = WDI.OEE
+build_property.ProjectDir = E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\WDI.OEE\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\WDI.OEE
+build_property._RazorSourceGeneratorDebug = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Areas/Admin/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/Authentication/LoginForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cTG9naW5Gb3JtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/CategoryManagement/ListError.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlNYW5hZ2VtZW50XExpc3RFcnJvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/Dashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/Dashboard/MachineGroupDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXE1hY2hpbmVHcm91cERldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/Dashboard/_CardMachineStatus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXF9DYXJkTWFjaGluZVN0YXR1cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/MachineManagement/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFjaGluZU1hbmFnZW1lbnRcTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/MachineManagement/MachineDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFjaGluZU1hbmFnZW1lbnRcTWFjaGluZURldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/MachineManagement/Statitics.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFjaGluZU1hbmFnZW1lbnRcU3RhdGl0aWNzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/MachineManagement/_PartialMachineComponent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFjaGluZU1hbmFnZW1lbnRcX1BhcnRpYWxNYWNoaW5lQ29tcG9uZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/MachineManagement/_PartialMachineDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFjaGluZU1hbmFnZW1lbnRcX1BhcnRpYWxNYWNoaW5lRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/MachineManagement/_PartialMachineErrorList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFjaGluZU1hbmFnZW1lbnRcX1BhcnRpYWxNYWNoaW5lRXJyb3JMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/MachineManagement/_PartialMachineMaintenanceCheklist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFjaGluZU1hbmFnZW1lbnRcX1BhcnRpYWxNYWNoaW5lTWFpbnRlbmFuY2VDaGVrbGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/MachineManagement/_PartialMachineRepaireHistory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFjaGluZU1hbmFnZW1lbnRcX1BhcnRpYWxNYWNoaW5lUmVwYWlyZUhpc3RvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/MachineManagement/_PartialMachineRunningStatus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFjaGluZU1hbmFnZW1lbnRcX1BhcnRpYWxNYWNoaW5lUnVubmluZ1N0YXR1cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/MachineManagement/_PartialMachineTechnicalDocument.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFjaGluZU1hbmFnZW1lbnRcX1BhcnRpYWxNYWNoaW5lVGVjaG5pY2FsRG9jdW1lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/Menu/_LeftMenu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVudVxfTGVmdE1lbnUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/ReportErrorMachine/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0RXJyb3JNYWNoaW5lXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/ReportMachineRuningStatus/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0TWFjaGluZVJ1bmluZ1N0YXR1c1xEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/ReportMachineRuningStatus/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0TWFjaGluZVJ1bmluZ1N0YXR1c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/ReportMachineRuningStatus/Layout1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0TWFjaGluZVJ1bmluZ1N0YXR1c1xMYXlvdXQxLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/ReportMachineRuningStatus/Layout2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0TWFjaGluZVJ1bmluZ1N0YXR1c1xMYXlvdXQyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/ReportMachineRuningStatus/Layout3.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0TWFjaGluZVJ1bmluZ1N0YXR1c1xMYXlvdXQzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/ReportMachineRuningStatus/Layout4.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0TWFjaGluZVJ1bmluZ1N0YXR1c1xMYXlvdXQ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/ReportMachineRuningStatus/_CardMachineStatus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0TWFjaGluZVJ1bmluZ1N0YXR1c1xfQ2FyZE1hY2hpbmVTdGF0dXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/ReportMachineRuningStatus/_Machine.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0TWFjaGluZVJ1bmluZ1N0YXR1c1xfTWFjaGluZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/ReportMachineRuningStatus/_MachineSingle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0TWFjaGluZVJ1bmluZ1N0YXR1c1xfTWFjaGluZVNpbmdsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/Shared/Components/Menu/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTWVudVxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/Shared/_Layout__ablepro_master.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRfX2FibGVwcm9fbWFzdGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/TechnicalService/ExecuteChecklist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVjaG5pY2FsU2VydmljZVxFeGVjdXRlQ2hlY2tsaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/nhamnv/SourceCode/WELDCOMOEE/OEE_NgaiCau/WDI.OEE/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-ybwyrjsgds

@@ -1,0 +1,63 @@
+﻿@model Common.Data_Machine
+@{
+    //string _readonly_input = "";
+}
+
+<div class="row">
+    <div class="col-xl-12 col-md-12">
+        <div class="card table-card">
+            <div class="card-header">
+                <!--h5>Recent Tickets</h5>
+                <div-- class="card-header-right">
+                    <ul-- class="list-unstyled card-option">
+                        <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                        <li><i class="fa fa-window-maximize full-card"></i></li>
+                        <li><i class="fa fa-minus minimize-card"></i></li>
+                        <li><i class="fa fa-refresh reload-card"></i></li>
+                        <li><i class="fa fa-trash close-card"></i></li>
+                    </ul>
+                </div-->
+            </div>
+            <div class="card-block">
+                <div class="table-responsive">
+                    <table class="table table-hover table-borderless">
+                        <thead>
+                            <tr>
+                                <th>Trạng thái</th>
+                                <th>Tên file</th>
+                                <th>Loại tài liệu</th>
+                                <th>Ngày phát hành</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><label class="label label-success">khả dụng</label></td>
+                                <td><a href="@(Url.Action("DownloadBlank","File")+"?fName="+Model.MachineAssetCode+"_HDVH.pdf")" title="Tải file">@(Model.MachineAssetCode + "_HDVH.pdf")</a></td>
+                                <td>Hướng dẫn vận hành</td>
+                                <td>08/05/2024</td>
+                            </tr>
+                            <tr>
+                                <td><label class="label label-primary">đang cập nhật</label></td>
+                                <td><a href="@(Url.Action("DownloadBlank","File")+"?fName="+Model.MachineAssetCode+"_TLKT.pdf")" title="Tải file">@(Model.MachineAssetCode + "_TLKT.pdf")</a></td>
+                                <td>Tài liệu kỹ thuật</td>
+                                <td>12/05/2024</td>
+                            </tr>
+                            <tr>
+                                <td><label class="label label-danger">đã xóa</label></td>
+                                <td class="text-muted"><span href="@(Url.Action("DownloadBlank","File")+"?fName="+Model.MachineAssetCode+"_TLKT(v1).pdf")" title="Tải file">@(Model.MachineAssetCode + "_TLKT(v1).pdf")</span></td>
+                                <td class="text-muted">Tài liệu kỹ thuật</td>
+                                <td class="text-muted">03/04/2024</td>
+                            </tr>
+                            <tr>
+                                <td><label class="label label-success">khả dụng</label></td>
+                                <td><a href="@(Url.Action("DownloadBlank","File")+"?fName="+Model.MachineAssetCode+"_HDVH_2024.pdf")" title="Tải file">@(Model.MachineAssetCode + "_HDVH_2024.pdf")</a></td>
+                                <td>Hướng dẫn vận hành</td>
+                                <td>17/01/2024</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

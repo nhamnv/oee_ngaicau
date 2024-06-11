@@ -1,0 +1,118 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <PackageIcon></PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ViewComponents\**" />
+    <Compile Remove="wwwroot\lib\themes\ablepro-master\**" />
+    <Content Remove="ViewComponents\**" />
+    <Content Remove="wwwroot\lib\themes\ablepro-master\**" />
+    <EmbeddedResource Remove="ViewComponents\**" />
+    <EmbeddedResource Remove="wwwroot\lib\themes\ablepro-master\**" />
+    <None Remove="ViewComponents\**" />
+    <None Remove="wwwroot\lib\themes\ablepro-master\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\lib\Themes\adminty-dashboard-master\libraries\bower_components\jquery\**" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\animate.css\css\animate.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\bootstrap-daterangepicker\css\daterangepicker.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\bootstrap-multiselect\css\bootstrap-multiselect.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\bootstrap-tagsinput\css\bootstrap-tagsinput.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\bootstrap\css\bootstrap.min.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\c3\css\c3.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\chartist\css\chartist.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\cropper\css\cropper.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\datatables.net-bs4\css\dataTables.bootstrap4.min.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\datatables.net-responsive-bs4\css\responsive.bootstrap4.min.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\datedropper\css\datedropper.min.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\datedropper\css\dd-icon\dd-icon.ttf" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\datedropper\css\dd-icon\dd-icon.woff" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\ekko-lightbox\css\ekko-lightbox.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\font-awesome\css\font-awesome.min.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\fullcalendar\css\fullcalendar.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\fullcalendar\css\fullcalendar.print.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\handsontable\css\handsontable.full.min.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\intro.js\css\introjs.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\jquery-bar-rating\css\bars-1to10.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\jquery-bar-rating\css\bars-horizontal.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\jquery-bar-rating\css\bars-movie.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\jquery-bar-rating\css\bars-pill.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\jquery-bar-rating\css\bars-reversed.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\jquery-bar-rating\css\bars-square.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\jquery-bar-rating\css\css-stars.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\jquery-bar-rating\css\fontawesome-stars-o.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\jquery-bar-rating\css\fontawesome-stars.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\jquery-minicolors\css\jquery.minicolors.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\jquery-minicolors\images\jquery.minicolors.png" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\jquery.steps\css\jquery.steps.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\jstree\css\style.min.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\lightbox2\css\lightbox.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\lightbox2\css\lightbox.min.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\lightbox2\images\close.png" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\lightbox2\images\loading.gif" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\lightbox2\images\next.png" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\lightbox2\images\prev.png" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\lightgallery\css\lightgallery.min.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\lightgallery\fonts\lg.ttf" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\lightgallery\fonts\lg.woff" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\long-press\css\app.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\long-press\css\main.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\multiselect\css\multi-select.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\multiselect\img\switch.png" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\nvd3\css\nv.d3.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\offline\css\offline-language-english.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\offline\css\offline-theme-slide.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\owl.carousel\css\owl.carousel.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\owl.carousel\css\owl.theme.default.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\pnotify\css\pnotify.brighttheme.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\pnotify\css\pnotify.buttons.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\pnotify\css\pnotify.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\pnotify\css\pnotify.history.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\pnotify\css\pnotify.mobile.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\seiyria-bootstrap-slider\css\bootstrap-slider.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\select2\css\select2.min.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\slick-carousel\css\slick-theme.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\slick-carousel\css\slick.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\spectrum\css\spectrum.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\stroll\css\stroll.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\sweetalert\css\sweetalert.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\swiper\css\swiper.min.css" />
+    <Content Include="wwwroot\lib\themes\adminty-dashboard-master\libraries\bower_components\switchery\css\switchery.min.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="bootstrap" Version="5.3.3" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.3.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
+    <!--<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />-->
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj" />
+    <ProjectReference Include="..\Service\Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="AppResources\vi-VN.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+  </ItemGroup>
+
+</Project>
