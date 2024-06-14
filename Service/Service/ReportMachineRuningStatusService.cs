@@ -15,7 +15,7 @@ namespace Service.Service
         /// <param name="MachineLocationID"></param>
         /// <param name="MachineID">Tham số này chỉ dùng cho màn hình chi tiết (Xem chi tiết 1 máy)</param>
         /// <returns></returns>
-        public List<MachineRuningStatusViewModel> GetReportMachineRuningStatus(DateTime startDate, DateTime endDate, string MachineGroupID, string MachineLocationID, string MachineID = "")
+        public List<MachineRuningStatusViewModel> GetReportMachineRuningStatus(DateTime startDate, DateTime endDate, string MachineGroupID, string MachineLocationID, string MachineAssetGroupID, string MachineID = "")
         {
             List<MachineRuningStatusViewModel> reval = new List<MachineRuningStatusViewModel>();
             try
@@ -56,6 +56,10 @@ namespace Service.Service
                                    h.MachineLocationID
                                     ,
                                    l.LocationName
+                                   ,
+                                   m.AssetGroupID
+                                   ,
+                                   m.AssetGroupName
                                }).Distinct();
 
                 #region Filter
@@ -77,6 +81,12 @@ namespace Service.Service
                 {
                     hisData = from h in hisData
                               where h.MachineLocationID.ToString() == MachineLocationID
+                              select h;
+                }
+                if (!string.IsNullOrEmpty(MachineAssetGroupID) && MachineAssetGroupID.ToLower() != "all")
+                {
+                    hisData = from h in hisData
+                              where h.AssetGroupID.ToString() == MachineAssetGroupID
                               select h;
                 }
 
@@ -219,7 +229,7 @@ namespace Service.Service
                         MachineID = item.MachineID,
                         MachineName = item.MachineName,
                         Model = item.Model,
-                        ImageUrl = (!string.IsNullOrEmpty(item.ImageUrl) ? item.ImageUrl : "NoImage.png"), // OEE\WDI.OEE\wwwroot\images\products\NoImage.png
+                        ImageUrl = (!string.IsNullOrEmpty(item.ImageUrl) ? item.ImageUrl : "NoImage.jpg"), // OEE\WDI.OEE\wwwroot\images\products\NoImage.jpg
                         MachineLocationName = item.LocationName,
                         MachineLocationID = item.MachineLocationID,
                         ListStatusPercent = listStatusPercent,
@@ -443,7 +453,7 @@ namespace Service.Service
             {
                 // Lịch sử trạng thái của tất cả các máy, các vị trí trong khoảng thời gian xác định
                 var hisData = (from h in StaticData.Data_MachineStatusHistory
-                               where (h.StatusTime >= startDate && h.StatusTime <= endDate)
+                                   // where (h.StatusTime >= startDate && h.StatusTime <= endDate)
                                join m in StaticData.Data_Machine on h.MachineID equals m.MachineID
                                where (m.MachineID == machineID)
                                //join ls in StaticData.Data_MachineLocationSetup on h.MachineID equals ls.MachineID

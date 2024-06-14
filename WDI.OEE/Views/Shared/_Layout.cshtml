@@ -30,7 +30,7 @@
     <!-- [Theme adminty] start -->
     <link rel="icon" href="~/images/logoes/weldcom.png" type="image/x-icon">
     <!-- Google font-->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
+    @* <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet"> *@
     <!-- Required Fremwork -->
     <link rel="stylesheet" type="text/css" href="~/lib/Themes/adminty-dashboard-master/libraries/bower_components/bootstrap/css/bootstrap.min.css">
     <!-- themify-icons line icon -->
@@ -60,6 +60,7 @@
     <!-- jquery -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    @* <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script> *@
 
 </head>
 <body>
@@ -450,7 +451,7 @@
     <script src="~/lib/moment/moment.js"></script>
     <!-- Site's JS -->
     <script src="~/js/site.js"></script>
-
+    
     
     @await RenderSectionAsync("Scripts", required: false)
 
@@ -466,7 +467,7 @@
 
         // Lần đầu set = 1 phút
         if (getTimeReload() === null)
-            setTimeReload(60000);
+            setTimeReload(0);
 
         function nextPage() {
             var _timeNextPage = getTimeReload();
@@ -475,14 +476,15 @@
                 setTimeout(() => {
                     var pathArray = window.location.pathname.split('/');
                     var curr = pathArray[pathArray.length - 1];
-                    var next = 'Layout1';
+
+                    var next = 'Layout2'; // 'Layout1'
                     if (curr === 'Layout1')
                         next = 'Layout2';
                     else if (curr === 'Layout2')
                         next = 'Layout3';
                     else if (curr === 'Layout3')
                         next = 'Layout4';
-                    else next = 'Layout1';
+                    else next = 'Layout2';
 
                     var nextUrl = '/ReportMachineRuningStatus/' + next;
 
@@ -496,6 +498,7 @@
             
         }
         $(document).ready(function () {
+            setTimeReload(0);
             nextPage();
 
 

@@ -37,6 +37,7 @@
     {
         public int MachineGroupID { get; set; }
         public string MachineGroupName { get; set; } = string.Empty;
+        public string ColorCode { get; set; } = string.Empty;
     }
     /// <summary>
     /// Bảng danh sách máy
@@ -102,6 +103,9 @@
         public string Note { get; set; } = string.Empty;
         public int ProviderID { get; set; } = 0;
         public DateTime? FirstUseDate { get; set; }
+
+        public int Quantity { get; set; } = 0;
+
         /// <summary>
         /// Linh kiện
         /// </summary>
@@ -216,5 +220,12 @@
         /// </summary>
         public int TimeFinish { get; set; }
 
+    }
+
+    public class Data_AssetGroup
+    {
+        public int AssetGroupID { get; set; }
+        public string AssetGroupName { get; set; } = string.Empty;
+        public string ColorCode { get; set; } = string.Empty;
     }
 }

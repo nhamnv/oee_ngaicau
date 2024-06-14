@@ -55,6 +55,7 @@ builder.Services.AddDbContext<AppDBContext>(options =>
 //builder.Services.AddSingleton(mapper);
 builder.Services.AddSignalR();
 
+// builder.Services.AddInfrastructureDependencies();
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IData_MenuService, Data_MenuService>();
@@ -98,14 +99,14 @@ app.UseEndpoints(endpoints =>
 app.MapControllerRoute(
     name: "default",
 // pattern: "{controller=Home}/{action=Index}/{id?}");
-// pattern: "{controller=Authentication}/{action=LoginForm}/{id?}");
+pattern: "{controller=Authentication}/{action=LoginForm}/{id?}");
 // pattern: "{controller=ReportErrorMachine}/{action=Index}/{id?}");
 
 // pattern: "{controller=ReportMachineRuningStatus}/{action=Index}/{id?}");
 // pattern: "{controller=ReportMachineRuningStatus}/{action=Detail}/{id?}");
 // pattern: "{controller=Dashboard}/{action=Index}/{id?}");
 // pattern: "{controller=MachineManagement}/{action=Index}/{id?}");
-pattern: "{controller=ReportMachineRuningStatus}/{action=Layout1}");
+// pattern: "{controller=ReportMachineRuningStatus}/{action=Layout1}");
 
 app.UseRequestLocalization();
 

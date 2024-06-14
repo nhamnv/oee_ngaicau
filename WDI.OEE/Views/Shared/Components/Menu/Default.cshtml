@@ -41,8 +41,9 @@
                     string targetL2 = "";
                     if(!string.IsNullOrEmpty(menuL2.Url))
                     {
-                        hrefL2 = menuL2.Url;
-                        if(hrefL2.ToLower().Contains("http://dvkt".ToLower()))
+                        hrefL2 = menuL2.Url; // nc.wdi
+                        if(hrefL2.ToLower().Contains("http://dvkt".ToLower())
+                        || hrefL2.ToLower().Contains("nc.wdi".ToLower()))
                         {
                             // Các link local của máy Tiến thì mở tab mới
                             targetL2 = "target=\"_blank\"";
@@ -62,7 +63,8 @@
                                     if (!string.IsNullOrEmpty(menuL3.Url))
                                     {
                                         hrefL3 = menuL3.Url;
-                                        if (hrefL3.ToLower().Contains("http://dvkt".ToLower()))
+                                        if (hrefL3.ToLower().Contains("http://dvkt".ToLower())
+                                        || hrefL3.ToLower().Contains("nc.wdi".ToLower()))
                                         {
                                             // Các link local của máy Tiến thì mở tab mới 
                                             targetL3 = "target=\"_blank\"";

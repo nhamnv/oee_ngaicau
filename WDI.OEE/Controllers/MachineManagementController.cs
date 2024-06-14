@@ -1,7 +1,10 @@
-﻿using Common.ViewModels;
+﻿using Common;
+using Common.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json.Linq;
 using Service.IService;
+
 
 namespace WDI.OEE.Controllers
 {
@@ -42,6 +45,38 @@ namespace WDI.OEE.Controllers
             ViewData["machineAssetGroupID"] = machineAssetGroupID;
             ViewData["machineLocationID"] = machineLocationID;
 
+            #region Dropdown MachineGroup
+            var listMachineGroup = new List<SelectListItem>();
+            listMachineGroup.Add(new SelectListItem() { Text = "-- Tất cả --", Value = "All", Selected = true });
+
+            listMachineGroup.AddRange(
+                StaticData.Data_MachineGroup.AsEnumerable().Select(t => new SelectListItem()
+                {
+                    Text = t.MachineGroupName,
+                    Value = t.MachineGroupID.ToString()
+                }
+             ));
+
+            ViewData["ListMachineGroup"] = listMachineGroup;
+
+            #endregion
+
+            #region Dropdown AssetGroup
+            var listAssetGroup = new List<SelectListItem>();
+            listAssetGroup.Add(new SelectListItem() { Text = "-- Tất cả --", Value = "All", Selected = true });
+
+            listAssetGroup.AddRange(
+                StaticData.Data_AssetGroup.AsEnumerable().Select(t => new SelectListItem()
+                {
+                    Text = t.AssetGroupName,
+                    Value = t.AssetGroupID.ToString()
+                }
+             ));
+
+            ViewData["ListAssetGroup"] = listAssetGroup;
+
+            #endregion
+
             return View();
         }
 
@@ -57,10 +92,6 @@ namespace WDI.OEE.Controllers
 
             try
             {
-                //dynamic d = JObject.Parse(stringData);
-                //int machineID = d.machineID;
-                //int machineLocationID = d.machineLocationID;
-
                 model = _machineManagementService.GetStatitics();
             }
             catch (Exception)
@@ -155,6 +186,13 @@ namespace WDI.OEE.Controllers
         public JsonResult GetListMachineStatus()
         {
             var data = _machineManagementService.GetMachineStatusList();
+            return new JsonResult(data);
+        }
+
+        [HttpGet]
+        public JsonResult GetListMachine()
+        {
+            var data = _machineManagementService.GetListMachine();
             return new JsonResult(data);
         }
         #endregion

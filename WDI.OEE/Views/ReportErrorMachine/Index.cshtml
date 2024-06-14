@@ -15,12 +15,12 @@
                         @Html.DropDownList("MachineGroupID", (List<SelectListItem>)ViewData["ListMachineGroup"], htmlAttributes: new { @class = "form-control", @onchange = "filterData()" })
                     </div>
                 </div>
-                <div class="col-sm-3">
+                @* <div class="col-sm-3">
                     <div class="form-group">
                         <label class="control-label text-muted">Vị trí</label>
                         @Html.DropDownList("MachineLocationID", (List<SelectListItem>)ViewData["ListMachineLocation"], htmlAttributes: new { @class = "form-control", @onchange = "filterData()" })
                     </div>
-                </div>
+                </div> *@
             </div>
         </div>
     </div>
@@ -88,7 +88,7 @@
                                 <tr>
                                     <th data-field="errorDate" data-align="center" data-sortable="true" data-formatter="dateFormat">Ngày</th>
                                     <th data-field="machineLocation" data-align="left" data-sortable="true">Vị trí</th>
-                                    <th data-field="machineName" data-align="left" data-sortable="true">Tên máy</th>
+                                    <th data-field="machineName" data-align="left" data-sortable="true">Thiết bị</th>
                                     <th data-field="machineGroupName" data-align="left" data-sortable="true">Nhóm máy</th>
                                     <th data-field="errorCode" data-align="left" data-sortable="true">Mã lỗi</th>
                                     <th data-field="errorName" data-align="left" data-sortable="true">Tên lỗi</th>
@@ -117,9 +117,9 @@
         $('#MachineGroupID').select2({
             placeholder: 'Nhóm máy'
         });
-        $('#MachineLocationID').select2({
-            placeholder: 'Vị trí'
-        });
+        // $('#MachineLocationID').select2({
+        //     placeholder: 'Vị trí'
+        // });
     });
 
     function filterData() {
@@ -132,7 +132,7 @@
     function load_GetErrorSummary() {
         var _TimeRange = $("#TimeRangeID").val();
         var _MachineGroup = $("#MachineGroupID").val();
-        var _MachineLocation = $("#MachineLocationID").val();
+        var _MachineLocation = '';// $("#MachineLocationID").val();
 
         $.ajax({
             url: "/ReportErrorMachine/GetErrorSummary",
@@ -270,7 +270,7 @@
             async: true,
             beforeSend: function () { },
             success: function (result) {
-                // Table structure: Ngày | Vị trí | Tên máy | Nhóm máy | Mã lỗi | Tên lỗi | Ghi chú
+                // Table structure: Ngày | Vị trí | Thiết bị | Nhóm máy | Mã lỗi | Tên lỗi | Ghi chú
                 $("#gridListErrorMachine").bootstrapTable({
                     data: result,
                     formatLoadingMessage: function () {

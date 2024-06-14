@@ -6,6 +6,8 @@ E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\WDI.OEE\obj\Release\net8.0\PubTmp\Ou
 E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\WDI.OEE\obj\Release\net8.0\PubTmp\Out\WDI.OEE.pdb
 E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\WDI.OEE\obj\Release\net8.0\PubTmp\Out\Azure.Core.dll
 E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\WDI.OEE\obj\Release\net8.0\PubTmp\Out\Azure.Identity.dll
+E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\WDI.OEE\obj\Release\net8.0\PubTmp\Out\Castle.Core.dll
+E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\WDI.OEE\obj\Release\net8.0\PubTmp\Out\Castle.Windsor.dll
 E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\WDI.OEE\obj\Release\net8.0\PubTmp\Out\Humanizer.dll
 E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\WDI.OEE\obj\Release\net8.0\PubTmp\Out\System.Web.Mvc.dll
 E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\WDI.OEE\obj\Release\net8.0\PubTmp\Out\System.Web.Razor.dll

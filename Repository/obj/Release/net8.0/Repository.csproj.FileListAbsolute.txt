@@ -33,3 +33,4 @@ E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\Repository\obj\Release\net8.0\refint
 E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\Repository\obj\Release\net8.0\Repository.pdb
 E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\Repository\obj\Release\net8.0\Repository.genruntimeconfig.cache
 E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\Repository\obj\Release\net8.0\ref\Repository.dll
+E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\Repository\obj\Release\net8.0\Repository.sourcelink.json

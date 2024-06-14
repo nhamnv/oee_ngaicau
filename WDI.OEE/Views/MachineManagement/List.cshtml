@@ -8,35 +8,18 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="machineAssetGroup" class="control-label text-muted">Nhóm tài sản</label>
-                        <select class="form-control" id="machineAssetGroup" onchange="filterData()">
-                            <option value="0" selected>-- Tất cả --</option>
-                            <option value="1">Máy cắt</option>
-                            <option value="2">Máy cưa</option>
-                            <option value="3">Máy khoan</option>
-                            <option value="4">Máy phay</option>
-                            <option value="5">Máy lốc, uốn, gấp mép, xoay ống</option>
-                            <option value="6">Máy ráp dầm, H/I-Đính, Gá, Lật, VC dầm</option>
-                            <option value="7">Máy nắn thẳng</option>
-                            <option value="8">Máy hàn cổng</option>
-                        </select>
+                        <label for="machineAssetGroup" class="control-label text-muted">Phân loại</label>
+                        @Html.DropDownList("machineAssetGroup", (List<SelectListItem>)ViewData["ListAssetGroup"], htmlAttributes: new { @class = "form-control", @onchange = "filterData()" })
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3 ml-1">
                     <div class="form-group">
                         <label for="machineGroup" class="control-label text-muted">Nhóm máy</label>
-                        <select class="form-control" id="machineGroup" onchange="filterData()">
-                            <option value="0" selected>-- Tất cả --</option>
-                            <option value="1">GCN</option>
-                            <option value="2">DCTH</option>
-                            <option value="3">LASER</option>
-                            <option value="4">PLASMA</option>
-                            <option value="5">ROBOT</option>
-                        </select>
+                        @Html.DropDownList("machineGroup", (List<SelectListItem>)ViewData["ListMachineGroup"], htmlAttributes: new { @class = "form-control", @onchange = "filterData()" })
                     </div>
                 </div>
 
-                <div class="col-md-2">
+                @* <div class="col-md-2">
                     <div class="form-group">
                         <label for="machineWorkshop" class="control-label text-muted">Xưởng sản xuất</label>
                         <select class="form-control" id="machineWorkshop" onchange="filterData()">
@@ -46,9 +29,9 @@
                             <option value="3">AH3</option>
                         </select>
                     </div>
-                </div>
+                </div> *@
 
-                <div class="col-md-2">
+                @* <div class="col-md-2">
                     <div class="form-group">
                         <label for="machineLocation" class="control-label text-muted">Vị trí</label>
                         <select class="form-control-container input-lg step2-select" id="machineLocation" onchange="filterData()">
@@ -76,9 +59,9 @@
                             <option value="21">AH3-Tổ RT+HT-LBC</option>
                         </select>
                     </div>
-                </div>
+                </div> *@
 
-                <div class="col-md-3">
+                <div class="col-md-3 ml-auto mr-1">
                     <div class="form-group">
                         <label for="txtKeyword" class="control-label text-muted">Từ khóa</label>
                         <div class="input-group input-group-button input-group-primary">
@@ -101,22 +84,22 @@
                         <thead class="table-primary">
                             <tr>
                                 <th data-field="iD" data-align="left" data-sortable="true" data-visible="false">ID máy</th>
-                                <th data-field="machineName" data-align="left" data-sortable="true" data-formatter="expanLinkMachineDetail">Tên máy</th>
-                                <th data-field="assetGroupName" data-align="left" data-sortable="true">Nhóm tài sản</th>
-                                <th data-field="assetGroupID" data-align="left" data-sortable="true" data-visible="false">Nhóm tài sản</th>
-                                <th data-field="machineAssetCode" data-align="left" data-sortable="true">Mã tài sản của máy</th>
+                                <th data-field="machineName" data-align="left" data-sortable="true" data-formatter="expanLinkMachineDetail">Thiết bị</th>
+                                <th data-field="assetGroupName" data-align="left" data-sortable="true">Phân loại</th>
+                                <th data-field="assetGroupID" data-align="left" data-sortable="true" data-visible="false">Phân loại</th>
+                                @*<th data-field="machineAssetCode" data-align="left" data-sortable="true">Mã tài sản của máy</th> *@
                                 <th data-field="machineGroupName" data-align="left" data-sortable="true">Nhóm máy</th>
                                 <th data-field="machineGroupID" data-align="left" data-sortable="true" data-visible="false">Nhóm máy</th>
-                                <th data-field="accountantCode" data-align="left" data-sortable="true">Mã kế toán</th>
+                                @* <th data-field="accountantCode" data-align="left" data-sortable="true">Mã kế toán</th>
                                 <th data-field="machineLocationName" data-align="left" data-sortable="true">Vị trí</th>
                                 <th data-field="machineLocationID" data-align="left" data-sortable="true" data-visible="false">Vị trí</th>
                                 <th data-field="baseUnitName" data-align="left" data-sortable="true">Đơn vị tính</th>
-                                <th data-field="baseUnitID" data-align="left" data-sortable="true">Đơn vị tính</th>
+                                <th data-field="baseUnitID" data-align="left" data-sortable="true">Đơn vị tính</th> *@
                                 <th data-field="model" data-align="left" data-sortable="true">Model</th>
-                                <th data-field="serialNo" data-align="left" data-sortable="true">Serial No.</th>
-                                <th data-field="providerName" data-align="left" data-sortable="true">Nhà cung cấp</th>
-                                <th data-field="providerID" data-align="left" data-sortable="true" data-visible="false">Nhà cung cấp</th>
-                                <th data-field="firstUseDate" data-align="left" data-sortable="true" data-formatter="formatDateTime">Thời gian máy đi vào hoạt động</th>
+                                @* <th data-field="serialNo" data-align="left" data-sortable="true">Serial No.</th> *@
+                                <th data-field="providerName" data-align="left" data-sortable="true">Thương hiệu</th>
+                                <th data-field="providerID" data-align="left" data-sortable="true" data-visible="false">Thương hiệu</th>
+                                <th data-field="note" data-align="left" data-sortable="true">Tên gọi</th>
                             </tr>
                         </thead>
                     </table>
@@ -154,8 +137,7 @@
         var machineAssetGroupID = @ViewData["machineAssetGroupID"];
         var machineLocationID = @ViewData["machineLocationID"];
 
-        if (machineGroupID > 0)
-        {
+        if (machineGroupID > 0) {
             $('#machineGroup').val(machineGroupID);
             $('#machineGroup').select2().trigger('change');
         }
@@ -171,7 +153,7 @@
             $('#machineLocation').val(machineLocationID);
             $('#machineLocation').select2().trigger('change');
         }
-        
+
 
         // Enter keyword
         $("#txtKeyword").on("keydown", function search(e) {
@@ -183,109 +165,90 @@
 
         filterData();
     });
-     
+
     function filterData() {
-        
-
-        @{
-            /*
-                ------------ Generate bảng danh mục máy
-                SELECT
-                    iD					= m.iD						,
-                    machineName			= m.machineName			   ,
-                    assetGroupName		= ag.assetGroupName		   ,
-                    assetGroupID		= m.assetGroupID		   ,
-                    machineAssetCode	= m.machineAssetCode	   ,
-                    machineGroupName	= mg.machineGroupName	   ,
-                    machineGroupID		= m.machineGroupID		   ,
-                    accountantCode		= m.accountantCode		   ,
-                    machineLocationName = l.LocationName    ,
-                    machineLocationID	= m.machineLocationID	   ,
-                    baseUnitName		= bu.UnitName		   ,
-                    baseUnitID			= m.baseUnitID			   ,
-                    model				= m.model				   ,
-                    providerID			= m.providerID			   ,
-                    firstUseDate 		= m.firstUseDate 		    ,
-                    WorkshopID			= l.WorkshopID,
-                    WorkshopName		= ws.WorkshopName,
-                    factoryID			= l.factoryID,
-                    factoryName			= f.FactoryName
-                FROM Data_Machine m
-                INNER JOIN Data_AssetGroup ag ON ag.Id = m.AssetGroupID
-                INNER JOIN Data_MachineGroup mg ON mg.ID = m.MachineGroupID
-                INNER JOIN Data_Location l On l.ID = m.MachineLocationID
-                INNER JOIN Data_BaseUnit bu ON bu.Id = m.BaseUnitID
-                INNER JOIN Data_Workshop ws ON ws.id=l.WorkshopID
-                INNER JOIN Data_Factory f ON f.ID= l.FactoryID
-                FOR JSON PATH
-            */
-        }
-
-        var result = [{ "iD": 1, "machineName": "Máy cắt CNC laser Yawei", "assetGroupName": "Máy cắt", "assetGroupID": 1, "machineAssetCode": "B20500006", "machineGroupName": "LASER", "machineGroupID": 3, "accountantCode": "A01212203270048", "machineLocationName": "AH1-Tổ Cắt -LAB", "machineLocationID": 2, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "HLF-24240", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 1, "workshopName": "AH1", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 2, "machineName": "Máy khoan, cắt CNC Plasma Akyapak", "assetGroupName": "Máy cắt", "assetGroupID": 1, "machineAssetCode": "B20500007", "machineGroupName": "PLASMA", "machineGroupID": 4, "accountantCode": "A04211204270048", "machineLocationName": "AH1-Tổ Cắt -LAB", "machineLocationID": 2, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "ADOP3000*12000", "providerID": 3, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 1, "workshopName": "AH1", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 3, "machineName": "Máy cắt Plasma XPR3000", "assetGroupName": "Máy cắt", "assetGroupID": 1, "machineAssetCode": "B20500009", "machineGroupName": "PLASMA", "machineGroupID": 4, "accountantCode": "A01212203270045", "machineLocationName": "AH1-Tổ Cắt -LCD", "machineLocationID": 3, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "TDCIV6000x28000-PF", "providerID": 3, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 1, "workshopName": "AH1", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 4, "machineName": "Máy cắt CNC Plasma AMG", "assetGroupName": "Máy cắt", "assetGroupID": 1, "machineAssetCode": "B20500011", "machineGroupName": "PLASMA", "machineGroupID": 4, "accountantCode": "A01211204270201", "machineLocationName": "AH1-Tổ Cắt -LAB", "machineLocationID": 2, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "FSC3000D", "providerID": 4, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 1, "workshopName": "AH1", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 5, "machineName": "Máy cắt thủy lực 12M YSD", "assetGroupName": "Máy cắt", "assetGroupID": 1, "machineAssetCode": "B20500013", "machineGroupName": "PLASMA", "machineGroupID": 4, "accountantCode": "A01211204270033", "machineLocationName": "AH1-Tổ Cắt BM-LBC", "machineLocationID": 4, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "HGSK 120\/20", "providerID": 6, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 1, "workshopName": "AH1", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 6, "machineName": "Máy cắt đầu dầm Roboti", "assetGroupName": "Máy cắt", "assetGroupID": 1, "machineAssetCode": "B20500019", "machineGroupName": "ROBOT", "machineGroupID": 5, "accountantCode": "A01211204270194", "machineLocationName": "AH1-Tổ Cắt BM-LBC", "machineLocationID": 4, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "PKG 100\/50", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 1, "workshopName": "AH1", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 7, "machineName": "Máy cắt CNC Plasma FSC 5000D x 18M", "assetGroupName": "Máy cắt", "assetGroupID": 1, "machineAssetCode": "B20500103", "machineGroupName": "PLASMA", "machineGroupID": 4, "accountantCode": "A01212203270066", "machineLocationName": "AH1", "machineLocationID": 1, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "FSC 5000D x 18M", "providerID": 5, "firstUseDate": "2022-01-01T00:00:00", "workshopID": 1, "workshopName": "AH1", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 8, "machineName": "Máy chấn YSD 12M", "assetGroupName": "Máy cắt", "assetGroupID": 1, "machineAssetCode": "B20600008", "machineGroupName": "GCN", "machineGroupID": 1, "accountantCode": "A01212203270040", "machineLocationName": "AH2-LCD", "machineLocationID": 10, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "YSD 12M", "providerID": 6, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 9, "machineName": "Máy cưa vòng Kruman 1000", "assetGroupName": "Máy cưa", "assetGroupID": 2, "machineAssetCode": "B20800013", "machineGroupName": "GCN", "machineGroupID": 1, "accountantCode": "A01211204270176", "machineLocationName": "AH2-T.CK-LBC", "machineLocationID": 11, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "KH-1000H", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 10, "machineName": "Máy khoan đầu dầm CNC", "assetGroupName": "Máy khoan", "assetGroupID": 3, "machineAssetCode": "B21100006", "machineGroupName": "GCN", "machineGroupID": 1, "accountantCode": "A01212203270046", "machineLocationName": "AH2-LAB", "machineLocationID": 8, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "BHD1206A\/3", "providerID": 1, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 11, "machineName": "Máy khoan bản mã tốc độ cao", "assetGroupName": "Máy khoan", "assetGroupID": 3, "machineAssetCode": "B21100241", "machineGroupName": "GCN", "machineGroupID": 1, "accountantCode": "A01212203270080", "machineLocationName": "AH1", "machineLocationID": 1, "baseUnitName": "Cái", "baseUnitID": 2, "model": "CNC-FIN", "providerID": 1, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 1, "workshopName": "AH1", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 12, "machineName": "Máy phay đầu dầm", "assetGroupName": "Máy phay", "assetGroupID": 4, "machineAssetCode": "B21200008", "machineGroupName": "GCN", "machineGroupID": 1, "accountantCode": "A01211204270181", "machineLocationName": "AH1-Tổ Tiện-LDE", "machineLocationID": 5, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "BXD 6080", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 1, "workshopName": "AH1", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 13, "machineName": "Máy phay đầu dầm", "assetGroupName": "Máy phay", "assetGroupID": 4, "machineAssetCode": "B21200009", "machineGroupName": "GCN", "machineGroupID": 1, "accountantCode": "A01211204270180", "machineLocationName": "AH2-LCD", "machineLocationID": 10, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "BXD 2020", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 14, "machineName": "Máy phay đầu dầm", "assetGroupName": "Máy phay", "assetGroupID": 4, "machineAssetCode": "B21200010", "machineGroupName": "GCN", "machineGroupID": 1, "accountantCode": "A01211204270196", "machineLocationName": "AH2-LBC", "machineLocationID": 9, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "BXD 2020", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 15, "machineName": "Máy lốc tôn 4 trục Akbend", "assetGroupName": "Máy lốc, uốn, gấp mép, xoay ống", "assetGroupID": 5, "machineAssetCode": "B21400006", "machineGroupName": "GCN", "machineGroupID": 1, "accountantCode": "A05211204270035", "machineLocationName": "AH2-LCD", "machineLocationID": 10, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "AKBEND AHS-40\/32-40", "providerID": 2, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 16, "machineName": "Máy uốn thép hình APK 360 hãng Akypak Thổ Nhĩ Kỳ-Growell", "assetGroupName": "Máy lốc, uốn, gấp mép, xoay ống", "assetGroupID": 5, "machineAssetCode": "B21400005", "machineGroupName": "GCN", "machineGroupID": 1, "accountantCode": "A04211204270050", "machineLocationName": "AH1-Tổ Tiện-LDE", "machineLocationID": 5, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "APK-360", "providerID": 2, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 1, "workshopName": "AH1", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 17, "machineName": "Máy gá xoay bàn", "assetGroupName": "Máy ráp dầm, H\/I-Đính, Gá, Lật, VC dầm", "assetGroupID": 6, "machineAssetCode": "B21600003", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01211206270224", "machineLocationName": "AH2-L BC", "machineLocationID": 7, "baseUnitName": "Cái", "baseUnitID": 2, "model": "HB-50", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 18, "machineName": "Máy gá xoay bàn", "assetGroupName": "Máy ráp dầm, H\/I-Đính, Gá, Lật, VC dầm", "assetGroupID": 6, "machineAssetCode": "B21600004", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01211206270225", "machineLocationName": "AH2-Tổ HÀN Thô -LBC", "machineLocationID": 15, "baseUnitName": "Cái", "baseUnitID": 2, "model": "HB-50", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 19, "machineName": "Máy gá hộp dạng cổng XXZ15", "assetGroupName": "Máy ráp dầm, H\/I-Đính, Gá, Lật, VC dầm", "assetGroupID": 6, "machineAssetCode": "B21600009", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "", "machineLocationName": "AH2-Tổ HÀN Thô -LBC", "machineLocationID": 15, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XXZ15", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 20, "machineName": "Máy đính gá dầm H tự động", "assetGroupName": "Máy ráp dầm, H\/I-Đính, Gá, Lật, VC dầm", "assetGroupID": 6, "machineAssetCode": "B21600010", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01211204270108", "machineLocationName": "AH2-Tổ Ráp Thô 1-L AB", "machineLocationID": 17, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "BZJ-2000 Plus", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 21, "machineName": "Máy gá dầm XJZ 15", "assetGroupName": "Máy ráp dầm, H\/I-Đính, Gá, Lật, VC dầm", "assetGroupID": 6, "machineAssetCode": "B21600011", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270051", "machineLocationName": "AH2-Tổ Hàn Thô -L BC", "machineLocationID": 14, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XJZ 15", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 22, "machineName": "Thiết bị lật dầm XF15 - Số 01", "assetGroupName": "Máy ráp dầm, H\/I-Đính, Gá, Lật, VC dầm", "assetGroupID": 6, "machineAssetCode": "B21600012", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270051", "machineLocationName": "AH2-LBC", "machineLocationID": 9, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XF 15", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 23, "machineName": "Thiết bị lật dầm XF15 - Số 02", "assetGroupName": "Máy ráp dầm, H\/I-Đính, Gá, Lật, VC dầm", "assetGroupID": 6, "machineAssetCode": "B21600013", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270051", "machineLocationName": "AH2-LBC", "machineLocationID": 9, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XF 15", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 24, "machineName": "Thiết bị lật dầm XF15 - Số 03", "assetGroupName": "Máy ráp dầm, H\/I-Đính, Gá, Lật, VC dầm", "assetGroupID": 6, "machineAssetCode": "B21600014", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270051", "machineLocationName": "AH2-LBC", "machineLocationID": 9, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XF 15", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 25, "machineName": "Thiết bị lật dầm XF15 - Số 04", "assetGroupName": "Máy ráp dầm, H\/I-Đính, Gá, Lật, VC dầm", "assetGroupID": 6, "machineAssetCode": "B21600015", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270051", "machineLocationName": "AH2-LBC", "machineLocationID": 9, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XF 15", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 26, "machineName": "Máy ráp dầm Zhouxiang - Ngang", "assetGroupName": "Máy ráp dầm, H\/I-Đính, Gá, Lật, VC dầm", "assetGroupID": 6, "machineAssetCode": "B21600018", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01211204270193", "machineLocationName": "AH3-LBC", "machineLocationID": 18, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "HZJ-2000", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 3, "workshopName": "AH3", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 27, "machineName": "Máy nắn thẳng cánh dầm hạng nặng", "assetGroupName": "Máy nắn thẳng", "assetGroupID": 7, "machineAssetCode": "B21700010", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01211204270189", "machineLocationName": "AH3-LBC", "machineLocationID": 18, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "YJZ 80B", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 3, "workshopName": "AH3", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 28, "machineName": "Máy nắn thẳng cánh dầm hạng nặng", "assetGroupName": "Máy nắn thẳng", "assetGroupID": 7, "machineAssetCode": "B21700003", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01211204270190", "machineLocationName": "AH2-LAB", "machineLocationID": 8, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "YJZ 80B", "providerID": 5, "firstUseDate": "2019-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 29, "machineName": "Máy vát mép 2 đầu", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22000008", "machineGroupName": "GCN", "machineGroupID": 1, "accountantCode": "A01211204270179", "machineLocationName": "AH2", "machineLocationID": 6, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XBJ-12", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 30, "machineName": "Máy hàn cổng hạng nặng", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22400183", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212205270002", "machineLocationName": "AH2-Tổ HT-BC", "machineLocationID": 12, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "BTMZ 1800-S3", "providerID": 5, "firstUseDate": "2019-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 31, "machineName": "Máy hàn cổng hạng nặng", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22401593", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270079", "machineLocationName": "AH2-Tổ HT-BC", "machineLocationID": 12, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "BTMZ 1800TP-A2", "providerID": 5, "firstUseDate": "2023-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 32, "machineName": "Hệ thống hàng Robot", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22400184", "machineGroupName": "ROBOT", "machineGroupID": 5, "accountantCode": "A01211204270192", "machineLocationName": "AH2-Tổ HT-BC", "machineLocationID": 12, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "IRB4600-20\/2.5 ABB", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 33, "machineName": "Máy hàn dầm cột, hàn nối ống", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22400185", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01211204270198", "machineLocationName": "AH2-Tổ HT-LBC", "machineLocationID": 13, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "CZM 8x6", "providerID": 5, "firstUseDate": "2019-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 34, "machineName": "Máy hàn dầm cột, hàn nối ống", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22401010", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "", "machineLocationName": "AH2-Tổ HT-LBC", "machineLocationID": 13, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "CMZ 4X7", "providerID": 5, "firstUseDate": "2019-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 35, "machineName": "Máy hàn cổng hạng nặng", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22400222", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01211204270203", "machineLocationName": "AH3-Tổ hàn thô-LB", "machineLocationID": 20, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "BTMZ 1800-S3", "providerID": 5, "firstUseDate": "2019-01-01T00:00:00", "workshopID": 3, "workshopName": "AH3", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 36, "machineName": "Máy hàn cổng thông minh", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22400221", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270049", "machineLocationName": "AH3-Tổ RT+HT-LBC", "machineLocationID": 21, "baseUnitName": "Cái", "baseUnitID": 2, "model": "HN0620-S1", "providerID": 5, "firstUseDate": "2019-01-01T00:00:00", "workshopID": 3, "workshopName": "AH3", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 37, "machineName": "Máy hàn dầm cột, hàn nối ống", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22401010", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01211204270200", "machineLocationName": "AH3-Tổ Hàn HT", "machineLocationID": 19, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "CZM-4x7", "providerID": 5, "firstUseDate": "2019-01-01T00:00:00", "workshopID": 3, "workshopName": "AH3", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 38, "machineName": "Máy hàn CO2 dạng cổng", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22400186", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270051", "machineLocationName": "AH2-Tổ HT-LBC", "machineLocationID": 13, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XQHB-15", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 39, "machineName": "Máy hàn CO2 dạng cổng", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22400187", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270051", "machineLocationName": "AH2-Tổ HT-LBC", "machineLocationID": 13, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XQHB-15", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 40, "machineName": "Máy hàn điện xỉ dạng cổng", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22400188", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270051", "machineLocationName": "AH2-Tổ HT-LBC", "machineLocationID": 13, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XZHB-15", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 41, "machineName": "Máy hàn điện xỉ dạng cổng", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22400189", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270051", "machineLocationName": "AH2-Tổ HT-LBC", "machineLocationID": 13, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XZHB-15", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 42, "machineName": "Máy hàn hồ quang chìm dạng cổng", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22400190", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270051", "machineLocationName": "AH2-Tổ HT-LBC", "machineLocationID": 13, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XMHB 15", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 43, "machineName": "Máy hàn hồ quang chìm dạng cổng", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22400191", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270051", "machineLocationName": "AH2-Tổ HT-LBC", "machineLocationID": 13, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XMHB 15", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }];
-        
-        // Lay gia tri loc tren url
-        var machineGroupID = @ViewData["machineGroupID"];
-        var workshopID = @ViewData["workshopID"];
-        var machineAssetGroupID = @ViewData["machineAssetGroupID"];
-        var machineLocationID = @ViewData["machineLocationID"];
-        // Neu form da duoc select thi loc theo gia tri select
-        var a = $('#machineGroup').val();
-        var b = $('#machineWorkshop').val();
-        var c = $('#machineAssetGroup').val();
-        var d = $('#machineLocation').val();
-        if (a > 0) machineGroupID = parseInt(a);
-        if (b > 0) workshopID = parseInt(b);
-        if (c > 0) machineAssetGroupID = parseInt(c);
-        if (d > 0) machineLocationID = parseInt(d);
+        // debugger;
+        // var result = [{ "iD": 1, "machineName": "Máy cắt CNC laser Yawei", "assetGroupName": "Máy cắt", "assetGroupID": 1, "machineAssetCode": "B20500006", "machineGroupName": "LASER", "machineGroupID": 3, "accountantCode": "A01212203270048", "machineLocationName": "AH1-Tổ Cắt -LAB", "machineLocationID": 2, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "HLF-24240", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 1, "workshopName": "AH1", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 2, "machineName": "Máy khoan, cắt CNC Plasma Akyapak", "assetGroupName": "Máy cắt", "assetGroupID": 1, "machineAssetCode": "B20500007", "machineGroupName": "PLASMA", "machineGroupID": 4, "accountantCode": "A04211204270048", "machineLocationName": "AH1-Tổ Cắt -LAB", "machineLocationID": 2, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "ADOP3000*12000", "providerID": 3, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 1, "workshopName": "AH1", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 3, "machineName": "Máy cắt Plasma XPR3000", "assetGroupName": "Máy cắt", "assetGroupID": 1, "machineAssetCode": "B20500009", "machineGroupName": "PLASMA", "machineGroupID": 4, "accountantCode": "A01212203270045", "machineLocationName": "AH1-Tổ Cắt -LCD", "machineLocationID": 3, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "TDCIV6000x28000-PF", "providerID": 3, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 1, "workshopName": "AH1", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 4, "machineName": "Máy cắt CNC Plasma AMG", "assetGroupName": "Máy cắt", "assetGroupID": 1, "machineAssetCode": "B20500011", "machineGroupName": "PLASMA", "machineGroupID": 4, "accountantCode": "A01211204270201", "machineLocationName": "AH1-Tổ Cắt -LAB", "machineLocationID": 2, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "FSC3000D", "providerID": 4, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 1, "workshopName": "AH1", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 5, "machineName": "Máy cắt thủy lực 12M YSD", "assetGroupName": "Máy cắt", "assetGroupID": 1, "machineAssetCode": "B20500013", "machineGroupName": "PLASMA", "machineGroupID": 4, "accountantCode": "A01211204270033", "machineLocationName": "AH1-Tổ Cắt BM-LBC", "machineLocationID": 4, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "HGSK 120\/20", "providerID": 6, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 1, "workshopName": "AH1", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 6, "machineName": "Máy cắt đầu dầm Roboti", "assetGroupName": "Máy cắt", "assetGroupID": 1, "machineAssetCode": "B20500019", "machineGroupName": "ROBOT", "machineGroupID": 5, "accountantCode": "A01211204270194", "machineLocationName": "AH1-Tổ Cắt BM-LBC", "machineLocationID": 4, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "PKG 100\/50", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 1, "workshopName": "AH1", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 7, "machineName": "Máy cắt CNC Plasma FSC 5000D x 18M", "assetGroupName": "Máy cắt", "assetGroupID": 1, "machineAssetCode": "B20500103", "machineGroupName": "PLASMA", "machineGroupID": 4, "accountantCode": "A01212203270066", "machineLocationName": "AH1", "machineLocationID": 1, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "FSC 5000D x 18M", "providerID": 5, "firstUseDate": "2022-01-01T00:00:00", "workshopID": 1, "workshopName": "AH1", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 8, "machineName": "Máy chấn YSD 12M", "assetGroupName": "Máy cắt", "assetGroupID": 1, "machineAssetCode": "B20600008", "machineGroupName": "GCN", "machineGroupID": 1, "accountantCode": "A01212203270040", "machineLocationName": "AH2-LCD", "machineLocationID": 10, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "YSD 12M", "providerID": 6, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 9, "machineName": "Máy cưa vòng Kruman 1000", "assetGroupName": "Máy cưa", "assetGroupID": 2, "machineAssetCode": "B20800013", "machineGroupName": "GCN", "machineGroupID": 1, "accountantCode": "A01211204270176", "machineLocationName": "AH2-T.CK-LBC", "machineLocationID": 11, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "KH-1000H", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 10, "machineName": "Máy khoan đầu dầm CNC", "assetGroupName": "Máy khoan", "assetGroupID": 3, "machineAssetCode": "B21100006", "machineGroupName": "GCN", "machineGroupID": 1, "accountantCode": "A01212203270046", "machineLocationName": "AH2-LAB", "machineLocationID": 8, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "BHD1206A\/3", "providerID": 1, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 11, "machineName": "Máy khoan bản mã tốc độ cao", "assetGroupName": "Máy khoan", "assetGroupID": 3, "machineAssetCode": "B21100241", "machineGroupName": "GCN", "machineGroupID": 1, "accountantCode": "A01212203270080", "machineLocationName": "AH1", "machineLocationID": 1, "baseUnitName": "Cái", "baseUnitID": 2, "model": "CNC-FIN", "providerID": 1, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 1, "workshopName": "AH1", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 12, "machineName": "Máy phay đầu dầm", "assetGroupName": "Máy phay", "assetGroupID": 4, "machineAssetCode": "B21200008", "machineGroupName": "GCN", "machineGroupID": 1, "accountantCode": "A01211204270181", "machineLocationName": "AH1-Tổ Tiện-LDE", "machineLocationID": 5, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "BXD 6080", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 1, "workshopName": "AH1", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 13, "machineName": "Máy phay đầu dầm", "assetGroupName": "Máy phay", "assetGroupID": 4, "machineAssetCode": "B21200009", "machineGroupName": "GCN", "machineGroupID": 1, "accountantCode": "A01211204270180", "machineLocationName": "AH2-LCD", "machineLocationID": 10, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "BXD 2020", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 14, "machineName": "Máy phay đầu dầm", "assetGroupName": "Máy phay", "assetGroupID": 4, "machineAssetCode": "B21200010", "machineGroupName": "GCN", "machineGroupID": 1, "accountantCode": "A01211204270196", "machineLocationName": "AH2-LBC", "machineLocationID": 9, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "BXD 2020", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 15, "machineName": "Máy lốc tôn 4 trục Akbend", "assetGroupName": "Máy lốc, uốn, gấp mép, xoay ống", "assetGroupID": 5, "machineAssetCode": "B21400006", "machineGroupName": "GCN", "machineGroupID": 1, "accountantCode": "A05211204270035", "machineLocationName": "AH2-LCD", "machineLocationID": 10, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "AKBEND AHS-40\/32-40", "providerID": 2, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 16, "machineName": "Máy uốn thép hình APK 360 hãng Akypak Thổ Nhĩ Kỳ-Growell", "assetGroupName": "Máy lốc, uốn, gấp mép, xoay ống", "assetGroupID": 5, "machineAssetCode": "B21400005", "machineGroupName": "GCN", "machineGroupID": 1, "accountantCode": "A04211204270050", "machineLocationName": "AH1-Tổ Tiện-LDE", "machineLocationID": 5, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "APK-360", "providerID": 2, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 1, "workshopName": "AH1", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 17, "machineName": "Máy gá xoay bàn", "assetGroupName": "Máy ráp dầm, H\/I-Đính, Gá, Lật, VC dầm", "assetGroupID": 6, "machineAssetCode": "B21600003", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01211206270224", "machineLocationName": "AH2-L BC", "machineLocationID": 7, "baseUnitName": "Cái", "baseUnitID": 2, "model": "HB-50", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 18, "machineName": "Máy gá xoay bàn", "assetGroupName": "Máy ráp dầm, H\/I-Đính, Gá, Lật, VC dầm", "assetGroupID": 6, "machineAssetCode": "B21600004", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01211206270225", "machineLocationName": "AH2-Tổ HÀN Thô -LBC", "machineLocationID": 15, "baseUnitName": "Cái", "baseUnitID": 2, "model": "HB-50", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 19, "machineName": "Máy gá hộp dạng cổng XXZ15", "assetGroupName": "Máy ráp dầm, H\/I-Đính, Gá, Lật, VC dầm", "assetGroupID": 6, "machineAssetCode": "B21600009", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "", "machineLocationName": "AH2-Tổ HÀN Thô -LBC", "machineLocationID": 15, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XXZ15", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 20, "machineName": "Máy đính gá dầm H tự động", "assetGroupName": "Máy ráp dầm, H\/I-Đính, Gá, Lật, VC dầm", "assetGroupID": 6, "machineAssetCode": "B21600010", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01211204270108", "machineLocationName": "AH2-Tổ Ráp Thô 1-L AB", "machineLocationID": 17, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "BZJ-2000 Plus", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 21, "machineName": "Máy gá dầm XJZ 15", "assetGroupName": "Máy ráp dầm, H\/I-Đính, Gá, Lật, VC dầm", "assetGroupID": 6, "machineAssetCode": "B21600011", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270051", "machineLocationName": "AH2-Tổ Hàn Thô -L BC", "machineLocationID": 14, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XJZ 15", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 22, "machineName": "Thiết bị lật dầm XF15 - Số 01", "assetGroupName": "Máy ráp dầm, H\/I-Đính, Gá, Lật, VC dầm", "assetGroupID": 6, "machineAssetCode": "B21600012", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270051", "machineLocationName": "AH2-LBC", "machineLocationID": 9, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XF 15", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 23, "machineName": "Thiết bị lật dầm XF15 - Số 02", "assetGroupName": "Máy ráp dầm, H\/I-Đính, Gá, Lật, VC dầm", "assetGroupID": 6, "machineAssetCode": "B21600013", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270051", "machineLocationName": "AH2-LBC", "machineLocationID": 9, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XF 15", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 24, "machineName": "Thiết bị lật dầm XF15 - Số 03", "assetGroupName": "Máy ráp dầm, H\/I-Đính, Gá, Lật, VC dầm", "assetGroupID": 6, "machineAssetCode": "B21600014", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270051", "machineLocationName": "AH2-LBC", "machineLocationID": 9, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XF 15", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 25, "machineName": "Thiết bị lật dầm XF15 - Số 04", "assetGroupName": "Máy ráp dầm, H\/I-Đính, Gá, Lật, VC dầm", "assetGroupID": 6, "machineAssetCode": "B21600015", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270051", "machineLocationName": "AH2-LBC", "machineLocationID": 9, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XF 15", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 26, "machineName": "Máy ráp dầm Zhouxiang - Ngang", "assetGroupName": "Máy ráp dầm, H\/I-Đính, Gá, Lật, VC dầm", "assetGroupID": 6, "machineAssetCode": "B21600018", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01211204270193", "machineLocationName": "AH3-LBC", "machineLocationID": 18, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "HZJ-2000", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 3, "workshopName": "AH3", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 27, "machineName": "Máy nắn thẳng cánh dầm hạng nặng", "assetGroupName": "Máy nắn thẳng", "assetGroupID": 7, "machineAssetCode": "B21700010", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01211204270189", "machineLocationName": "AH3-LBC", "machineLocationID": 18, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "YJZ 80B", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 3, "workshopName": "AH3", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 28, "machineName": "Máy nắn thẳng cánh dầm hạng nặng", "assetGroupName": "Máy nắn thẳng", "assetGroupID": 7, "machineAssetCode": "B21700003", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01211204270190", "machineLocationName": "AH2-LAB", "machineLocationID": 8, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "YJZ 80B", "providerID": 5, "firstUseDate": "2019-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 29, "machineName": "Máy vát mép 2 đầu", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22000008", "machineGroupName": "GCN", "machineGroupID": 1, "accountantCode": "A01211204270179", "machineLocationName": "AH2", "machineLocationID": 6, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XBJ-12", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 30, "machineName": "Máy hàn cổng hạng nặng", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22400183", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212205270002", "machineLocationName": "AH2-Tổ HT-BC", "machineLocationID": 12, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "BTMZ 1800-S3", "providerID": 5, "firstUseDate": "2019-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 31, "machineName": "Máy hàn cổng hạng nặng", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22401593", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270079", "machineLocationName": "AH2-Tổ HT-BC", "machineLocationID": 12, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "BTMZ 1800TP-A2", "providerID": 5, "firstUseDate": "2023-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 32, "machineName": "Hệ thống hàng Robot", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22400184", "machineGroupName": "ROBOT", "machineGroupID": 5, "accountantCode": "A01211204270192", "machineLocationName": "AH2-Tổ HT-BC", "machineLocationID": 12, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "IRB4600-20\/2.5 ABB", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 33, "machineName": "Máy hàn dầm cột, hàn nối ống", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22400185", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01211204270198", "machineLocationName": "AH2-Tổ HT-LBC", "machineLocationID": 13, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "CZM 8x6", "providerID": 5, "firstUseDate": "2019-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 34, "machineName": "Máy hàn dầm cột, hàn nối ống", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22401010", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "", "machineLocationName": "AH2-Tổ HT-LBC", "machineLocationID": 13, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "CMZ 4X7", "providerID": 5, "firstUseDate": "2019-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 35, "machineName": "Máy hàn cổng hạng nặng", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22400222", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01211204270203", "machineLocationName": "AH3-Tổ hàn thô-LB", "machineLocationID": 20, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "BTMZ 1800-S3", "providerID": 5, "firstUseDate": "2019-01-01T00:00:00", "workshopID": 3, "workshopName": "AH3", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 36, "machineName": "Máy hàn cổng thông minh", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22400221", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270049", "machineLocationName": "AH3-Tổ RT+HT-LBC", "machineLocationID": 21, "baseUnitName": "Cái", "baseUnitID": 2, "model": "HN0620-S1", "providerID": 5, "firstUseDate": "2019-01-01T00:00:00", "workshopID": 3, "workshopName": "AH3", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 37, "machineName": "Máy hàn dầm cột, hàn nối ống", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22401010", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01211204270200", "machineLocationName": "AH3-Tổ Hàn HT", "machineLocationID": 19, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "CZM-4x7", "providerID": 5, "firstUseDate": "2019-01-01T00:00:00", "workshopID": 3, "workshopName": "AH3", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 38, "machineName": "Máy hàn CO2 dạng cổng", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22400186", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270051", "machineLocationName": "AH2-Tổ HT-LBC", "machineLocationID": 13, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XQHB-15", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 39, "machineName": "Máy hàn CO2 dạng cổng", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22400187", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270051", "machineLocationName": "AH2-Tổ HT-LBC", "machineLocationID": 13, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XQHB-15", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 40, "machineName": "Máy hàn điện xỉ dạng cổng", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22400188", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270051", "machineLocationName": "AH2-Tổ HT-LBC", "machineLocationID": 13, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XZHB-15", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 41, "machineName": "Máy hàn điện xỉ dạng cổng", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22400189", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270051", "machineLocationName": "AH2-Tổ HT-LBC", "machineLocationID": 13, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XZHB-15", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 42, "machineName": "Máy hàn hồ quang chìm dạng cổng", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22400190", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270051", "machineLocationName": "AH2-Tổ HT-LBC", "machineLocationID": 13, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XMHB 15", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }, { "iD": 43, "machineName": "Máy hàn hồ quang chìm dạng cổng", "assetGroupName": "Máy hàn cổng", "assetGroupID": 8, "machineAssetCode": "B22400191", "machineGroupName": "DCTH", "machineGroupID": 2, "accountantCode": "A01212203270051", "machineLocationName": "AH2-Tổ HT-LBC", "machineLocationID": 13, "baseUnitName": "Bộ", "baseUnitID": 1, "model": "XMHB 15", "providerID": 5, "firstUseDate": "2018-01-01T00:00:00", "workshopID": 2, "workshopName": "AH2", "factoryID": 1, "factoryName": "An Hạ" }];
+        $.ajax({
+            url: '@Url.Action("GetListMachine", "MachineManagement")',
+            method: "GET",
+            dataType: "json",
+            async: true,
+            beforeSend: function () { },
+            success: function (result) {
+                if (result) {
 
 
-        debugger;
-        // Lọc theo điều kiện url
-        if (machineGroupID > 0) {
-            result = result.filter((d) => d.machineGroupID === machineGroupID);
-        }
-        if (workshopID > 0) {
-            result = result.filter((d) => d.workshopID === workshopID);
-        }
-        if (machineAssetGroupID > 0) {
-            result = result.filter((d) => d.machineAssetGroupID === machineAssetGroupID);
-        }
-        if (machineLocationID > 0) {
-            result = result.filter((d) => d.machineLocationID === machineLocationID);
-        }
-        
-        
-        // filter: -----------------------------
-        var _keyword = $('#txtKeyword').val().toLocaleLowerCase().trim();
-        if(_keyword){
-            for (var i = result.length - 1; i >= 0; i--) {
-                var strVal = '';
-                Object.entries(result[i]).forEach(([key, value]) => {
-                    strVal = strVal + (';' + value?.toString().toLocaleLowerCase());
-                });
+                    // Lay gia tri loc tren url
+                    var machineGroupID = @ViewData["machineGroupID"];
+                    var workshopID = @ViewData["workshopID"];
+                    var machineAssetGroupID = @ViewData["machineAssetGroupID"];
+                    var machineLocationID = @ViewData["machineLocationID"];
+                    // Neu form da duoc select thi loc theo gia tri select
+                    var a = $('#machineGroup').val();
+                    var b = $('#machineWorkshop').val();
+                    var c = $('#machineAssetGroup').val();
+                    var d = $('#machineLocation').val();
+                    if (a > 0) machineGroupID = parseInt(a);
+                    if (b > 0) workshopID = parseInt(b);
+                    if (c > 0) machineAssetGroupID = parseInt(c);
+                    if (d > 0) machineLocationID = parseInt(d);
 
-                if (strVal.indexOf(_keyword) < 0) {
-                    result.splice(i, 1);
+
+                    // debugger;
+                    // Lọc theo điều kiện url
+                    if (machineGroupID > 0) {
+                        result = result.filter((d) => d.machineGroupID === machineGroupID);
+                    }
+                    if (workshopID > 0) {
+                        result = result.filter((d) => d.workshopID === workshopID);
+                    }
+                    if (machineAssetGroupID > 0) {
+                        result = result.filter((d) => d.assetGroupID === machineAssetGroupID);
+                    }
+                    if (machineLocationID > 0) {
+                        result = result.filter((d) => d.machineLocationID === machineLocationID);
+                    }
+
+
+                    // filter: -----------------------------
+                    var _keyword = $('#txtKeyword').val().toLocaleLowerCase().trim();
+                    if (_keyword) {
+                        for (var i = result.length - 1; i >= 0; i--) {
+                            var strVal = '';
+                            Object.entries(result[i]).forEach(([key, value]) => {
+                                strVal = strVal + (';' + value?.toString().toLocaleLowerCase());
+                            });
+
+                            if (strVal.indexOf(_keyword) < 0) {
+                                result.splice(i, 1);
+                            }
+                        }
+                    }
+                    // --------------------------------------
+
+                    $("#gridListMachine").bootstrapTable({
+                        data: result,
+                        formatLoadingMessage: function () {
+                            return '<b>Loading ...</b>';
+                        }
+                    });
+
+                    $('#gridListMachine').bootstrapTable('load', result);
                 }
-            }
-        }
-        // --------------------------------------
-        
-        $("#gridListMachine").bootstrapTable({
-            data: result,
-            formatLoadingMessage: function () {
-                return '<b>Loading ...</b>';
+            },
+            error: function (err) {
+                console.log(err);
             }
         });
-
-        $('#gridListMachine').bootstrapTable('load', result);
     }
 
     function expanLinkMachineDetail(value, row, index) {
-        var _model = '{machineID:' + row.iD + ',machineLocationID:' + row.machineLocationID + ', formType:1}';
-        
+        // debugger;
+        var _model = '{machineID:' + row.machineID + ',machineLocationID:' + row.machineLocationID + ', formType:1}';
+
         var _temp = '@Url.Action("MachineDetail", "MachineManagement")?stringData=' + _model;
-        var _link = '<a href="' + _temp + '">' + row.machineName + '</a>';
+        var _link = '<a title="Chi tiết máy" href="' + _temp + '">' + row.machineName + '</a>';
 
         return _link;
     }

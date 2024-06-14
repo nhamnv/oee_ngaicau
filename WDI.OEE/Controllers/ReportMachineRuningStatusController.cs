@@ -34,7 +34,7 @@ namespace WDI.OEE.Controllers
 
             #region // Dropdown Time range
             //var listTimeRange = new List<SelectListItem>();
-            //listTimeRange.Add(new SelectListItem() { Text = "Tất cả", Value = "All", Selected = true });
+            //listTimeRange.Add(new SelectListItem() { Text = "-- Tất cả --", Value = "All", Selected = true });
 
             //listTimeRange.AddRange(
             //    StaticData.TimeRange.Select(t => new SelectListItem()
@@ -50,7 +50,7 @@ namespace WDI.OEE.Controllers
 
             #region Dropdown MachineGroup
             var listMachineGroup = new List<SelectListItem>();
-            listMachineGroup.Add(new SelectListItem() { Text = "Tất cả", Value = "All", Selected = true });
+            listMachineGroup.Add(new SelectListItem() { Text = "-- Tất cả --", Value = "All", Selected = true });
 
             listMachineGroup.AddRange(
                 StaticData.Data_MachineGroup.AsEnumerable().Select(t => new SelectListItem()
@@ -64,19 +64,35 @@ namespace WDI.OEE.Controllers
 
             #endregion
 
-            #region Dropdown Machine Location
-            var listLocation = new List<SelectListItem>();
+            //#region Dropdown Machine Location
+            //var listLocation = new List<SelectListItem>();
 
-            listLocation.Add(new SelectListItem() { Text = "Tất cả", Value = "All", Selected = true });
-            listLocation.AddRange(
-                StaticData.Data_MachineLocation.AsEnumerable().Select(t => new SelectListItem()
+            //listLocation.Add(new SelectListItem() { Text = "-- Tất cả --", Value = "All", Selected = true });
+            //listLocation.AddRange(
+            //    StaticData.Data_MachineLocation.AsEnumerable().Select(t => new SelectListItem()
+            //    {
+            //        Value = t.LocationID.ToString(),
+            //        Text = t.LocationName
+            //    })
+            //    );
+
+            //ViewData["ListMachineLocation"] = listLocation;
+
+            //#endregion
+
+            #region Dropdown AssetGroup
+            var listAssetGroup = new List<SelectListItem>();
+            listAssetGroup.Add(new SelectListItem() { Text = "-- Tất cả --", Value = "All", Selected = true });
+
+            listAssetGroup.AddRange(
+                StaticData.Data_AssetGroup.AsEnumerable().Select(t => new SelectListItem()
                 {
-                    Value = t.LocationID.ToString(),
-                    Text = t.LocationName
-                })
-                );
+                    Text = t.AssetGroupName,
+                    Value = t.AssetGroupID.ToString()
+                }
+             ));
 
-            ViewData["ListMachineLocation"] = listLocation;
+            ViewData["ListAssetGroup"] = listAssetGroup;
 
             #endregion
 
@@ -84,12 +100,12 @@ namespace WDI.OEE.Controllers
             DateTime endDate = DateTime.Now;
             DateTime startDate = endDate.AddHours(-24);
 
-            List<MachineRuningStatusViewModel> model = _reportMachineRuningStatusService.GetReportMachineRuningStatus(startDate, endDate, "all", "all");
+            List<MachineRuningStatusViewModel> model = _reportMachineRuningStatusService.GetReportMachineRuningStatus(startDate, endDate, "all", "all", "all");
 
 
             return View(model);
         }
-        public JsonResult FilterData(string MachineGroupID, string MachineLocationID)
+        public JsonResult FilterData(string machineGroupID, string machineLocationID, string machineAssetGroupID)
         {
             try
             {
@@ -97,7 +113,7 @@ namespace WDI.OEE.Controllers
                 DateTime endDate = DateTime.Now;
                 DateTime startDate = endDate.AddHours(-24);
 
-                List<MachineRuningStatusViewModel> model = _reportMachineRuningStatusService.GetReportMachineRuningStatus(startDate, endDate, MachineGroupID, MachineLocationID);
+                List<MachineRuningStatusViewModel> model = _reportMachineRuningStatusService.GetReportMachineRuningStatus(startDate, endDate, machineGroupID, machineLocationID, machineAssetGroupID);
 
                 string machineHTML = "";
 
@@ -123,12 +139,12 @@ namespace WDI.OEE.Controllers
 
             #region Dropdown danh sách máy
             var listTimeRange = new List<SelectListItem>();
-            //listTimeRange.Add(new SelectListItem() { Text = "Tất cả", Value = "All", Selected = true });
+            //listTimeRange.Add(new SelectListItem() { Text = "-- Tất cả --", Value = "All", Selected = true });
 
             listTimeRange.AddRange(
                 StaticData.Data_Machine.Select(t => new SelectListItem()
                 {
-                    Text = t.MachineName,
+                    Text = t.MachineName + " (" + t.Model + ")",
                     Value = t.MachineID.ToString()
                 })
               );
@@ -139,7 +155,7 @@ namespace WDI.OEE.Controllers
 
             #region Dropdown MachineGroup
             var listMachineGroup = new List<SelectListItem>();
-            listMachineGroup.Add(new SelectListItem() { Text = "Tất cả", Value = "All", Selected = true });
+            listMachineGroup.Add(new SelectListItem() { Text = "-- Tất cả --", Value = "All", Selected = true });
 
             listMachineGroup.AddRange(
                 StaticData.Data_MachineGroup.AsEnumerable().Select(t => new SelectListItem()
@@ -153,19 +169,35 @@ namespace WDI.OEE.Controllers
 
             #endregion
 
-            #region Dropdown Machine Location
-            var listLocation = new List<SelectListItem>();
+            //#region Dropdown Machine Location
+            //var listLocation = new List<SelectListItem>();
 
-            listLocation.Add(new SelectListItem() { Text = "Tất cả", Value = "All", Selected = true });
-            listLocation.AddRange(
-                StaticData.Data_MachineLocation.AsEnumerable().Select(t => new SelectListItem()
+            //listLocation.Add(new SelectListItem() { Text = "-- Tất cả --", Value = "All", Selected = true });
+            //listLocation.AddRange(
+            //    StaticData.Data_MachineLocation.AsEnumerable().Select(t => new SelectListItem()
+            //    {
+            //        Value = t.LocationID.ToString(),
+            //        Text = t.LocationName
+            //    })
+            //    );
+
+            //ViewData["ListMachineLocation"] = listLocation;
+
+            //#endregion
+
+            #region Dropdown AssetGroup
+            var listAssetGroup = new List<SelectListItem>();
+            listAssetGroup.Add(new SelectListItem() { Text = "-- Tất cả --", Value = "All", Selected = true });
+
+            listAssetGroup.AddRange(
+                StaticData.Data_AssetGroup.AsEnumerable().Select(t => new SelectListItem()
                 {
-                    Value = t.LocationID.ToString(),
-                    Text = t.LocationName
-                })
-                );
+                    Text = t.AssetGroupName,
+                    Value = t.AssetGroupID.ToString()
+                }
+             ));
 
-            ViewData["ListMachineLocation"] = listLocation;
+            ViewData["ListAssetGroup"] = listAssetGroup;
 
             #endregion
 
@@ -173,13 +205,13 @@ namespace WDI.OEE.Controllers
             DateTime endDate = DateTime.Now;
             DateTime startDate = endDate.AddHours(-24);
 
-            List<MachineRuningStatusViewModel> model = _reportMachineRuningStatusService.GetReportMachineRuningStatus(startDate, endDate, "all", "all");
+            List<MachineRuningStatusViewModel> model = _reportMachineRuningStatusService.GetReportMachineRuningStatus(startDate, endDate, "all", "all", "all");
 
 
             return View(model);
         }
 
-        public JsonResult FilterDataDetail(string MachineID, string MachineGroupID, string MachineLocationID)
+        public JsonResult FilterDataDetail(string MachineID, string MachineGroupID, string MachineLocationID, string MachineAssetGroupID)
         {
             try
             {
@@ -187,7 +219,7 @@ namespace WDI.OEE.Controllers
                 DateTime endDate = DateTime.Now;
                 DateTime startDate = endDate.AddHours(-24);
 
-                List<MachineRuningStatusViewModel> model = _reportMachineRuningStatusService.GetReportMachineRuningStatus(startDate, endDate, MachineGroupID, MachineLocationID, MachineID);
+                List<MachineRuningStatusViewModel> model = _reportMachineRuningStatusService.GetReportMachineRuningStatus(startDate, endDate, MachineGroupID, MachineLocationID, MachineAssetGroupID, MachineID);
 
                 string machineHTML = "";
 

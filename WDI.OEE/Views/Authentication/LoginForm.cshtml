@@ -14,7 +14,6 @@
     <meta name="keywords" content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
     <meta name="author" content="#">
     <!-- Favicon icon -->
-
     @* <link rel="icon" href="~/lib/Themes/adminty-dashboard-master/libraries/assets/images/favicon.ico" type="image/x-icon"> *@
     <link rel="icon" href="~/images/logoes/weldcom.png" type="image/x-icon">
     <!-- Google font-->
@@ -41,7 +40,7 @@
 
 
     <style>
-        .login-logo{
+        .login-logo {
             height: 60px;
             margin-left: 15px;
             margin-right: 25px;
@@ -51,7 +50,7 @@
             line-height: 35px;
         }
 
-        .label-icon{
+        .label-icon {
             margin-right: 10px;
         }
     </style>
@@ -108,7 +107,7 @@
                                 <div class="page-wrapper">
                                     <!-- Page body start -->
                                     <div class="page-body">
-                                        <div class="row">
+                                        <div class="row" style="height: calc(100vh - 100px);">
                                             <div class="col-lg-6 m-auto col-sm-12">
                                                 <!-- Login card start -->
                                                 <div class="card">
@@ -132,7 +131,19 @@
                                                             </div>
                                                         </div>
                                                         <div class="j-wrapper j-wrapper-600" style="padding: 33px 15px!important;">
+
                                                             <form action="@Url.Action("Index","Dashboard")" method="post" class="j-pro" id="j-pro" novalidate="">
+                                                                <div class="j-header" style="   background-color: inherit;
+                                                                                                -webkit-box-shadow: none;
+                                                                                                box-shadow: none;
+                                                                                                border-top: none !important;
+                                                                                                border-bottom: 1px dashed #01a9ac;
+                                                                                                background-color:white;
+                                                                                                ">
+                                                                    <div class="row text-center" style="font-size: 140%;color: #D82F24;">
+                                                                        <div class="w-100" style="margin:30px;">PHẦN MỀM QUẢN LÝ HIỆU SUẤT VÀ BẢO TRÌ THIẾT BỊ</div>
+                                                                    </div>
+                                                                </div>
                                                                 <!-- end /.header -->
                                                                 <div class="j-content">
                                                                     <!-- start login -->
@@ -161,8 +172,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <!-- end password -->
-                                                                   
-                                                                    @* <!-- start factory -->
+                                                                    <!-- start factory -->
                                                                     <div class="j-unit">
                                                                         <div class="form-group row">
                                                                             <label class="col-sm-3 col-form-label">Nhà máy</label>
@@ -171,16 +181,13 @@
                                                                                     <i class="icofont icofont-caret-down"></i>
                                                                                 </label>
                                                                                 <select id="factory" class="js-example-basic-single col-sm-12 select2-hidden-accessible" tabindex="-1" aria-hidden="true" placeholder="Nhà máy">
-                                                                                    <option value="0">Tập đoàn Đại Dũng</option>
-                                                                                    <option value="1" selected>An Hạ - Bình Chánh</option>
-                                                                                    <option value="2">Long An</option>
-                                                                                    <option value="3">Miền Trung</option>
+                                                                                    <option value="0" selected>Nhà máy Ngãi Cầu</option>
                                                                                 </select>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <!-- end factory --> *@
-                                                                    @* <!-- start xưởng -->
+                                                                    <!-- end factory -->
+                                                                    <!-- start xưởng -->
                                                                     <div class="j-unit">
                                                                         <div class="form-group row">
                                                                             <label class="col-sm-3 col-form-label">Xưởng sản xuất</label>
@@ -189,15 +196,14 @@
                                                                                     <i class="icofont icofont-caret-down"></i>
                                                                                 </label>
                                                                                 <select id="factory" class="js-example-basic-single col-sm-12 select2-hidden-accessible" tabindex="-1" aria-hidden="true" placeholder="Nhà máy">
-                                                                                    <option value="1">An Hạ 1</option>
-                                                                                    <option value="2">An Hạ 2</option>
-                                                                                    <option value="3">An Hạ 3</option>
+                                                                                    <option value="1">Xưởng NC 1</option>
+                                                                                    <option value="2">Xưởng NC 2</option>
+                                                                                    <option value="3">Xưởng NC 3</option>
                                                                                 </select>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <!-- end xưởng --> *@
-
+                                                                    <!-- end xưởng -->
                                                                     <!-- start response from server -->
                                                                     <div class="j-response"></div>
                                                                     <!-- end response from server -->
@@ -210,7 +216,7 @@
                                                                         </div>
                                                                         <div class="ml-auto mr-1">
                                                                             <button type="submit" class="btn btn-primary" style="display:none;">Đăng nhập</button>
-                                                                            <!--a class="btn btn-primary" href="@Url.Action("Index","Dashboard")">Đăng nhập</a-->
+                                                                            <!--a class="btn btn-primary" href="@Url.Action("Index", "Dashboard")">Đăng nhập</a-->
                                                                             <a class="btn btn-primary" href="@Url.Action("Statitics","MachineManagement")">Đăng nhập</a>
                                                                         </div>
                                                                     </div>
@@ -316,5 +322,9 @@
     <script src="~/lib/Themes/adminty-dashboard-master/libraries/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script type="text/javascript" src="~/lib/Themes/adminty-dashboard-master/libraries/assets/js/script.js"></script>
 </body>
-
+@* <script>
+    $(document).ready(function () {
+        $(divContent)
+    });
+</script> *@
 </html>

@@ -493,6 +493,62 @@
       "PackagePath": "staticwebassets\\images\\machines\\May_vat_mep_2_au,_model_xbj-12.jpg"
     },
     {
+      "Id": "E:\\nhamnv\\SourceCode\\WELDCOMOEE\\OEE_NgaiCau\\WDI.OEE\\wwwroot\\images\\machines\\NC_CLS2516.jpg",
+      "PackagePath": "staticwebassets\\images\\machines\\NC_CLS2516.jpg"
+    },
+    {
+      "Id": "E:\\nhamnv\\SourceCode\\WELDCOMOEE\\OEE_NgaiCau\\WDI.OEE\\wwwroot\\images\\machines\\NC_HLF2060.jpg",
+      "PackagePath": "staticwebassets\\images\\machines\\NC_HLF2060.jpg"
+    },
+    {
+      "Id": "E:\\nhamnv\\SourceCode\\WELDCOMOEE\\OEE_NgaiCau\\WDI.OEE\\wwwroot\\images\\machines\\NC_HNC3000.jpg",
+      "PackagePath": "staticwebassets\\images\\machines\\NC_HNC3000.jpg"
+    },
+    {
+      "Id": "E:\\nhamnv\\SourceCode\\WELDCOMOEE\\OEE_NgaiCau\\WDI.OEE\\wwwroot\\images\\machines\\NC_LS1500.jpg",
+      "PackagePath": "staticwebassets\\images\\machines\\NC_LS1500.jpg"
+    },
+    {
+      "Id": "E:\\nhamnv\\SourceCode\\WELDCOMOEE\\OEE_NgaiCau\\WDI.OEE\\wwwroot\\images\\machines\\NC_LT6035.jpg",
+      "PackagePath": "staticwebassets\\images\\machines\\NC_LT6035.jpg"
+    },
+    {
+      "Id": "E:\\nhamnv\\SourceCode\\WELDCOMOEE\\OEE_NgaiCau\\WDI.OEE\\wwwroot\\images\\machines\\NC_Mig500_Ehave2CM.jpg",
+      "PackagePath": "staticwebassets\\images\\machines\\NC_Mig500_Ehave2CM.jpg"
+    },
+    {
+      "Id": "E:\\nhamnv\\SourceCode\\WELDCOMOEE\\OEE_NgaiCau\\WDI.OEE\\wwwroot\\images\\machines\\NC_Mig500_J8110.jpg",
+      "PackagePath": "staticwebassets\\images\\machines\\NC_Mig500_J8110.jpg"
+    },
+    {
+      "Id": "E:\\nhamnv\\SourceCode\\WELDCOMOEE\\OEE_NgaiCau\\WDI.OEE\\wwwroot\\images\\machines\\NC_QJRH41A.jpg",
+      "PackagePath": "staticwebassets\\images\\machines\\NC_QJRH41A.jpg"
+    },
+    {
+      "Id": "E:\\nhamnv\\SourceCode\\WELDCOMOEE\\OEE_NgaiCau\\WDI.OEE\\wwwroot\\images\\machines\\NC_TAPM1010.jpg",
+      "PackagePath": "staticwebassets\\images\\machines\\NC_TAPM1010.jpg"
+    },
+    {
+      "Id": "E:\\nhamnv\\SourceCode\\WELDCOMOEE\\OEE_NgaiCau\\WDI.OEE\\wwwroot\\images\\machines\\NC_TAPM1516S.jpg",
+      "PackagePath": "staticwebassets\\images\\machines\\NC_TAPM1516S.jpg"
+    },
+    {
+      "Id": "E:\\nhamnv\\SourceCode\\WELDCOMOEE\\OEE_NgaiCau\\WDI.OEE\\wwwroot\\images\\machines\\NC_TAPM2020A.jpg",
+      "PackagePath": "staticwebassets\\images\\machines\\NC_TAPM2020A.jpg"
+    },
+    {
+      "Id": "E:\\nhamnv\\SourceCode\\WELDCOMOEE\\OEE_NgaiCau\\WDI.OEE\\wwwroot\\images\\machines\\NC_TBL3635.jpg",
+      "PackagePath": "staticwebassets\\images\\machines\\NC_TBL3635.jpg"
+    },
+    {
+      "Id": "E:\\nhamnv\\SourceCode\\WELDCOMOEE\\OEE_NgaiCau\\WDI.OEE\\wwwroot\\images\\machines\\NC_TPD3016.jpg",
+      "PackagePath": "staticwebassets\\images\\machines\\NC_TPD3016.jpg"
+    },
+    {
+      "Id": "E:\\nhamnv\\SourceCode\\WELDCOMOEE\\OEE_NgaiCau\\WDI.OEE\\wwwroot\\images\\machines\\NC_TPPRD103.jpg",
+      "PackagePath": "staticwebassets\\images\\machines\\NC_TPPRD103.jpg"
+    },
+    {
       "Id": "E:\\nhamnv\\SourceCode\\WELDCOMOEE\\OEE_NgaiCau\\WDI.OEE\\wwwroot\\images\\machines\\NoImage.jpg",
       "PackagePath": "staticwebassets\\images\\machines\\NoImage.jpg"
     },
@@ -7659,6 +7715,26 @@
     {
       "Id": "E:\\nhamnv\\SourceCode\\WELDCOMOEE\\OEE_NgaiCau\\WDI.OEE\\wwwroot\\uploads\\documents\\Blank_TLKT.pdf",
       "PackagePath": "staticwebassets\\uploads\\documents\\Blank_TLKT.pdf"
+    },
+    {
+      "Id": "E:\\nhamnv\\SourceCode\\WELDCOMOEE\\OEE_NgaiCau\\WDI.OEE\\wwwroot\\uploads\\documents\\HDSD Máy HLF.docx",
+      "PackagePath": "staticwebassets\\uploads\\documents\\HDSD Máy HLF.docx"
+    },
+    {
+      "Id": "E:\\nhamnv\\SourceCode\\WELDCOMOEE\\OEE_NgaiCau\\WDI.OEE\\wwwroot\\uploads\\documents\\HDSD Máy HLF.pdf",
+      "PackagePath": "staticwebassets\\uploads\\documents\\HDSD Máy HLF.pdf"
+    },
+    {
+      "Id": "E:\\nhamnv\\SourceCode\\WELDCOMOEE\\OEE_NgaiCau\\WDI.OEE\\wwwroot\\uploads\\documents\\HDSD TubesT.pdf",
+      "PackagePath": "staticwebassets\\uploads\\documents\\HDSD TubesT.pdf"
+    },
+    {
+      "Id": "E:\\nhamnv\\SourceCode\\WELDCOMOEE\\OEE_NgaiCau\\WDI.OEE\\wwwroot\\uploads\\documents\\HƯỚNG dẫn vận hành MÁY LASER CẮT ỐNG.docx",
+      "PackagePath": "staticwebassets\\uploads\\documents\\HƯỚNG dẫn vận hành MÁY LASER CẮT ỐNG.docx"
+    },
+    {
+      "Id": "E:\\nhamnv\\SourceCode\\WELDCOMOEE\\OEE_NgaiCau\\WDI.OEE\\wwwroot\\uploads\\documents\\HƯỚNG dẫn vận hành MÁY LASER CẮT ỐNG.pdf",
+      "PackagePath": "staticwebassets\\uploads\\documents\\HƯỚNG dẫn vận hành MÁY LASER CẮT ỐNG.pdf"
     },
     {
       "Id": "E:\\nhamnv\\SourceCode\\WELDCOMOEE\\OEE_NgaiCau\\WDI.OEE\\wwwroot\\uploads\\documents\\Weldcom_blank.pdf",

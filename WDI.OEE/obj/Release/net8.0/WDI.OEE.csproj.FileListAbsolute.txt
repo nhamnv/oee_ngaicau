@@ -558,3 +558,6 @@ E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\WDI.OEE\obj\Release\net8.0\refint\WD
 E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\WDI.OEE\obj\Release\net8.0\WDI.OEE.pdb
 E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\WDI.OEE\obj\Release\net8.0\WDI.OEE.genruntimeconfig.cache
 E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\WDI.OEE\obj\Release\net8.0\ref\WDI.OEE.dll
+E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\WDI.OEE\bin\Release\net8.0\Castle.Core.dll
+E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\WDI.OEE\bin\Release\net8.0\Castle.Windsor.dll
+E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\WDI.OEE\obj\Release\net8.0\WDI.OEE.sourcelink.json

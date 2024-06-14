@@ -15,7 +15,7 @@ namespace Service.Service
         /// <returns></returns>
         public IEnumerable<dynamic> GetErrorList(string TimeRangeID, string MachineGroupID, string MachineLocationID)
         {
-            // Table structure: Ngày | Vị trí | Tên máy | Nhóm máy | Mã lỗi | Tên lỗi | Ghi chú
+            // Table structure: Ngày | Vị trí | Thiết bị | Nhóm máy | Mã lỗi | Tên lỗi | Ghi chú
 
             List<dynamic> reval = new List<dynamic>();
             List<dynamic> revalFiltered = new List<dynamic>();
@@ -163,7 +163,7 @@ namespace Service.Service
         /// <returns></returns>
         public IEnumerable<dynamic> GetErrorListByMachineID(int machineID)
         {
-            // Table structure: Ngày | Vị trí | Tên máy | Nhóm máy | Mã lỗi | Tên lỗi | Ghi chú
+            // Table structure: Ngày | Vị trí | Thiết bị | Nhóm máy | Mã lỗi | Tên lỗi | Ghi chú
 
             List<dynamic> reval = new List<dynamic>();
             List<dynamic> revalFiltered = new List<dynamic>();
@@ -215,7 +215,7 @@ namespace Service.Service
         public dynamic GetTop10ErrorList(string TimeRangeID, string MachineGroupID, string MachineLocationID)
         {
             dynamic result = "";
-            // Table structure: Ngày | Vị trí | Tên máy | Nhóm máy | Mã lỗi | Tên lỗi | Ghi chú
+            // Table structure: Ngày | Vị trí | Thiết bị | Nhóm máy | Mã lỗi | Tên lỗi | Ghi chú
 
             List<dynamic> reval = new List<dynamic>();
             List<dynamic> revalFiltered = new List<dynamic>();

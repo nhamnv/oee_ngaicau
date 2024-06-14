@@ -38,11 +38,12 @@ function getDateTime_LocalTimeString(d) {
 
 // Có date và time
 function getDateTime_LocalDateTimeString(d) {
+    var _d = d.toLocaleDateString().split('/');
     return dformat =
         [
-            d.getDate().padLeft(),
-            d.getMonth().padLeft(),
-            d.getFullYear().padLeft()
+            parseInt(_d[1]).padLeft(), // dd
+            parseInt(_d[0]).padLeft(), // mm
+            parseInt(_d[2]).padLeft() // yyyy
         ].join('-')
     + ' ' +
         [

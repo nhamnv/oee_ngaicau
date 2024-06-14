@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "fcAinVkaYCCqE4QzlZ2aH70ytOtCuOd6GhwiLJ8bIndgMUmt2xMdUXljT6DePo6zvPOtYwzwwF0oyL6lul/KTg==",
+  "dgSpecHash": "ryWTgID68lwJ95B8x5xRYV2iEUDFU58xwB6qu1UMnVWxzTX/hjz1Ow3TNjJ0yfyKZkW1p6qENRBrcE/kUWgQ4Q==",
   "success": true,
   "projectFilePath": "E:\\nhamnv\\SourceCode\\WELDCOMOEE\\OEE_NgaiCau\\WDI.OEE\\WDI.OEE.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LENOVO\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\bootstrap\\5.3.3\\bootstrap.5.3.3.nupkg.sha512",
+    "C:\\Users\\LENOVO\\.nuget\\packages\\castle.core\\5.1.0\\castle.core.5.1.0.nupkg.sha512",
+    "C:\\Users\\LENOVO\\.nuget\\packages\\castle.windsor\\6.0.0\\castle.windsor.6.0.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\humanizer.core.af\\2.14.1\\humanizer.core.af.2.14.1.nupkg.sha512",

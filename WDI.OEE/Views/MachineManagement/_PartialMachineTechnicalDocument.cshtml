@@ -7,16 +7,6 @@
     <div class="col-xl-12 col-md-12">
         <div class="card table-card">
             <div class="card-header">
-                <!--h5>Recent Tickets</h5>
-                <div-- class="card-header-right">
-                    <ul-- class="list-unstyled card-option">
-                        <li><i class="fa fa fa-wrench open-card-option"></i></li>
-                        <li><i class="fa fa-window-maximize full-card"></i></li>
-                        <li><i class="fa fa-minus minimize-card"></i></li>
-                        <li><i class="fa fa-refresh reload-card"></i></li>
-                        <li><i class="fa fa-trash close-card"></i></li>
-                    </ul>
-                </div-->
             </div>
             <div class="card-block">
                 <div class="table-responsive">
@@ -30,6 +20,38 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if (Model.MachineID == 1) // HLF2060-12KW
+                            {
+                                <tr style="cursor:pointer;" onclick="openfile('HDSD Máy HLF.pdf')">
+                                    <td><label class="label label-success">khả dụng</label></td>
+                                    <td>HDSD Máy HLF.pdf</td>
+                                    <td>Hướng dẫn vận hành</td>
+                                    <td>08/05/2024</td>
+                                </tr>
+                                @* <tr style="cursor:pointer;" onclick="openfile('HƯỚNG dẫn vận hành MÁY LASER CẮT ỐNG.pdf')">
+                                    <td><label class="label label-success">khả dụng</label></td>
+                                    <td>HƯỚNG dẫn vận hành MÁY LASER CẮT ỐNG.pdf</td>
+                                    <td>Tài liệu kỹ thuật</td>
+                                    <td>12/05/2024</td>
+                                </tr>
+                                <tr style="cursor:pointer;" onclick="openfile('HDSD TubesT.pdf')">
+                                    <td><label class="label label-success">khả dụng</label></td>
+                                    <td>HDSD TubesT.pdf</td>
+                                    <td>Hướng dẫn vận hành</td>
+                                    <td>17/01/2024</td>
+                                </tr> *@
+                            }
+                            else 
+                            {
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            }
+                        </tbody>
+                        @* <tbody>
                             <tr>
                                 <td><label class="label label-success">khả dụng</label></td>
                                 <td><a href="@(Url.Action("DownloadBlank","File")+"?fName="+Model.MachineAssetCode+"_HDVH.pdf")" title="Tải file">@(Model.MachineAssetCode + "_HDVH.pdf")</a></td>
@@ -39,7 +61,7 @@
                             <tr>
                                 <td><label class="label label-primary">đang cập nhật</label></td>
                                 <td><a href="@(Url.Action("DownloadBlank","File")+"?fName="+Model.MachineAssetCode+"_TLKT.pdf")" title="Tải file">@(Model.MachineAssetCode + "_TLKT.pdf")</a></td>
-                                <td>Tài liệu kỹ thuật</td>
+                                <td>Tài liệu kỹ thuật <a href="~/uploads/documents/blank_hdvh.pdf">~/uploads/documents/blank_hdvh.pdf</a></td>
                                 <td>12/05/2024</td>
                             </tr>
                             <tr>
@@ -54,10 +76,34 @@
                                 <td>Hướng dẫn vận hành</td>
                                 <td>17/01/2024</td>
                             </tr>
-                        </tbody>
+                        </tbody> *@
                     </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="modal_view_document" tabindex="-1" role="dialog" style="z-index: 1050; display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <iframe id="frame_document_file" src="yourpdffile.pdf" style="width:75%; height:75%;"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function openfile(filename) {
+        // $('#frame_document_file').attr('src', '/uploads/documents/' + filename);
+        // $('#modal_view_document').modal('show');
+        
+        
+        window.open("/uploads/documents/" + filename, "width=75%,height=90%,top=100,left=500");
+    }
+</script>

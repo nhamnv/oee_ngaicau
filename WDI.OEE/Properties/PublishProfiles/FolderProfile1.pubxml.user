@@ -6,7 +6,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <_PublishTargetUrl>E:\nhamnv\SourceCode\WELDCOMOEE\Release_NgaiCau</_PublishTargetUrl>
-    <History>True|2024-06-10T03:29:18.6279379Z;False|2024-06-10T10:15:15.3007552+07:00;True|2024-06-10T10:12:00.9254817+07:00;False|2024-06-10T10:09:56.4308650+07:00;True|2024-06-10T10:06:53.1682007+07:00;False|2024-06-10T10:05:13.3162956+07:00;False|2024-06-10T10:01:06.9026200+07:00;False|2024-06-10T10:00:01.5378545+07:00;True|2024-06-10T09:55:28.4055635+07:00;True|2024-06-08T12:01:49.7078702+07:00;True|2024-06-08T12:00:50.4620294+07:00;True|2024-06-07T22:13:40.6992171+07:00;True|2024-06-07T15:22:03.5095739+07:00;True|2024-06-07T15:00:43.1319869+07:00;True|2024-06-07T14:26:25.8472024+07:00;False|2024-06-07T13:36:18.8330653+07:00;True|2024-06-07T13:33:30.0880515+07:00;True|2024-06-07T13:27:38.7619533+07:00;False|2024-06-07T13:27:04.0467789+07:00;False|2024-06-07T13:26:14.3157320+07:00;False|2024-06-07T13:25:21.4505282+07:00;True|2024-06-07T13:23:47.9632143+07:00;True|2024-06-07T13:23:21.4236483+07:00;False|2024-06-07T13:22:28.3014071+07:00;True|2024-06-07T13:15:47.6675600+07:00;True|2024-06-07T12:00:08.9339129+07:00;True|2024-06-07T11:59:43.3916136+07:00;</History>
+    <History>True|2024-06-14T06:24:23.1948152Z;True|2024-06-14T13:16:17.5135349+07:00;True|2024-06-14T12:02:15.9875246+07:00;True|2024-06-14T11:43:18.1436834+07:00;True|2024-06-13T17:18:32.9171056+07:00;True|2024-06-13T17:06:14.7902892+07:00;True|2024-06-13T17:05:33.6083224+07:00;True|2024-06-13T14:56:45.5279988+07:00;True|2024-06-10T10:29:18.6279379+07:00;False|2024-06-10T10:15:15.3007552+07:00;True|2024-06-10T10:12:00.9254817+07:00;False|2024-06-10T10:09:56.4308650+07:00;True|2024-06-10T10:06:53.1682007+07:00;False|2024-06-10T10:05:13.3162956+07:00;False|2024-06-10T10:01:06.9026200+07:00;False|2024-06-10T10:00:01.5378545+07:00;True|2024-06-10T09:55:28.4055635+07:00;True|2024-06-08T12:01:49.7078702+07:00;True|2024-06-08T12:00:50.4620294+07:00;True|2024-06-07T22:13:40.6992171+07:00;True|2024-06-07T15:22:03.5095739+07:00;True|2024-06-07T15:00:43.1319869+07:00;True|2024-06-07T14:26:25.8472024+07:00;False|2024-06-07T13:36:18.8330653+07:00;True|2024-06-07T13:33:30.0880515+07:00;True|2024-06-07T13:27:38.7619533+07:00;False|2024-06-07T13:27:04.0467789+07:00;False|2024-06-07T13:26:14.3157320+07:00;False|2024-06-07T13:25:21.4505282+07:00;True|2024-06-07T13:23:47.9632143+07:00;True|2024-06-07T13:23:21.4236483+07:00;False|2024-06-07T13:22:28.3014071+07:00;True|2024-06-07T13:15:47.6675600+07:00;True|2024-06-07T12:00:08.9339129+07:00;True|2024-06-07T11:59:43.3916136+07:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -112,7 +112,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/22/2024 00:42:26</publishTime>
     </File>
     <File Include="wwwroot/css/site.css">
-      <publishTime>06/05/2024 14:44:07</publishTime>
+      <publishTime>06/12/2024 15:30:28</publishTime>
     </File>
     <File Include="wwwroot/favicon.ico">
       <publishTime>06/04/2024 16:03:41</publishTime>
@@ -252,6 +252,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="wwwroot/images/machines/B22401593.jpg">
       <publishTime>06/04/2024 16:04:03</publishTime>
     </File>
+    <File Include="wwwroot/images/machines/HNC3000.jpg">
+      <publishTime>06/13/2024 15:15:03</publishTime>
+    </File>
     <File Include="wwwroot/images/machines/Khoan_ban_ma_toc_do_cao.jpg">
       <publishTime>06/04/2024 16:03:41</publishTime>
     </File>
@@ -345,11 +348,50 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="wwwroot/images/machines/May_vat_mep_2_au,_model_xbj-12.jpg">
       <publishTime>06/04/2024 16:03:41</publishTime>
     </File>
+    <File Include="wwwroot/images/machines/NC_CLS2516.jpg">
+      <publishTime>06/13/2024 13:51:49</publishTime>
+    </File>
+    <File Include="wwwroot/images/machines/NC_HLF2060.jpg">
+      <publishTime>06/13/2024 13:51:49</publishTime>
+    </File>
+    <File Include="wwwroot/images/machines/NC_LS1500.jpg">
+      <publishTime>06/13/2024 13:51:49</publishTime>
+    </File>
+    <File Include="wwwroot/images/machines/NC_LT6035.jpg">
+      <publishTime>06/13/2024 13:51:49</publishTime>
+    </File>
+    <File Include="wwwroot/images/machines/NC_Mig500_Ehave2CM.jpg">
+      <publishTime>06/13/2024 13:51:49</publishTime>
+    </File>
+    <File Include="wwwroot/images/machines/NC_Mig500_J8110.jpg">
+      <publishTime>06/13/2024 13:51:49</publishTime>
+    </File>
+    <File Include="wwwroot/images/machines/NC_QJRH41A.jpg">
+      <publishTime>06/13/2024 13:51:49</publishTime>
+    </File>
+    <File Include="wwwroot/images/machines/NC_TAPM1010.jpg">
+      <publishTime>06/13/2024 13:51:49</publishTime>
+    </File>
+    <File Include="wwwroot/images/machines/NC_TAPM1516S.jpg">
+      <publishTime>06/13/2024 13:51:49</publishTime>
+    </File>
+    <File Include="wwwroot/images/machines/NC_TBL3635.jpg">
+      <publishTime>06/13/2024 13:51:49</publishTime>
+    </File>
+    <File Include="wwwroot/images/machines/NC_TPD3016.jpg">
+      <publishTime>06/13/2024 13:51:49</publishTime>
+    </File>
+    <File Include="wwwroot/images/machines/NC_TPPRD103.jpg">
+      <publishTime>06/13/2024 13:51:49</publishTime>
+    </File>
     <File Include="wwwroot/images/machines/NoImage.jpg">
-      <publishTime>06/04/2024 16:04:03</publishTime>
+      <publishTime>06/13/2024 13:51:49</publishTime>
     </File>
     <File Include="wwwroot/images/machines/no_image.png">
       <publishTime>06/04/2024 16:03:41</publishTime>
+    </File>
+    <File Include="wwwroot/images/machines/TAPM2020A.jpg">
+      <publishTime>06/13/2024 13:58:14</publishTime>
     </File>
     <File Include="wwwroot/images/machines/Thiet_bi_lat_dam_xf_15_-_so_01.jpg">
       <publishTime>06/04/2024 16:03:41</publishTime>
@@ -363,14 +405,17 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="wwwroot/images/machines/Thiet_bi_lat_dam_xf_15_-_so_04.jpg">
       <publishTime>06/04/2024 16:03:41</publishTime>
     </File>
+    <File Include="wwwroot/images/pages/layout2_footer.jpg">
+      <publishTime>06/07/2024 14:54:17</publishTime>
+    </File>
     <File Include="wwwroot/images/pages/layoutMay.jpg">
       <publishTime>06/06/2024 14:02:41</publishTime>
     </File>
     <File Include="wwwroot/images/pages/layoutMay_lg.jpg">
-      <publishTime>06/06/2024 14:16:30</publishTime>
+      <publishTime>06/07/2024 22:00:56</publishTime>
     </File>
     <File Include="wwwroot/images/pages/tongThau.jpg">
-      <publishTime>06/06/2024 09:18:20</publishTime>
+      <publishTime>06/07/2024 14:24:16</publishTime>
     </File>
     <File Include="wwwroot/js/bootstrap.bundle.js">
       <publishTime>02/22/2024 00:42:26</publishTime>
@@ -408,8 +453,14 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="wwwroot/js/bootstrap.min.js.map">
       <publishTime>02/22/2024 00:42:26</publishTime>
     </File>
+    <File Include="wwwroot/js/jquery.maphilight.js">
+      <publishTime>05/30/2021 22:44:52</publishTime>
+    </File>
+    <File Include="wwwroot/js/jquery.maphilight.min.js">
+      <publishTime>05/30/2021 22:44:52</publishTime>
+    </File>
     <File Include="wwwroot/js/site.js">
-      <publishTime>06/04/2024 16:04:03</publishTime>
+      <publishTime>06/07/2024 14:09:50</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css">
       <publishTime>06/04/2024 16:03:42</publishTime>

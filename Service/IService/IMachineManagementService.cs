@@ -38,5 +38,11 @@ namespace Service.IService
         /// </summary>
         /// <returns></returns>
         List<dynamic> GetMachineStatusList();
+
+        /// <summary>
+        /// Danh sách máy
+        /// </summary>
+        /// <returns></returns>
+        List<dynamic> GetListMachine();
     }
 }

@@ -26,15 +26,15 @@ namespace Repository.Repository
 
                 #region Fake data
                 l1 = new Data_Menu() { MenuID = 1, Name = "Báo cáo tổng hợp", ParentID = 0, OrderNo = 1, IsShowMenu = true, Url = "" };  // reval.Add(l1);  
-                //l1.ChildMenus.Add(new Data_Menu() { MenuID = 2, Name = "Thống kê số lượng máy", ParentID = 1, OrderNo = 2, IsShowMenu = true, Url = "/MachineManagement/Statitics" });
+                l1.ChildMenus.Add(new Data_Menu() { MenuID = 2, Name = "Thống kê số lượng máy", ParentID = 1, OrderNo = 2, IsShowMenu = true, Url = "/MachineManagement/Statitics" });
                 //l1.ChildMenus.Add(new Data_Menu() { MenuID = 3, Name = "Hiện trạng hoạt động", ParentID = 1, OrderNo = 4, IsShowMenu = true, Url = "/Dashboard/Index" });
-                l1.ChildMenus.Add(new Data_Menu() { MenuID = 5, Name = "Hiện trạng hoạt động (Layout 1)", ParentID = 1, OrderNo = 5, IsShowMenu = true, Url = "/ReportMachineRuningStatus/Layout1" });
-                l1.ChildMenus.Add(new Data_Menu() { MenuID = 5, Name = "Hiện trạng hoạt động (Layout 2)", ParentID = 1, OrderNo = 5, IsShowMenu = true, Url = "/ReportMachineRuningStatus/Layout2" });
+                //l1.ChildMenus.Add(new Data_Menu() { MenuID = 5, Name = "Hiện trạng hoạt động (Layout 1)", ParentID = 1, OrderNo = 5, IsShowMenu = true, Url = "/ReportMachineRuningStatus/Layout1" });
+                l1.ChildMenus.Add(new Data_Menu() { MenuID = 5, Name = "Hiện trạng hoạt động (Layout 2)", ParentID = 1, OrderNo = 5, IsShowMenu = true, Url = "http://nc.wdi/hien-trang-hoat-dong.html" });// "/ReportMachineRuningStatus/Layout2" });
                 l1.ChildMenus.Add(new Data_Menu() { MenuID = 5, Name = "Hiện trạng hoạt động (Layout 3)", ParentID = 1, OrderNo = 5, IsShowMenu = true, Url = "/ReportMachineRuningStatus/Layout3" });
                 l1.ChildMenus.Add(new Data_Menu() { MenuID = 5, Name = "Hiện trạng hoạt động (Layout 4)", ParentID = 1, OrderNo = 5, IsShowMenu = true, Url = "/ReportMachineRuningStatus/Layout4" });
-                //l1.ChildMenus.Add(new Data_Menu() { MenuID = 6, Name = "Thời gian hoạt động", ParentID = 1, OrderNo = 6, IsShowMenu = true, Url = "/ReportMachineRuningStatus/Index" });
-                //l1.ChildMenus.Add(new Data_Menu() { MenuID = 7, Name = "Chi tiết hoạt động", ParentID = 1, OrderNo = 7, IsShowMenu = true, Url = "/ReportMachineRuningStatus/Detail" });
-                //l1.ChildMenus.Add(new Data_Menu() { MenuID = 8, Name = "Thống kê lỗi", ParentID = 1, OrderNo = 8, IsShowMenu = true, Url = "/ReportErrorMachine/Index" });
+                l1.ChildMenus.Add(new Data_Menu() { MenuID = 6, Name = "Thời gian hoạt động", ParentID = 1, OrderNo = 6, IsShowMenu = true, Url = "/ReportMachineRuningStatus/Index" });
+                l1.ChildMenus.Add(new Data_Menu() { MenuID = 7, Name = "Chi tiết hoạt động", ParentID = 1, OrderNo = 7, IsShowMenu = true, Url = "/ReportMachineRuningStatus/Detail" });
+                l1.ChildMenus.Add(new Data_Menu() { MenuID = 8, Name = "Thống kê lỗi", ParentID = 1, OrderNo = 8, IsShowMenu = true, Url = "/ReportErrorMachine/Index" });
                 reval.Add(l1);
                 // ------------------------------------------
 
