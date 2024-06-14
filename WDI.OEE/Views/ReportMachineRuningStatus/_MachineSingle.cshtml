@@ -13,7 +13,7 @@
             <input type="hidden" name="hidden_MachineLocationID" value="@Model.MachineLocationID" />
             <input type="hidden" name="hidden_LastStatusID" value="@Model._LastStatus.StatusID" />
             <div class="row">
-                <div class="col-lg-12 col-sm-12" data-original-title="Tên máy" style="font-weight:bold;">
+                <div class="col-lg-12 col-sm-12" data-original-title="Thiết bị" style="font-weight:bold;">
                     @Model.MachineName
                 </div>
             </div>
@@ -136,6 +136,7 @@
     });
 
     function create_rangebar_timeline() {
+        // debugger;
         var data = JSON.parse('@Html.Raw(Json.Serialize(Model.SeriesTimeLine))');
 
         var series = [{ data: data }];

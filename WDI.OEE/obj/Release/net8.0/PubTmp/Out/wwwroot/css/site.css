@@ -130,8 +130,8 @@ body {
 .box-machine-info-txtwhite {
     color: #FFFFFF;
     font-size: 14px;
-    height: 240px;
-    max-height: 280px;
+    /*height: 240px;
+    max-height: 280px;*/
 }
 
 .box-machine-info-txtblack {

@@ -15,66 +15,143 @@ namespace Service.Service
             #region Fake data
 
             // Box - Số nhà xưởng
-            reval.BoxTotalWorkshop = new BoxData()
-            {
-                Title = "Số nhà xưởng",
-                Value = 3,
-                Data = new List<ChartItemViewModel>()
-            };
+            //reval.BoxTotalWorkshop = new BoxData()
+            //{
+            //    Title = "Số nhà xưởng",
+            //    Value = 3,
+            //    Data = new List<ChartItemViewModel>()
+            //};
 
-            // Box - Tổng số máy
+            #region // Box - Tổng số máy
             reval.BoxTotalMachine = new BoxData()
             {
-                Title = "Tổng số máy",
-                Value = 43,
-                Data = new List<ChartItemViewModel>()
-                {
-                    new ChartItemViewModel() {Name="AH1", Value=10, ColorCode="#FFFFFF",DataID=1},
-                    new ChartItemViewModel() {Name="AH2", Value=28, ColorCode="#FFFFFF",DataID=2},
-                    new ChartItemViewModel() {Name="AH3", Value=5, ColorCode="#FFFFFF",DataID=3}
-                }
+                Title = "Số máy theo phân loại",
+                Value = (from m in StaticData.Data_Machine
+                         select m.Quantity).Sum() //StaticData.Data_Machine.Count,
             };
+            for (int i = 0; i < StaticData.Data_AssetGroup.Count; i++)
+            {
+                var asset = StaticData.Data_AssetGroup[i];
 
-            // Box - Số máy theo nhóm
+                reval.BoxTotalMachine.Data.Add(
+                new ChartItemViewModel()
+                {
+                    DataID = asset.AssetGroupID
+                    ,
+                    Name = asset.AssetGroupName
+                    ,
+                    ColorCode = asset.ColorCode
+                    ,
+                    Value = (from m in StaticData.Data_Machine
+                             where m.AssetGroupID == asset.AssetGroupID
+                             select m.Quantity
+                             )
+                             .Sum()
+                });
+            }
+            #endregion
+
+            #region // Box - Số máy theo nhóm
             reval.BoxTotalMachineByGroup = new BoxData()
             {
                 Title = "Số máy theo nhóm",
-                Value = 43,
-                Data = new List<ChartItemViewModel>()
-                {
-                    new ChartItemViewModel() {Name="GCN", Value=10, ColorCode="#FFFFFF",DataID=1},
-                    new ChartItemViewModel() {Name="DCTH", Value=25, ColorCode="#FFFFFF",DataID=2},
-                    new ChartItemViewModel() {Name="LASER", Value=1, ColorCode="#FFFFFF",DataID=3},
-                    new ChartItemViewModel() {Name="PLASMA", Value=5, ColorCode="#FFFFFF",DataID=4},
-                    new ChartItemViewModel() {Name="ROBOT", Value=2, ColorCode="#FFFFFF",DataID=5},
-                }
+                Value = (from m in StaticData.Data_Machine
+                         select m.Quantity).Sum(),
             };
+            for (int i = 0; i < StaticData.Data_MachineGroup.Count; i++)
+            {
+                var group = StaticData.Data_MachineGroup[i];
 
-            // Pie Chart - Tỷ lệ máy theo từng xưởng
+                reval.BoxTotalMachineByGroup.Data.Add(
+                new ChartItemViewModel()
+                {
+                    DataID = group.MachineGroupID
+                    ,
+                    Name = group.MachineGroupName
+                    ,
+                    Value = (from m in StaticData.Data_Machine
+                             where m.MachineGroupID == @group.MachineGroupID
+                             select m.Quantity
+                             )
+                             .Sum()
+                });
+            }
+            #endregion
+
+
+            #region // Pie Chart - Tỷ lệ máy theo phân loại
             reval.PieChartRateOfTotalMachineByWorkshop = new ChartData()
             {
-                Title = "Tỷ lệ máy theo từng xưởng",
-                Data = new List<ChartItemViewModel>()
-                {
-                    new ChartItemViewModel() {Name="AH1", Value=23.26, ColorCode="#E17084", DataID=1},
-                    new ChartItemViewModel() {Name="AH2", Value=56.12, ColorCode="#6aa1e4", DataID=2},
-                    new ChartItemViewModel() {Name="AH3", Value=11.63, ColorCode="#f1cf6d", DataID=3}
-                }
+                Title = "Tỷ lệ máy theo phân loại",
             };
+            for (int i = 0; i < StaticData.Data_AssetGroup.Count; i++)
+            {
+                var asset = StaticData.Data_AssetGroup[i];
 
-            // Pie Chart - Tỷ lệ máy theo nhóm máy
+                reval.PieChartRateOfTotalMachineByWorkshop.Data.Add(
+                        new ChartItemViewModel()
+                        {
+                            DataID = asset.AssetGroupID
+                            ,
+                            Name = asset.AssetGroupName
+                            ,
+                            ColorCode = asset.ColorCode
+                            ,
+                            Value = ((from h in StaticData.Data_MachineStatusHistory
+                                      join m in StaticData.Data_Machine on h.MachineID equals m.MachineID
+                                      where m.AssetGroupID == asset.AssetGroupID
+                                      select m.MachineID
+                                     )
+                                     .ToList()
+                                     .Distinct()
+                                     .Count()
+                                     )
+                                     * 100
+                                     /
+                                     StaticData.Data_Machine.Count
+                        });
+            }
+
+            #endregion
+
+
+
+
+            #region // Pie Chart - Tỷ lệ máy theo nhóm máy
             reval.PieChartRateOfTotalMachineByGroup = new ChartData()
             {
                 Title = "Tỷ lệ máy theo nhóm máy",
-                Data = new List<ChartItemViewModel>()
-                {
-                    new ChartItemViewModel() {Name="GCN", Value=23.26,      ColorCode="#E17084", DataID=1},
-                    new ChartItemViewModel() {Name="DCTH", Value=58.14,     ColorCode="#6aa1e4", DataID=2},
-                    new ChartItemViewModel() {Name="LASER", Value=2.33,     ColorCode="#f1cf6d", DataID=3},
-                    new ChartItemViewModel() {Name="PLASMA", Value=11.63,   ColorCode="#73c84f", DataID=4},
-                    new ChartItemViewModel() {Name="ROBOT", Value=4.65,     ColorCode="#df4d26", DataID=5},
-                }
             };
+            for (int i = 0; i < StaticData.Data_MachineGroup.Count; i++)
+            {
+                var group = StaticData.Data_MachineGroup[i];
+
+                reval.PieChartRateOfTotalMachineByGroup.Data.Add(
+                            new ChartItemViewModel()
+                            {
+                                DataID = group.MachineGroupID
+                                ,
+                                Name = group.MachineGroupName
+                                ,
+                                ColorCode = group.ColorCode
+                                ,
+                                Value = ((from h in StaticData.Data_MachineStatusHistory
+                                          join m in StaticData.Data_Machine on h.MachineID equals m.MachineID
+                                          where m.MachineGroupID == @group.MachineGroupID
+                                          select m.MachineID
+                                         )
+                                         .ToList()
+                                         .Distinct()
+                                         .Count()
+                                         )
+                                         * 100
+                                         /
+                                         StaticData.Data_Machine.Count
+                            });
+            }
+
+            #endregion
+
 
             // Pie Chart - Tỷ lệ máy theo nhóm tài sản
             reval.PieChartRateOfTotalMachineByAssetGroup = new ChartData()
@@ -282,7 +359,6 @@ namespace Service.Service
             }
             #endregion
 
-
             return reval;
         }
 
@@ -397,7 +473,7 @@ namespace Service.Service
             return reval;
         }
 
-        public List<dynamic> GetMachineStatusListV2()
+        public List<dynamic> GetListMachine()
         {
             List<dynamic> reval = new List<dynamic>();
             try
@@ -411,9 +487,12 @@ namespace Service.Service
                 INNER JOIN Data_Workshop ws ON ws.id=l.WorkshopID
                 INNER JOIN Data_Factory f ON f.ID= l.FactoryID                 
                  */
-                var lst = from h in StaticData.Data_MachineStatusHistory
-                          join m in StaticData.Data_Machine on h.MachineID equals m.MachineID
-                          join s in StaticData.Data_MachineStatus on h.StatusID equals s.StatusID
+                var lst = from m in StaticData.Data_Machine
+                          join h in StaticData.Data_MachineStatusHistory on m.MachineID equals h.MachineID
+                                    into x
+                          join s in StaticData.Data_MachineStatus on x.FirstOrDefault()?.StatusID equals s.StatusID
+                          //////join f in StaticData.Data_F on f.ID = l.FactoryID
+
                           select new
                           {
                               m.MachineID
@@ -422,15 +501,50 @@ namespace Service.Service
                               ,
                               m.MachineGroupName
                               ,
+                              m.MachineGroupID
+                              ,
                               m.Model
                               ,
-                              h.StatusID
+                              x.FirstOrDefault()?.StatusID
                               ,
                               s.StatusName
                               ,
                               s.StatusDetail
                               ,
                               s.ColorCode
+                              ,
+                              m.Quantity
+                              // Thêm
+                              ,
+                              m.AccountantCode
+                              ,
+                              m.AssetGroupID
+                              ,
+                              m.AssetGroupName
+                              ,
+                              m.BaseUnitID
+                              ,
+                              m.BaseUnitName
+                              // m.factoryID
+                              ,
+                              m.FirstUseDate
+                              ,
+                              m.MachineAssetCode
+                              ,
+                              m.MachineLocationID
+                              ,
+                              m.MachineLocationName
+                              ,
+                              m.ProviderID
+                              ,
+                              m.ProviderName
+                              ,
+                              m.Note
+                              //,workshopID
+                              //,
+                              //workshopName
+
+
                           };
                 reval = lst?.ToList<dynamic>();
             }

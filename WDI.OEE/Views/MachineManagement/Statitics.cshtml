@@ -6,37 +6,32 @@
         text-decoration: none;
         color: #dcdcdc !important;
     }
+
+    #box-by-group .col-1 {
+        flex: 1 0 8.333333%!important;
+        max-width: 12% !important;
+    }
 </style>
 
-<!-- [Số nhà xưởng] start -->
-<div class="col-lg-3 col-sm-1">
-    <div class="card update-card box-machine-info-txtwhite bg-c-whiteblue">
-        <div class="card-body text-center">
-            <div class="wcom-card-title">@Model.BoxTotalWorkshop.Title</div>
-            <br />
-            <h1>@Model.BoxTotalWorkshop.Value</h1>
-            <div id="pieChartBoxTotalWorkshop"></div>
-        </div>
-        <div class="card-footer">
-            <!--a href="#">Chi tiết >></a-->
-            &nbsp;
+
+@*     <!-- [Số nhà xưởng] start -->
+    <div class="col-lg-3 col-sm-1">
+        <div class="card bg-c-white">
+            <img src="~/images/logoes/ngaicau.jpg" style="margin: 10px;height:13.2rem;margin-left: auto;margin-right: auto;" />
         </div>
     </div>
-</div>
-<!-- [Số nhà xưởng] end -->
+    <!-- [Số nhà xưởng] end --> *@
 <!-- [Tổng số máy] start -->
-<div class="col-lg-3 col-sm-1">
+<div class="col-lg-4 col-sm-1">
     <div class="card update-card box-machine-info-txtwhite bg-c-yellow">
         <div class="card-body text-center">
             <div class="wcom-card-title">@Model.BoxTotalMachine.Title</div>
-            <br />
             <h1>@Model.BoxTotalMachine.Value</h1>
-            <br />
-            <div class="row" style="justify-content:center;">
+            <div class="row" style="justify-content:center;height:70px;">
                 @foreach (var item in Model.BoxTotalMachine.Data)
                 {
                     <div class="col-2 p-0">
-                        <a title="Chi tiết" target="_blank" class="d-block text-white" href="@Url.Action("List","MachineManagement")?workshopID=@item.DataID">
+                        <a title="Chi tiết" target="_blank" class="d-block text-white" href="@Url.Action("List","MachineManagement")?machineAssetGroupID=@item.DataID">
                             @item.Name
                         </a>
                     </div>
@@ -47,7 +42,7 @@
                 @foreach (var item in Model.BoxTotalMachine.Data)
                 {
                     <div class="col-2 p-0 l">
-                        <a title="Chi tiết" target="_blank" class="d-block text-white" href="@Url.Action("List","MachineManagement")?workshopId=@item.DataID">
+                        <a title="Chi tiết" target="_blank" class="d-block text-white" href="@Url.Action("List","MachineManagement")?machineAssetGroupID=@item.DataID">
                             @item.Value
                         </a>
                     </div>
@@ -59,17 +54,15 @@
 </div>
 <!-- [Tổng số máy] end -->
 <!-- [Số máy theo nhóm] start -->
-<div class="col-lg-6 col-sm-1">
+<div class="col-lg-8 col-sm-1" id="box-by-group">
     <div class="card update-card box-machine-info-txtwhite bg-c-green">
         <div class="card-body text-center">
             <div class="wcom-card-title">@Model.BoxTotalMachineByGroup.Title</div>
-            <br />
             <h1>@Model.BoxTotalMachineByGroup.Value</h1>
-            <br />
-            <div class="row" style="justify-content:center;">
+            <div class="row" style="justify-content:center;height:70px;">
                 @foreach (var item in Model.BoxTotalMachineByGroup.Data)
                 {
-                    <div class="col-2 p-0">
+                    <div class="col-1 p-0" style="width:12.5%;">
                         <a title="Chi tiết" target="_blank" class="d-block text-white" href="@Url.Action("List","MachineManagement")?machineGroupID=@item.DataID">
                             @item.Name
                         </a>
@@ -80,7 +73,7 @@
             <div class="row" style="justify-content:center;">
                 @foreach (var item in Model.BoxTotalMachineByGroup.Data)
                 {
-                    <div class="col-2 p-0">
+                    <div class="col-1 p-0" style="width:12.5%;">
                         <a title="Chi tiết" target="_blank" class="d-block text-white" href="@Url.Action("List","MachineManagement")?machineGroupID=@item.DataID">
                             @item.Value
                         </a>
@@ -129,22 +122,37 @@
 <div class="col-lg-4 col-sm-1">
     <div class="card box-machine-info-txtblack">
         <div class="card-body text-center">
-            <div class="row">
+            @* <div class="row">
                 <div class="col-lg-12 col-md-12 databox-title">
                     @Model.PieChartRateOfTotalMachineByAssetGroup.Title
                 </div>
             </div>
             <div class="line-grey"></div>
             <div>@Model.PieChartRateOfTotalMachineByAssetGroup.Title</div>
-            <canvas id="piechart_PieChartRateOfTotalMachineByAssetGroup" width="426" height="426" style="display: block; height: 341px; width: 341px;"></canvas>
+            <canvas id="piechart_PieChartRateOfTotalMachineByAssetGroup" width="426" height="426" style="display: block; height: 341px; width: 341px;"></canvas> *@
+
+
+            <div class="table-responsive">
+                <table id="gridListMachine" class="table table-styling"
+                       data-pagination="true"
+                       data-page-list="[5, 10, 20, 50, 100, 200]"
+                       data-show-footer="false">
+                    <thead class="table-primary">
+                        <tr>
+                            <th data-field="machineName" data-align="left" data-sortable="true" data-formatter="expanLinkMachineDetail">Thiết bị</th>
+                            <th data-field="providerName" data-align="left" data-sortable="true">Nhà cung cấp</th>
+                            <th data-field="quantity" data-align="left" data-sortable="true">SL</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
     </div>
 </div>
 <!-- [RateOfTotalMachineByWorkshop] end -->
 
 
-
-<!---- line-white 3 ---------------------------------------------------------------->
+@* <!---- line-white 3 ---------------------------------------------------------------->
 <!-- [TableListMachineByGroupAndWorkshop] start -->
 <div class="col-lg-6 col-sm-1">
     <div class="card box-machine-info-txtblack">
@@ -176,7 +184,7 @@
         </div>
     </div>
 </div>
-<!-- [BarChartListMachineByGroupAndWorkshop2] end -->
+<!-- [BarChartListMachineByGroupAndWorkshop2] end --> *@
 
 
 
@@ -184,22 +192,49 @@
 <script>
     $(document).ready(function () {
         var _modelpiechartByWorkshop = @Html.Raw(Json.Serialize(Model.PieChartRateOfTotalMachineByWorkshop));
-        create_piechart('pie','piechart_PieChartRateOfTotalMachineByWorkshop', _modelpiechartByWorkshop);
+        create_piechart('pie', 'piechart_PieChartRateOfTotalMachineByWorkshop', _modelpiechartByWorkshop);
 
         var _modelpiechartByGroup = @Html.Raw(Json.Serialize(Model.PieChartRateOfTotalMachineByGroup));
         create_piechart('doughnut', 'piechart_PieChartRateOfTotalMachineByGroup', _modelpiechartByGroup);
 
-        var _modelpiechartByAssetGroup = @Html.Raw(Json.Serialize(Model.PieChartRateOfTotalMachineByAssetGroup));
-        create_piechart('pie', 'piechart_PieChartRateOfTotalMachineByAssetGroup', _modelpiechartByAssetGroup);
-    
+        // var _modelpiechartByAssetGroup = @Html.Raw(Json.Serialize(Model.PieChartRateOfTotalMachineByAssetGroup));
+        // create_piechart('pie', 'piechart_PieChartRateOfTotalMachineByAssetGroup', _modelpiechartByAssetGroup);
 
-        // Barchart
-        var modelBarChart = @Html.Raw(Json.Serialize(Model.BarChartListMachineByGroupAndWorkshop));
-        create_barchart('bar', 'chBarChartListMachineByGroupAndWorkshop', modelBarChart);
 
-        var modelBarChart2 = @Html.Raw(Json.Serialize(Model.BarChartListMachineByGroupAndWorkshop2));
-        create_barchart('bar', 'chBarChartListMachineByGroupAndWorkshop2', modelBarChart2);
+        // // Barchart
+        // var modelBarChart = @Html.Raw(Json.Serialize(Model.BarChartListMachineByGroupAndWorkshop));
+        // create_barchart('bar', 'chBarChartListMachineByGroupAndWorkshop', modelBarChart);
+
+        // var modelBarChart2 = @Html.Raw(Json.Serialize(Model.BarChartListMachineByGroupAndWorkshop2));
+        // create_barchart('bar', 'chBarChartListMachineByGroupAndWorkshop2', modelBarChart2);
+
+        create_table_listmachine();
     })
+
+    function create_table_listmachine() {
+        $.ajax({
+            url: "@Url.Action("GetListMachine", "MachineManagement")",
+            method: "GET",
+            dataType: "json",
+            //data: { TimeRangeID: _TimeRange, MachineGroupID: _MachineGroup, MachineLocationID: _MachineLocation },
+            async: true,
+            beforeSend: function () { },
+            success: function (result) {
+                // Table structure: Ngày | Vị trí | Thiết bị | Nhóm máy | Mã lỗi | Tên lỗi | Ghi chú
+                $("#gridListMachine").bootstrapTable({
+                    data: result,
+                    formatLoadingMessage: function () {
+                        return '<b>Loading ...</b>';
+                    }
+                });
+
+                $('#gridListMachine').bootstrapTable('load', result);
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }
 
     function create_piechart(charttype, chartid, piechartmodel) {
         var _chartlabels = ["Spring", "Summer", "Fall", "Winter"];
@@ -236,6 +271,12 @@
             },
             options: {
                 plugins: {
+                    // datalabels: {
+                    //     formatter: function (value, context) {
+                    //         debugger;
+                    //         return context.chart.data.labels[context.dataIndex];
+                    //     }
+                    // },
                     legend: {
                         display: true,
                         position: 'bottom',
@@ -250,6 +291,19 @@
                             }
                         }
                     }
+                    // datalabels: {
+                    //     formatter: (value, ctx) => {
+                    //         debugger;
+                    //         let sum = 0;
+                    //         let dataArr = ctx.chart.data.datasets[0].data;
+                    //         dataArr.map(data => {
+                    //             sum += data;
+                    //         });
+                    //         let percentage = (value * 100 / sum).toFixed(2) + "%";
+                    //         return percentage;
+                    //     },
+                    //     color: '#fff',
+                    // }
                 }
             }
         });
@@ -354,44 +408,36 @@
             }
         */
         // check null: https://stackoverflow.com/questions/5515310/is-there-a-standard-function-to-check-for-null-undefined-or-blank-variables-in
-        
+
         var colors = ['#007bff', '#28a745', '#444444', '#c3e6cb', '#dc3545', '#6c757d'];
         var _colors = ['#007bff', '#28a745', '#444444', '#c3e6cb', '#dc3545', '#6c757d'];
         var _labels = ["S", "M", "T", "W", "T", "F", "S"];
         var _datasets = [];
 
 
-        if (barchartmodel) 
-        {
+        if (barchartmodel) {
             _labels = [];
             _colors = [];
 
-            barchartmodel.data.forEach((value) => 
-            {
+            barchartmodel.data.forEach((value) => {
                 var _childdata = [];
                 _childdata.backgroundColor = value.colorCode;
                 _childdata.data = [];
                 _childdata.label = value.title;
                 //_childdata.backgroundColor = [];
 
-                if (value.data) 
-                {
+                if (value.data) {
                     var _lastColor = '';
-                    value.data.forEach((val) => 
-                    {
+                    value.data.forEach((val) => {
                         // Nếu chưa có màu thì đẩy màu vào
-                        if (val.colorCode) 
-                        {
-                            if (_colors.indexOf(val.colorCode) < 0)
-                            {
+                        if (val.colorCode) {
+                            if (_colors.indexOf(val.colorCode) < 0) {
                                 _colors.push(val.colorCode);
                             }
                         }
                         // Nếu chưa có label thì đẩy label vào
-                        if (val.name)
-                        {
-                            if (_labels.indexOf(val.name) < 0)
-                            {
+                        if (val.name) {
+                            if (_labels.indexOf(val.name) < 0) {
                                 _labels.push(val.name);
                             }
                         }
@@ -456,7 +502,7 @@
                             labels: {
                                 generateLabels: (chart) => {
                                     const datasets = chart.data.datasets;
-                                    
+
                                     // var _return = datasets[0].data.map((data, i) => ({
                                     //     text: `${chart.data.labels[i]} ${data}`,
                                     //     fillStyle: datasets[0].backgroundColor[i],
@@ -479,5 +525,14 @@
                 }
             });
         }
+    }
+
+    function expanLinkMachineDetail(value, row, index) {
+        var _model = '{machineID:' + row.machineID + ',machineLocationID:' + row.machineLocationID + ', formType:1}';
+
+        var _temp = '@Url.Action("MachineDetail", "MachineManagement")?stringData=' + _model;
+        var _link = '<a title="Chi tiết máy" href="' + _temp + '">' + row.machineName + '</a>';
+
+        return _link;
     }
 </script>

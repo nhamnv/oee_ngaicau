@@ -4,7 +4,7 @@ namespace Service.IService
 {
     public interface IReportMachineRuningStatusService
     {
-        List<MachineRuningStatusViewModel> GetReportMachineRuningStatus(DateTime StartDate, DateTime EndDate, string MachineGroupID, string MachineLocationID, string MachineID = "");
+        List<MachineRuningStatusViewModel> GetReportMachineRuningStatus(DateTime StartDate, DateTime EndDate, string MachineGroupID, string MachineLocationID, string MachineAssetGroupID, string MachineID = "");
 
         /// <summary>
         /// Dữ liệu biểu đồ thời gian máy chạy - theo máy cụ thể

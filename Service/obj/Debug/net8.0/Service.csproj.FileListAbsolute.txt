@@ -33,3 +33,4 @@ E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\Service\obj\Debug\net8.0\Service.dll
 E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\Service\obj\Debug\net8.0\refint\Service.dll
 E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\Service\obj\Debug\net8.0\Service.pdb
 E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\Service\obj\Debug\net8.0\ref\Service.dll
+E:\nhamnv\SourceCode\WELDCOMOEE\OEE_NgaiCau\Service\obj\Debug\net8.0\Service.sourcelink.json

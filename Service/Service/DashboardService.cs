@@ -38,7 +38,7 @@ namespace Service.Service
                          MachineLocationID = l.LocationID,
                          MachineLocationName = l.LocationName,
                          Model = m.Model,
-                         ImageUrl = (!string.IsNullOrEmpty(m.ImageUrl) ? m.ImageUrl : "NoImage.png"),
+                         ImageUrl = (!string.IsNullOrEmpty(m.ImageUrl) ? m.ImageUrl : "NoImage.jpg"),
                          MachineStatusID = x.Where(t => t.StatusTime <= reportDate).OrderByDescending(o => o.StatusTime).FirstOrDefault()?.StatusID ?? 0
                          ,
                          MachineStatusName = (from st in StaticData.Data_MachineStatus
@@ -141,7 +141,7 @@ namespace Service.Service
                          MachineLocationID = l.LocationID,
                          MachineLocationName = l.LocationName,
                          Model = m.Model,
-                         ImageUrl = (!string.IsNullOrEmpty(m.ImageUrl) ? m.ImageUrl : "NoImage.png"),
+                         ImageUrl = (!string.IsNullOrEmpty(m.ImageUrl) ? m.ImageUrl : "NoImage.jpg"),
 
                          MachineStatusID = x.Where(t => t.StatusTime <= reportDate).OrderByDescending(o => o.StatusTime).FirstOrDefault()?.StatusID ?? 0
                          ,
@@ -199,7 +199,7 @@ namespace Service.Service
                 reval.ListMachine = lstMachineLastStatus?.Where(t => t.MachineStatusID == _MachineStatusID && t.MachineGroupID == _MachineGroupID)
                     .Select(t => new DashboardMachineItem()
                     {
-                        ImageUrl = (!string.IsNullOrEmpty(t.ImageUrl) ? t.ImageUrl : "NoImage.png")
+                        ImageUrl = (!string.IsNullOrEmpty(t.ImageUrl) ? t.ImageUrl : "NoImage.jpg")
                         ,
                         MachineName = t.MachineName
                         ,

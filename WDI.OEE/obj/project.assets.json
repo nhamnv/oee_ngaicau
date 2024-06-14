@@ -271,6 +271,39 @@
           }
         }
       },
+      "Castle.Core/5.1.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Diagnostics.EventLog": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/Castle.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Castle.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Castle.Windsor/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Castle.Core": "[5.1.0, 6.0.0)",
+          "Microsoft.Extensions.DependencyModel": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/Castle.Windsor.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Castle.Windsor.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Humanizer/2.14.1": {
         "type": "package",
         "dependencies": {
@@ -5228,6 +5261,51 @@
         "contentFiles/any/any/wwwroot/js/bootstrap.js.map",
         "contentFiles/any/any/wwwroot/js/bootstrap.min.js",
         "contentFiles/any/any/wwwroot/js/bootstrap.min.js.map"
+      ]
+    },
+    "Castle.Core/5.1.0": {
+      "sha512": "31UJpTHOiWq95CDOHazE3Ub/hE/PydNWsJMwnEVTqFFP4WhAugwpaVGxzOxKgNeSUUeqS2W6lxV+q7u1pAOfXg==",
+      "type": "package",
+      "path": "castle.core/5.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ASL - Apache Software Foundation License.txt",
+        "CHANGELOG.md",
+        "LICENSE",
+        "castle-logo.png",
+        "castle.core.5.1.0.nupkg.sha512",
+        "castle.core.nuspec",
+        "lib/net462/Castle.Core.dll",
+        "lib/net462/Castle.Core.xml",
+        "lib/net6.0/Castle.Core.dll",
+        "lib/net6.0/Castle.Core.xml",
+        "lib/netstandard2.0/Castle.Core.dll",
+        "lib/netstandard2.0/Castle.Core.xml",
+        "lib/netstandard2.1/Castle.Core.dll",
+        "lib/netstandard2.1/Castle.Core.xml",
+        "readme.txt"
+      ]
+    },
+    "Castle.Windsor/6.0.0": {
+      "sha512": "yvKY5DXpqWEp7a5Xar9hihAcgVVzBftLqvf/Fo6xd10jAsZUpaAE5WwkuhiiYSA/yVaPzul8rRCvmYLkqh2Hkw==",
+      "type": "package",
+      "path": "castle.windsor/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ASL - Apache Software Foundation License.txt",
+        "CHANGELOG.md",
+        "LICENSE",
+        "castle.windsor.6.0.0.nupkg.sha512",
+        "castle.windsor.nuspec",
+        "lib/net462/Castle.Windsor.dll",
+        "lib/net462/Castle.Windsor.xml",
+        "lib/net6.0/Castle.Windsor.dll",
+        "lib/net6.0/Castle.Windsor.xml",
+        "lib/netstandard2.0/Castle.Windsor.dll",
+        "lib/netstandard2.0/Castle.Windsor.xml",
+        "windsor-logo.png"
       ]
     },
     "Humanizer/2.14.1": {
@@ -14161,6 +14239,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Castle.Windsor >= 6.0.0",
       "Common >= 1.0.0",
       "Microsoft.AspNet.Mvc >= 5.3.0",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.4",
@@ -14190,7 +14269,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://github.com/mrange": {}
       },
       "frameworks": {
         "net8.0": {
@@ -14220,6 +14300,10 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "Castle.Windsor": {
+            "target": "Package",
+            "version": "[6.0.0, )"
+          },
           "Microsoft.AspNet.Mvc": {
             "target": "Package",
             "version": "[5.3.0, )"

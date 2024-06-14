@@ -26,7 +26,7 @@ namespace WDI.OEE.Controllers
 
             #region Dropdown Time range
             var listTimeRange = new List<SelectListItem>();
-            listTimeRange.Add(new SelectListItem() { Text = "Tất cả", Value = "All", Selected = true });
+            listTimeRange.Add(new SelectListItem() { Text = "-- Tất cả --", Value = "All", Selected = true });
 
             listTimeRange.AddRange(
                 StaticData.TimeRange.Select(t => new SelectListItem()
@@ -42,7 +42,7 @@ namespace WDI.OEE.Controllers
 
             #region Dropdown MachineGroup
             var listMachineGroup = new List<SelectListItem>();
-            listMachineGroup.Add(new SelectListItem() { Text = "Tất cả", Value = "All", Selected = true });
+            listMachineGroup.Add(new SelectListItem() { Text = "-- Tất cả --", Value = "All", Selected = true });
 
             listMachineGroup.AddRange(
                 StaticData.Data_MachineGroup.AsEnumerable().Select(t => new SelectListItem()
@@ -59,7 +59,7 @@ namespace WDI.OEE.Controllers
             #region Dropdown Machine Location
             var listLocation = new List<SelectListItem>();
 
-            listLocation.Add(new SelectListItem() { Text = "Tất cả", Value = "All", Selected = true });
+            listLocation.Add(new SelectListItem() { Text = "-- Tất cả --", Value = "All", Selected = true });
             listLocation.AddRange(
                 StaticData.Data_MachineLocation.AsEnumerable().Select(t => new SelectListItem()
                 {

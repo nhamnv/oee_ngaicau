@@ -6,16 +6,22 @@
             <div class="row">
                 <div class="col-sm-3">
                     <div class="form-group">
-                        <label class="control-label text-muted">Nhóm máy</label>
-                        @Html.DropDownList("MachineGroupID", (List<SelectListItem>)ViewData["ListMachineGroup"], htmlAttributes: new { @class = "form-control", @onchange = "filterData()" })
+                        <label for="machineAssetGroup" class="control-label text-muted">Phân loại</label>
+                        @Html.DropDownList("machineAssetGroup", (List<SelectListItem>)ViewData["ListAssetGroup"], htmlAttributes: new { @class = "form-control", @onchange = "filterData()" })
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="form-group">
+                        <label class="control-label text-muted">Nhóm máy</label>
+                        @Html.DropDownList("machineGroup", (List<SelectListItem>)ViewData["ListMachineGroup"], htmlAttributes: new { @class = "form-control", @onchange = "filterData()" })
+                    </div>
+                </div>
+                @* <div class="col-sm-3">
+                    <div class="form-group">
                         <label class="control-label text-muted" for="MachineLocationID">Vị trí</label>
                         @Html.DropDownList("MachineLocationID", (List<SelectListItem>)ViewData["ListMachineLocation"], htmlAttributes: new { @class = "form-control", @onchange = "filterData()" })
                     </div>
-                </div>
+                </div> *@
             </div>
         </div>
     </div>
@@ -31,14 +37,14 @@
 </div>
 <script>
     function filterData() {
-        var _MachineGroup = $("#MachineGroupID").val();
-        var _MachineLocation = $("#MachineLocationID").val();
+        var _machineGroup = $("#machineGroup").val();
+        var _machineAssetGroup = $("#machineAssetGroup").val();
         //debugger;
         $.ajax({
             url: "/ReportMachineRuningStatus/FilterData",
             method: "POST",
             dataType: "json",
-            data: { MachineGroupID: _MachineGroup, MachineLocationID: _MachineLocation },
+            data: { machineGroupID: _machineGroup, machineAssetGroup: _machineAssetGroup },
             async: true,
             beforeSend: function () { },
             success: function (result) {
@@ -55,11 +61,11 @@
 
 
     $(document).ready(function () {
-        $('#MachineGroupID').select2({
-            placeholder: 'Nhóm máy'
+        $('#machineAssetGroup').select2({
+            placeholder: 'Phân loại'
         });
-        $('#MachineLocationID').select2({
-            placeholder: 'Vị trí'
+        $('#machineGroup').select2({
+            placeholder: 'Nhóm máy'
         });
     });
 </script>

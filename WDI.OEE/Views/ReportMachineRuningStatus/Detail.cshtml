@@ -5,22 +5,28 @@
     <div class="card">
         <div class="card-body">
             <div class="row">
+                @* <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="machineAssetGroup" class="control-label text-muted">Phân loại</label>
+                        @Html.DropDownList("machineAssetGroup", (List<SelectListItem>)ViewData["ListAssetGroup"], htmlAttributes: new { @class = "form-control", @onchange = "filterDataDetail()" })
+                    </div>
+                </div> *@
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label class="control-label text-muted" >Nhóm máy</label>
-                        @Html.DropDownList("MachineGroupID", (List<SelectListItem>)ViewData["ListMachineGroup"], htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("machineGroup", (List<SelectListItem>)ViewData["ListMachineGroup"], htmlAttributes: new { @class = "form-control", @onchange = "filterDataDetail()" })
                     </div>
                 </div>
-                <div class="col-sm-3">
+                @* <div class="col-sm-3">
                     <div class="form-group">
                         <label class="control-label text-muted">Vị trí</label>
                         @Html.DropDownList("MachineLocationID", (List<SelectListItem>)ViewData["ListMachineLocation"], htmlAttributes: new { @class = "form-control" })
                     </div>
-                </div>
+                </div> *@
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label class="control-label text-muted">Máy</label>
-                        @Html.DropDownList("MachineID", (List<SelectListItem>)ViewData["ListMachine"], htmlAttributes: new { @class = "form-control", @onchange = "filterDataDetail()" })
+                        @Html.DropDownList("machine", (List<SelectListItem>)ViewData["ListMachine"], htmlAttributes: new { @class = "form-control", @onchange = "filterDataDetail()" })
                     </div>
                 </div>
             </div>
@@ -33,7 +39,7 @@
         @if (Model != null && Model.Count>0)
         {
             // Thiết bị lật dầm XF15 - Số 01
-            var m = Model.Where(t => t.MachineID == 22).FirstOrDefault();
+            var m = Model.FirstOrDefault();
             if(m== null)
             {
                 m = Model?[0];
@@ -46,14 +52,15 @@
 
 <script>
     function filterDataDetail() {
-        var _MachineID = $("#MachineID").val();
-        var _MachineGroup = $("#MachineGroupID").val();
-        var _MachineLocation = $("#MachineLocationID").val();
+        var _Machine = $("#machine").val();
+        var _MachineGroup = $("#machineGroup").val();
+        var _MachineAssetGroup = ''; //$("#machineAssetGroup").val();
+        var _MachineLocation = '';
         $.ajax({
             url: "/ReportMachineRuningStatus/FilterDataDetail",
             method: "POST",
             dataType: "json",
-            data: { MachineID: _MachineID, MachineGroupID: _MachineGroup, MachineLocationID: _MachineLocation },
+            data: { MachineID: _Machine, MachineGroupID: _MachineGroup, MachineLocationID: _MachineLocation, MachineAssetGroupID: _MachineAssetGroup },
             async: true,
             beforeSend: function () { },
             success: function (result) {
@@ -61,6 +68,8 @@
                 if (result && result.success === true) {
                     $("#divlistMachineRunningStatusDetail").html(result.html);
                 }
+                else
+                    $("#divlistMachineRunningStatusDetail").html('');
             },
             error: function (err) {
                 console.log(err);
@@ -69,13 +78,13 @@
     }
 
     $(document).ready(function () {
-        $('#MachineGroupID').select2({
+        $('#machineGroup').select2({
             placeholder: 'Nhóm máy'
         });
-        $('#MachineLocationID').select2({
-            placeholder: 'Vị trí'
+        $('#machineAssetGroup').select2({
+            placeholder: 'Phân loại'
         });
-        $('#MachineID').select2({
+        $('#machine').select2({
             placeholder: 'Máy'
         });
     });

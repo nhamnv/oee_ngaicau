@@ -1,7 +1,7 @@
 ﻿@model Common.ViewModels.DashboardStatusSummary
 
 <!-- [box machine status] start -->
-<div class="col-lg-4 col-sm-1">
+<div class="col-lg-6 col-sm-1">
     <div class="card update-card box-machine-info-txtwhite" style="background-color:@Model.ColorCode">
         <div class="card-body text-center">
             <input type="hidden" name="hidden_MachinStatusID" value="@Model.StatusID" />
@@ -9,10 +9,10 @@
             <div class="d-content"></div>
             <h1>@Model.MachineCount</h1>
             <div class="d-content"></div>
-            <div class="row" style="justify-content:center;">
+            <div class="row" style="justify-content:center;;height:70px;">
                 @foreach (var gr in Model.MachineGroups)
                 {
-                    <div class="col-4 p-0">
+                    <div class="col-1 p-0">
                         <input type="hidden" name="hidden_MachineGroupID_@gr.GroupID" value="@gr.GroupID" />
                         <a title="Chi tiết" class="d-block text-white">
                             @gr.GroupName
@@ -24,7 +24,7 @@
             <div class="row" style="justify-content:center;">
                 @foreach (var gr in Model.MachineGroups)
                 {
-                    <div class="col-4 p-0 l">
+                    <div class="col-1 p-0 l">
                         <a title="Chi tiết" class="d-block text-white">
                             @gr.MachineCount
                         </a>

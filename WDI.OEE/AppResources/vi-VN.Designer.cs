@@ -88,7 +88,7 @@ namespace WDI.OEE.AppResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tên máy.
+        ///   Looks up a localized string similar to Thiết bị.
         /// </summary>
         public static string MachineName {
             get {
