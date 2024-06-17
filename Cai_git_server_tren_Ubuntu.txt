@@ -1,0 +1,80 @@
+﻿
+--1
+https://www.youtube.com/watch?v=Q6C5CoUxMuQ
+
+--2
+https://packages.gitlab.com/app/gitlab/gitlab-ee/search?dist=ubuntu&filter=all&page=20&q=
+
+--3
+https://packages.gitlab.com/gitlab/gitlab-ee/packages/ubuntu/jammy/gitlab-ee_15.11.1-ee.0_amd64.deb
+
+
+
+//******** Cai dat git tren ubuntu ****************************************************************//
+==> Huong dan: https://www.youtube.com/watch?v=Q6C5CoUxMuQ
+==> SSH vao ubuntu
+dang nhap account
+==> Vào root
+sudo -i
+
+==> sửa tên server bằng bàn phím nano
+sudo nano /etc/hostname
+
+==> sửa tên serve trong file host bằng bàn phím nano
+sudo nano /etc/hosts
+	sửa thành gitlab-server
+==> khởi động lại
+sudo reboot
+
+==> cài gitlab
+vào link coopy lệnh past vào enter
+https://packages.gitlab.com/gitlab/gitlab-ee/packages/ubuntu/jammy/gitlab-ee_15.11.1-ee.0_amd64.deb
+
+==>cài xong cấu hình domain tự nhập cho gitlab = cách sửa file hosts
+sudo nano /etc/hosts
+	thêm dòng 192.168.50.27  gitlab.weldcom.vn
+	
+=> sửa file cấu hình của gitlab trỏ về domain
+sudo nano /etc/gitlab/gitlab.rb
+  sửa dòng external... về domain vừa đặt xong save lại
+  
+chạy gitlab-ctl reconfigure để apply cấu hình  
+
+chay lenh sau de lay pass
+	cat /etc/gitlab/initial_root_password
+	copy dong Password:...
+Password: 1FB3yPnjy/73JOsV2rGkZsVNKPiIPoe+9Mf40PDYwTs=
+
+
+
+------------
+=>Sua file hot window
+192.168.50.27 gitlab.weldcom.vn
+
+vao gitlab.weldcom.vn
+tao account admin
+	administrator
+	Wdi#2024
+
+--------
+Tao ssh key
+https://www.youtube.com/watch?v=Q73jQSmVOO8
+
+https://docs.bizflycloud.vn/cloud_server/resources/tao_ssh_key_tren_linux/
+$ ssh-keygen -t rsa -C "email@example.com"
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCWtemy7PrCRLX2/3cgDLfw7VRVzImvXSyu4X2RMnjVCFD0c58fQw9BOVHLS7gcNiyQ9h9nB72/h85nqG8bsUzHTyhfwt/vEAcE17bqoZsQ4dy/XeZQJU67uqnOhXniyOvy7nL4Z/FETGlB4Szgml3bw6so0twNmJdp4BWrHoBcoZlgFBMrF1NKScjV2z3Kbspyc69916bbRwzAdZSKefHjzFUE07M6i2kfPNhwvF46McZYx8zrKojcbfjJHQUi24+osBUUuEuJbGS5+22uM8CwJ/0vSHskxKd1fdta3hdHk5oUwlBF3qpu30plEu62PS5XnvBx3byHudb1cnSzarDG7FQMOeDWLTR7Zo08/7WLw4eOeh7lCfAE79a9+bnG1awfFoXo8guZ3GSIon8nFKjc5C+vDQ9+MFsoTcdYpHd8sKa1mPxbJ9Gi+N9rliVt0lT5cbNGX4OzEXVR4Ow8D8Rid2+SRTLddAFb5uwMo9ZIeO0MzOQzqMXuCV7NsXhAUW0= nhamnv@weldcom.vn
+
+
+
+khoi dong lai gitlab
+	gitlab-ctl stop
+	gitlab-ctl start
+gitlab khoi dong khoang 2p
+
+
+http://gitlab.weldcom.vn/cntt/wdi_mms.git
+
+http://192.168.50.86/cntt/wdi_mms.git
+
+//************************************************************************//
+
